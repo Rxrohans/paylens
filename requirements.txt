@@ -1,0 +1,30 @@
+# ── LLM & RAG ──────────────────────────────────────────────
+langchain
+langchain-community
+langchain-groq          # Free LLM via Groq (Llama 3)
+
+# ── Embeddings (free, runs locally) ────────────────────────
+sentence-transformers  # all-MiniLM-L6-v2 model
+
+# ── Vector Store ────────────────────────────────────────────
+faiss-cpu # local vector DB, no server needed
+
+# ── Document Loaders ────────────────────────────────────────
+pypdf                   # PDF ingestion
+beautifulsoup4       # web page scraping
+requests
+
+# ── UI ──────────────────────────────────────────────────────
+streamlit
+
+# ── Evaluation ──────────────────────────────────────────────
+ragas                 # RAG evaluation framework
+datasets              # needed by ragas
+
+# ── Utilities ───────────────────────────────────────────────
+python-dotenv          # load API keys from .env
+pandas
+tqdm
+
+# ── Web Search (free, no API key needed) ────────────────────
+duckduckgo-search==6.3.7       # DuckDuckGo live search for hybrid RAG

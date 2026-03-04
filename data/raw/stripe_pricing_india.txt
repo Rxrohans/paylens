@@ -1,0 +1,266 @@
+Pricing & Fees
+Standard
+Access a complete payments platform with simple, pay-as-you-go pricing. No setup fees, monthly fees, or hidden fees.
+Request an invite
+2%
+for cards issued in India
+3%
+for cards issued outside India
+Custom
+Design a custom package – available for businesses with large payments volume or unique business models.
+Contact sales
+Volume discounts
+Multi-product discounts
+Country-specific rates
+Online and in-person payments, recurring billing, embedded payments, and much more.
+Custom pricing
+Optimise checkout conversion, accept local payment methods, and increase acceptance rates.
+An online payments platform engineered for growth.
+Start now
+Increase customer acquisition with 100+ payment methods.
+Improve conversion with Link - Stripe’s accelerated checkout.
+Reduce fraud and increase revenue with ML optimisations.
+Save engineering time with pre-built UIs.
+Accept widely used credit and debit cards, prepaid cards, and digital wallets for cards issued domestically.
+Learn more
+about our different card types.
+2%
+for Mastercard and Visa cards issued in India*
+Domestic debit card transactions have the Merchant Discount Rate (MDR) of 0.4% capped to ₹200.
+Accept widely used credit and debit cards, prepaid cards, and digital wallets for cards issued internationally.
+3%
+for Mastercard and Visa cards issued outside India
++
+  
+  
+  
+
+  
+    2%
+if currency conversion is required
+3.5%
+for American Express cards issued outside India
++
+  
+  
+  
+
+  
+    2%
+if currency conversion is required
+4.3%
+for international cards with USD or other currency presentment
++
+  
+  
+  
+
+  
+    2%
+if currency conversion is required
+Learn more
+More features
+Present prices in local currencies to your customers, tailoring customer experience and increasing revenue.
+Included
+with Payments
+Included at no additional charge for businesses on standard payments pricing
+Customers will be presented a conversion fee starting at
+2%
+Learn more
+Understand and effectively respond to disputes on card transactions (also known as chargebacks) through a guided process.
+Countering rare dispute types may incur network fees.
+Learn more
+₹1,000.00
+per dispute received.
+Fighting rare dispute types may incur network fees
+Fee for countering disputes manually
+₹1,000.00
+fee charged when you submit evidence
+If you win, the fee is returned. If you lose, the fee is not returned
+Learn more
+Automatically compiles and submits evidence to fight eligible disputes for you using Stripe’s AI (
+public preview
+)
+Sign up
+for the waiting list.
+Countering with Smart Disputes
+30%
+of the disputed amount charged if you win
+If you lose, no fees are charged for Smart Disputes
+Learn more
+Payment optimisations
+Included with Payments
+Included at no additional charge for businesses on standard payments pricing
+Increase acceptance rates and reduce card processing costs with AI-powered payment optimisations, inclusive of Adaptive Acceptance, card account updater and network tokens.
+Individual pricing
+available for Adaptive Acceptance, card account updater and network tokens.
+Included
+with Payments
+Included at no additional charge for businesses on standard payments pricing
+0.2%
+per successful online card transaction for accounts with custom payments pricing
+Learn more
+Advanced fraud detection and prevention tools.
+Start now
+Reduce fraud with ML powered by the Stripe network.
+Customise fraud prevention by creating custom rules.
+Get rich fraud insights for more efficient and accurate manual reviews.
+Fraud protection powered by billions of data points across the Stripe network.
+Included
+For accounts with all payment methods on standard pricing
+₹4.00
+per screened transaction for accounts with custom pricing for any payment method
+Advanced fraud protection tools allowing for greater control and customisable settings. Includes Radar’s machine learning.
+Support for Radar risk scores for non-Stripe transactions is available.
+Contact sales
+to learn more.
+Try for free for 30 days
+₹6.00
+per screened transaction for accounts with all payment methods on standard pricing
+Contact us
+Help reduce dispute rates with dispute prevention tools powered by Verifi from Visa and Ethoca from Mastercard.
+Request access
+.
+Included
+Dispute deflection lookups
+₹1,000.00
+per
+Visa resolution
+₹1,000.00
+per
+Visa Compelling Evidence 3.0 block
+₹2,000.00
+per
+Mastercard resolution
+See pricing details
+Enhance your platform by embedding financial services – set up financial accounts, issue cards, and offer financing.
+Embedded payments for platforms and marketplaces.
+Start now
+Launch faster with Stripe-hosted or pre-built embedded components.
+Save time by using tooling from Stripe for onboarding, risk, tax forms and more.
+Grow revenue by monetising payments.
+Stripe sets and collects processing fees from your users, so you don’t have to. Learn more about how to qualify for a
+revenue share
+from Stripe.
+Included
+with Payments
+Included at no additional charge for businesses on standard payments pricing
+0.25%
+starting fee for platforms that deploy their own payments pricing to earn revenue on each transaction.
+See pricing details
+Streamline critical business processes with modular billing, tax, revenue reporting, and data analysis tools that work seamlessly together.
+Subscription management software for recurring, usage-based, and one-time billing.
+Start now
+Respond to user demand faster with flexible pricing models.
+Increase revenue and reduce churn with Smart Retries and recovery workflow automations.
+Save engineering time with no-code tools or our composable APIs.
+Start billing for recurring subscriptions & usage based billing.
+0.7%
+of Billing volume
+Includes Billing transactions processed on and off Stripe. Excludes one-off invoices.
+See pricing details
+Global invoicing software.
+Start now
+Create, customise, and send an invoice in minutes – no code required.
+Save time with automated accounts receivable and invoicing workflows.
+Configure invoices for any use case.
+Invoicing features to get started quickly.
+0.4%
+per paid invoice
+See pricing details
+Software to quickly incorporate your startup.
+Start now
+File your incorporation paperwork in minutes.
+Use documents trusted by law firms, tax attorneys, and venture capital investors.
+Get over $50K in discounts and perks.
+Incorporate your company, get your EIN, issue equity, and file your 83(b) tax election.
+US$500.00
+one-off setup fee (includes government fees and your first year of registered agent services)
+See pricing details
+Navigate to:
+Global payments
+Money management
+Revenue and finance automation
+More
+Global payments
+Payments
+Radar
+Money management
+Connect
+Revenue and finance automation
+Billing
+Invoicing
+More
+Atlas
+Create tailored solutions to help you expand into new markets, optimise payments performance, automate revenue and finance workflows, monetise financial services, and
+more
+.
+Build your custom package
+Work with our sales team to design a solution that meets your needs:
+Payments
+Payments
+Radar
+Radar
+Connect
+Connect
+Invoicing
+Invoicing
+Billing
+Billing
+and more
+Get the support you need
+Technical account management
+Professional Services
+Certified implementation partners
+Discounted flat rates, subscriptions, and buy-rates for platforms.
+Discounts based on volume tiers, commitments, and product usage.
+Optional aggregated pricing for all markets, allowing you to go global with ease.
+Dashboards, tools, and APIs that give you transparency into your costs.
+Forrester’s Total Economic Impact study suggests a more than 3x return on investment among businesses that deployed Stripe.
+GuidesCard_32
+Report
+The Total Economic Impact™ Of Stripe
+BMW owners using ConnectedDrive Store
+US dealerships
+Amazon businesses on Stripe including Prime, Audible, and Amazon Pay.
+Payment methods available on Stripe
+Countries in logistics network
+Worth of goods moved around the world each year
+Uplift from Stripe's Global Payments Infrastructure
+Uplift from Adaptive Acceptance
+BMW logo
+Read story
+Learn why BMW chose Stripe to power e-commerce and payments
+Amazon logo
+Read story
+See how Amazon simplified cross-border payments with Stripe
+Maersk logo
+Read story
+See how Maersk tapped into new technology to make it easier to ship around the world
+Twilio logo
+Read story
+See how Twilio increased authorisation rates by 10% with Stripe
+BMW logo
+Amazon logo
+Maersk logo
+Twilio logo
+How are payment fees calculated?
+Stripe charges a per-transaction fee depending on the payment method used by the end customer.
+More details on fees by payment method
+.
+Will I be charged tax?
+Stripe is required to charge tax on certain products and services. Tax is charged based on your location and/ or your business/tax status, which determines whether a product or service is subject to taxes, and the applicable tax rates.
+Read more
+Are there additional fees for refunds?
+For businesses on standard pricing: There may be
+fees for refunds when bank transfers are used
+.For all other payment methods, there are no fees for issuing refunds. The payment processing, connect and currency conversion fees from the original transaction are not returned.
+For businesses on custom pricing: There may be fees for issuing refunds depending on your fee schedule with Stripe.
+Do you have setup fees or monthly fees?
+Stripe does not charge setup fees, monthly fees, or any other hidden fees like closure fees. All fees for businesses on standard pricing are listed on our website.
+Do you offer any discounts?
+Stripe offers custom pricing for businesses with large processing volumes. Eligibility varies by market.
+Access a complete payments platform with simple, pay-as-you-go pricing, or contact us to design a custom package specifically for your business.
+From startups to Fortune 500s, explore how millions of businesses use Stripe to start and scale their companies.
+Start building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby to Go.
+¹ Stripe Radar for Fraud teams and Stripe Connect with platform-controlled pricing are priced separately.

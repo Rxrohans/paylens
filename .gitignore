@@ -1,0 +1,21 @@
+# Virtual environment 
+venv/
+
+# API keys — NEVER push these
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyos
+
+# FAISS index — too large, rebuilt on deployment
+data/processed/faiss_index.bin
+data/processed/chunk_metadata.pkl
+
+# Logs — not needed in repo
+logs/
+
+# Windows junk
+Thumbs.db
+desktop.ini

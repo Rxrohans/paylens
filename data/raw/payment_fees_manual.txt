@@ -1,0 +1,169 @@
+CHARGECLARITY KNOWLEDGE BASE — Payment Platform Fees
+Source: Official fee pages (PayPal, Stripe, Razorpay) — compiled manually
+Last updated: March 2026
+=======================================================================
+
+=======================================================================
+PAYPAL INDIA — FEE STRUCTURE
+Source: https://www.paypal.com/in/webapps/mpp/paypal-fees
+=======================================================================
+
+DOMESTIC TRANSACTIONS (sender and receiver both in India):
+- Sending money to friends/family (personal): No fee if funded by PayPal balance or bank account
+- Receiving money for goods/services (commercial): 2.5% of transaction amount
+
+INTERNATIONAL TRANSACTIONS (sender and receiver in different countries):
+- Definition: A transaction where sender and receiver are registered in different markets/countries
+- Base transaction fee: 4.4% of the amount received
+- Fixed fee: Varies by currency (e.g., 0.30 USD for USD transactions)
+- Additional currency conversion fee: 3% to 4% above the base exchange rate
+
+CURRENCY CONVERSION:
+- PayPal adds a fee ABOVE the base exchange rate (mid-market rate)
+- For most currencies: 3% above base exchange rate
+- For some currencies: 4% above base exchange rate
+- Example: If base rate is 1 USD = 83 INR, PayPal rate may be 1 USD = 80.5 INR (approx 3% spread)
+- This conversion fee is how PayPal makes money on currency exchange
+
+RECEIVING PAYMENTS FROM ABROAD (e.g., from Outlier AI, US clients):
+- You pay: 4.4% transaction fee + fixed fee + currency conversion spread
+- Example: Receive USD 100 → PayPal deducts ~4.4% = USD 4.40 → then converts remaining at 3% below market rate
+- Total effective cost: approximately 7-8% of the received amount
+
+PAYPAL WITHDRAWAL TO INDIAN BANK:
+- Withdrawing INR to Indian bank: Free (if above minimum threshold)
+- Minimum withdrawal: INR 100
+- Processing time: 3-5 business days
+
+PAYPAL DISPUTE/CHARGEBACK FEE:
+- If a buyer files a claim and wins: Seller pays USD 20 (or local equivalent) chargeback fee
+- This is in addition to refunding the transaction amount
+
+=======================================================================
+STRIPE INDIA — FEE STRUCTURE
+Source: https://stripe.com/in/pricing
+=======================================================================
+
+STANDARD PRICING (Pay-as-you-go):
+- Cards issued in India: 2% per transaction
+- Cards issued outside India (international cards): 3% per transaction
+- No setup fees, no monthly fees, no hidden fees
+- No closure fees
+
+CURRENCY CONVERSION:
+- If currency conversion is required: Additional 2% fee on top of transaction fee
+- Example: Indian customer paying with USD card → 3% (international) + 2% (conversion) = 5% total
+
+SPECIFIC PAYMENT METHODS:
+- UPI payments in India: 2% per transaction (same as domestic cards)
+- Net Banking: 2% per transaction
+- Cards (Visa/Mastercard/RuPay issued in India): 2% per transaction
+- American Express: Higher rates apply (contact Stripe)
+
+FAILED PAYMENTS:
+- Stripe does NOT charge for failed payment attempts
+- You only pay fees on successful transactions
+
+DISPUTES AND CHARGEBACKS:
+- Dispute fee: USD 15 per dispute (approximately INR 1,250)
+- Fee is refunded if you win the dispute
+- Dispute fee applies regardless of transaction currency
+
+PAYOUTS (receiving your Stripe balance):
+- Standard payout to Indian bank: Free
+- Payout schedule: T+2 (2 business days after transaction)
+- Instant payouts: Available for eligible accounts, small fee applies
+
+STRIPE RADAR (Fraud detection):
+- Included free with standard pricing
+- Advanced Radar: USD 0.02 per transaction additional fee
+
+=======================================================================
+RAZORPAY INDIA — FEE STRUCTURE
+Source: https://razorpay.com/pricing/
+=======================================================================
+
+STANDARD PRICING:
+- All domestic transactions: 2% per transaction
+- International cards: 3% per transaction
+- No setup fee for standard account
+
+PAYMENT METHOD BREAKDOWN:
+- UPI (BHIM, Google Pay, PhonePe via Razorpay): 0% fee (as per NPCI guidelines, UPI is free for peer-to-peer; merchant rates apply for business)
+- Net Banking: 2% per transaction
+- Credit/Debit Cards (Domestic): 2% per transaction
+- Credit/Debit Cards (International): 3% per transaction
+- Wallets (Paytm, MobiKwik, etc.): 2% per transaction
+- EMI transactions: 2% + EMI processing fee
+
+GST ON FEES:
+- All Razorpay fees are subject to 18% GST
+- Example: 2% fee on INR 1000 = INR 20 → GST on INR 20 = INR 3.60 → Total deducted = INR 23.60
+
+INSTANT SETTLEMENTS:
+- Standard settlement: T+2 (2 business days)
+- Instant settlement available: 0.25% to 1.5% additional fee depending on plan
+- Razorpay X (current account): Free instant settlement
+
+REFUNDS:
+- Full refunds: No fee charged (Razorpay refunds the transaction fee too)
+- Partial refunds: Transaction fee not refunded
+
+INTERNATIONAL PAYMENTS ACCEPTANCE:
+- Accept international cards: 3% fee
+- Requires additional KYC and activation
+- Currency conversion handled by bank at prevailing rates
+
+=======================================================================
+NPCI / UPI — FEE STRUCTURE
+Source: NPCI guidelines
+=======================================================================
+
+PEER-TO-PEER (P2P) UPI TRANSFERS:
+- Sending money to a person via UPI (Google Pay, PhonePe, BHIM): FREE
+- No transaction fee for amounts up to INR 1 lakh per transaction
+- No daily limit fee
+
+MERCHANT PAYMENTS (P2M) via UPI:
+- Transactions below INR 2,000: FREE (0% MDR as per RBI mandate)
+- Transactions above INR 2,000: Up to 0.3% MDR (Merchant Discount Rate) may apply
+- Prepaid Payment Instruments (PPI wallets) via UPI: 1.1% MDR above INR 2,000
+
+FAILED TRANSACTION REVERSAL:
+- Failed UPI transactions: Amount reversed within 2-3 business days
+- No charge for failed transactions
+- Bank may charge for excess failed transaction attempts in some cases
+
+=======================================================================
+COMMON FEE TERMS EXPLAINED
+=======================================================================
+
+MDR (Merchant Discount Rate):
+- The fee a merchant pays to accept digital payments
+- Charged as a percentage of each transaction
+- Split between payment gateway, acquiring bank, and card network
+
+Transaction Exchange Rate:
+- The rate at which PayPal/Stripe converts your money
+- Always slightly worse than the mid-market (interbank) rate
+- The difference between mid-market rate and the offered rate IS the currency conversion fee
+
+Chargeback:
+- When a customer disputes a transaction with their bank
+- Bank reverses the charge and the merchant is debited
+- Merchant also pays a chargeback fee to the payment gateway
+
+Settlement:
+- When the payment gateway transfers collected money to your bank account
+- Standard settlement: T+2 (2 business days after transaction date)
+- Instant settlement: Same day or next day, usually for an extra fee
+
+PPI (Prepaid Payment Instrument):
+- Prepaid wallets like Paytm, MobiKwik
+- Loaded in advance and used for payments
+- Subject to different fee structures than bank-linked UPI
+
+GST on Payment Fees:
+- All payment processing fees in India attract 18% GST
+- This is charged ON TOP of the base fee
+- Example: 2% base fee on INR 10,000 = INR 200 → GST = INR 36 → Total fee = INR 236
