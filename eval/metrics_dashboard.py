@@ -70,11 +70,10 @@ def render_dashboard():
     metrics = [
         ("Faithfulness",       latest["faithfulness"],      "Hallucination check"),
         ("Answer Relevancy",   latest["answer_relevancy"],  "On-topic check"),
-        ("Context Coverage",  latest["context_coverage"], "Retrieval quality"),
-        ("Context Recall",     latest["context_recall"],    "Coverage check"),
+        ("Context Coverage",  latest["context_coverage"], "Coverage check"),
     ]
 
-    cols = st.columns(4)
+    cols = st.columns(3)
     for col, (name, score, desc) in zip(cols, metrics):
         passed     = score >= PASS_THRESHOLD
         color      = "#6ee7b7" if passed else "#fca5a5"
@@ -128,8 +127,8 @@ def render_dashboard():
         df["timestamp"] = pd.to_datetime(df["timestamp"]).dt.strftime("%m/%d %H:%M")
         df = df.set_index("timestamp")
 
-        chart_df = df[["faithfulness","answer_relevancy","context_coverage","context_recall"]]
-        chart_df.columns = ["Faithfulness","Answer Relevancy","Context Coverage","Context Recall"]
+        chart_df = df[["faithfulness","answer_relevancy","context_coverage"]]
+        chart_df.columns = ["Faithfulness","Answer Relevancy","Context Coverage"]
 
         st.line_chart(chart_df, use_container_width=True, height=220)
 
@@ -145,14 +144,14 @@ def render_dashboard():
     table_df["timestamp"] = pd.to_datetime(table_df["timestamp"]).dt.strftime("%Y-%m-%d %H:%M")
     table_df = table_df[[
         "timestamp", "overall_score", "faithfulness",
-        "answer_relevancy", "context_coverage", "context_recall",
+        "answer_relevancy", "context_coverage",
         "avg_latency_ms"
     ]]
     table_df.columns = [
-        "Run Time", "Overall", "Faithfulness",
-        "Relevancy", "Coverage", "Recall", "Avg Latency(ms)"
+       "Run Time", "Overall", "Faithfulness",
+       "Relevancy", "Coverage", "Avg Latency(ms)"
     ]
-    for col in ["Overall","Faithfulness","Relevancy","Coverage","Recall"]:
+    for col in ["Overall","Faithfulness","Relevancy","Coverage"]:
         table_df[col] = table_df[col].apply(lambda x: f"{x:.0%}")
 
     st.dataframe(table_df, use_container_width=True, hide_index=True)
@@ -166,13 +165,11 @@ def render_dashboard():
         | **Faithfulness** | Does the answer only use information from retrieved context? Low = hallucinating | > 70% |
         | **Answer Relevancy** | Does the answer actually address the question asked? Low = off-topic | > 70% |
         | **Context Coverage** | Were the chunks retrieved actually useful for answering? Low = wrong docs retrieved | > 70% |
-        | **Context Recall** | Did we retrieve all the information needed to answer fully? Low = missing context | > 70% |
 
         **How to improve scores:**
         - Low Faithfulness → tighten the system prompt constraints
         - Low Relevancy → improve query reformulation in retriever
         - Low Coverage → increase RAG confidence threshold
-        - Low Recall → add more KB documents or increase top_k
         """)
 
 
