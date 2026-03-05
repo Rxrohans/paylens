@@ -38,7 +38,7 @@ def render_dashboard():
         <p style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;
         color:#e2e2ee;margin:0;">Evaluation Dashboard</p>
         <p style="color:#52526e;font-size:0.88rem;margin:0.3rem 0 0;">
-        RAGAS scores tracking quality of RAG pipeline over time</p>
+        Tracking RAG pipeline quality over time — PayLens</p>
     </div>
     """, unsafe_allow_html=True)
 

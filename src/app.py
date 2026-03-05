@@ -15,7 +15,7 @@ load_dotenv()
 
 # ── Page config ───────────────────────────────────────────
 st.set_page_config(
-    page_title="ChargeClarity",
+    page_title="PayLens",
     page_icon="💳",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -166,8 +166,8 @@ with tab_main:
     # ── Hero ──────────────────────────────────────────────────
     st.markdown("""
     <div class="hero">
-        <div class="hero-eyebrow">AI · RAG · Fintech · India</div>
-        <div class="hero-title">ChargeClarity</div>
+        <div class="hero-eyebrow">AI · RAG · Fintech</div>
+        <div class="hero-title">PayLens</div>
         <div class="hero-sub">Ask anything about payment fees, currency charges,
         UPI, taxes, or fintech — get a plain-English answer with sources.</div>
     </div>
@@ -356,7 +356,7 @@ with tab_main:
     st.markdown("""
     <div style="text-align:center;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.04);padding-top:1.5rem;">
         <p style="color:#2a2a3a;font-size:0.72rem;letter-spacing:0.06em;">
-            CHARGECLARITY &nbsp;·&nbsp; RAG + LIVE SEARCH &nbsp;·&nbsp;
+            PAYLENS &nbsp;·&nbsp; RAG + LIVE SEARCH &nbsp;·&nbsp;
             LLAMA 3.1 via GROQ &nbsp;·&nbsp; FAISS &nbsp;·&nbsp; LANGCHAIN
         </p>
     </div>

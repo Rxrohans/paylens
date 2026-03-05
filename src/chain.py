@@ -1,9 +1,9 @@
 """
-chain.py — Phase 3 of ChargeClarity
+chain.py — Phase 3 of PayLens
 ----------------------------------------
 WHAT THIS FILE DOES:
   Wires the retriever (Phase 2) to an LLM (Groq/Llama3) using LangChain.
-  This is the core RAG chain — the brain of ChargeClarity.
+  This is the core RAG chain — the brain of PayLens.
 
 INDUSTRY PATTERNS USED HERE:
   1. Prompt Templates     — structured, versioned, reusable prompts
@@ -81,7 +81,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-logger = logging.getLogger("chargeclarity.chain")
+logger = logging.getLogger("PayLens.chain")
 
 # ─────────────────────────────────────────────────────────
 # OFFICIAL LINKS REGISTRY
@@ -129,7 +129,7 @@ RAG_CONFIDENCE_THRESHOLD = 0.60
 # ─────────────────────────────────────────────────────────
 
 # Used when RAG confidence is high (KB only)
-SYSTEM_PROMPT_RAG_ONLY = """You are ChargeClarity, a friendly expert AI that helps people \
+SYSTEM_PROMPT_RAG_ONLY = """You are PayLens, a friendly expert AI that helps people \
 understand payment fees, currency charges, taxes, and fintech concepts in plain English.
 
 ## Your Role
@@ -151,7 +151,7 @@ Accuracy is non-negotiable. Never guess numbers.
 """
 
 # Used when web search is triggered (combined context)
-SYSTEM_PROMPT_HYBRID = """You are ChargeClarity, a friendly expert AI that helps people \
+SYSTEM_PROMPT_HYBRID = """You are PayLens , a friendly expert AI that helps people \
 understand payment fees, currency charges, taxes, and fintech in plain English.
 
 You have access to a curated knowledge base AND fresh live web search results.
@@ -240,7 +240,7 @@ def detect_relevant_links(question: str, answer: str) -> List[str]:
 # ─────────────────────────────────────────────────────────
 class ChargeChain:
     """
-    Hybrid RAG + Web Search chain for ChargeClarity.
+    Hybrid RAG + Web Search chain for PayLens.
 
     Decision logic:
         top RAG score >= 0.60  →  RAG only (fast, grounded, no web call)
