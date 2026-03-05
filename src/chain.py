@@ -208,7 +208,7 @@ def run_web_search(query: str) -> str:
     try:
         search = DuckDuckGoSearchRun()
         # Reformulate query to be search-engine friendly
-        search_query = f"{query} India payment fees official 2024 2025"
+        search_query = f"{query} India 2026"
         result = search.invoke(search_query)
         logger.info(f"Web search completed for: {search_query[:60]}")
         return result if result else "No live results found."
