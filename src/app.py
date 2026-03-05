@@ -122,6 +122,9 @@ div[data-testid="column"]:last-child .stButton>button {
 
 hr { border-color:rgba(255,255,255,0.05) !important; margin:2rem 0 !important; }
 .stSpinner>div { border-top-color:#7c3aed !important; }
+/* Hide "Press Enter to submit form" text */
+.stForm small { display: none !important; }
+.stForm [data-testid="InputInstructions"] { display: none !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -187,16 +190,22 @@ st.markdown("<div style='height:0.8rem'></div>", unsafe_allow_html=True)
 
 # ── Input ─────────────────────────────────────────────────
 prefill = st.session_state.pop("prefill", "")
-col_in, col_btn = st.columns([5, 1])
 
-with col_in:
-    user_query = st.text_input(
-        "q", label_visibility="collapsed",
-        placeholder="e.g. Why did PayPal deduct 7% from my Outlier payment?",
-        value=prefill, key="main_input"
-    )
-with col_btn:
-    ask_clicked = st.button("Ask →", use_container_width=True, key="ask_btn")
+with st.form(key="query_form", clear_on_submit=False):
+    col_in, col_btn = st.columns([5, 1])
+    with col_in:
+        user_query = st.text_input(
+            "q", label_visibility="collapsed",
+            placeholder="e.g. Why did PayPal deduct 7% from my payment?",
+            value=prefill, key="main_input"
+        )
+    with col_btn:
+        ask_clicked = st.form_submit_button("Ask →", use_container_width=True)
+
+# Also trigger on Enter key
+if user_query and user_query != st.session_state.get("last_submitted", ""):
+    if ask_clicked or (user_query.endswith("\n") or st.session_state.get("enter_pressed")):
+        ask_clicked = True
 
 
 # ── Helper: render answer text as clean HTML ──────────────
