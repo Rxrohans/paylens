@@ -131,7 +131,6 @@ hr { border-color:rgba(255,255,255,0.05) !important; margin:2rem 0 !important; }
 
 # ── Cached resources ──────────────────────────────────────
 @st.cache_resource(show_spinner=False)
-@st.cache_resource(show_spinner=False)
 def load_chain():
     from pathlib import Path
     import subprocess, sys
@@ -183,29 +182,23 @@ EXAMPLES = [
 chip_cols = st.columns(len(EXAMPLES))
 for i, ex in enumerate(EXAMPLES):
     if chip_cols[i].button(ex, key=f"chip_{i}"):
-        st.session_state["prefill"] = ex
-        st.rerun()
+        st.session_state["chip_query"] = ex
 
 st.markdown("<div style='height:0.8rem'></div>", unsafe_allow_html=True)
 
 # ── Input ─────────────────────────────────────────────────
-prefill = st.session_state.pop("prefill", "")
-
 with st.form(key="query_form", clear_on_submit=False):
     col_in, col_btn = st.columns([5, 1])
     with col_in:
+        # Use chip query if clicked, otherwise empty
+        default_val = st.session_state.pop("chip_query", "")
         user_query = st.text_input(
             "q", label_visibility="collapsed",
             placeholder="e.g. Why did PayPal deduct 7% from my payment?",
-            value=prefill, key="main_input"
+            value=default_val, key="main_input"
         )
     with col_btn:
         ask_clicked = st.form_submit_button("Ask →", use_container_width=True)
-
-# Also trigger on Enter key
-if user_query and user_query != st.session_state.get("last_submitted", ""):
-    if ask_clicked or (user_query.endswith("\n") or st.session_state.get("enter_pressed")):
-        ask_clicked = True
 
 
 # ── Helper: render answer text as clean HTML ──────────────
