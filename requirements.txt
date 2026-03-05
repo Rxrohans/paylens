@@ -28,3 +28,4 @@ tqdm
 
 # ── Web Search (free, no API key needed) ────────────────────
 duckduckgo-search==6.3.7       # DuckDuckGo live search for hybrid RAG
+ddgs
