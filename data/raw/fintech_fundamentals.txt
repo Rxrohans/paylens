@@ -1,0 +1,245 @@
+PAYLENS KNOWLEDGE BASE — Fintech & Payments Fundamentals
+Source: RBI reports, NPCI docs, BIS reports, Investopedia (compiled manually)
+Last updated: March 2026
+=======================================================================
+
+=======================================================================
+HOW A PAYMENT ACTUALLY WORKS — END TO END
+=======================================================================
+
+When you pay someone online, this is what happens in milliseconds:
+
+STEP 1 — AUTHORIZATION:
+- Customer enters card/UPI details
+- Payment gateway (Razorpay/Stripe) encrypts and sends to acquiring bank
+- Acquiring bank contacts card network (Visa/Mastercard/RuPay)
+- Card network contacts issuing bank (your bank)
+- Issuing bank checks: sufficient balance? fraud signals? account standing?
+- Issuing bank responds: Approved or Declined
+- This entire process takes 2-3 seconds
+
+STEP 2 — CAPTURE:
+- After authorization, the merchant "captures" the amount
+- Money is not yet moved — it is only "held" or "reserved"
+- Some gateways auto-capture, others require manual capture
+
+STEP 3 — CLEARING:
+- At end of day, all transactions are batched and sent for clearing
+- Card networks (Visa, Mastercard) process and reconcile transactions
+- This is when the actual transfer instructions are created
+
+STEP 4 — SETTLEMENT (T+2):
+- Funds move from issuing bank → card network → acquiring bank → merchant account
+- Standard settlement time in India: T+2 (2 business days)
+- Razorpay, Stripe, PayPal all follow T+2 by default
+- Instant settlement available at extra fee (0.25% to 1.5%)
+- RBI is pushing for T+0 (same day) settlement for UPI
+
+=======================================================================
+INDIAN PAYMENT RAILS — THE INFRASTRUCTURE
+=======================================================================
+
+UPI (Unified Payments Interface):
+- Built by NPCI (National Payments Corporation of India)
+- Launched: April 2016
+- Works 24x7x365, including holidays
+- Transfers money in real time (within seconds)
+- Limit: INR 1 lakh per transaction (some banks allow up to 2 lakh)
+- No charge for P2P (person to person) transfers
+- Merchant payments (P2M): 0% MDR below INR 2,000 (RBI mandate 2020)
+- Above INR 2,000: MDR up to 0.3% for RuPay, 0.5-0.9% for Visa/Mastercard via UPI
+- Daily transaction limit: INR 1 lakh (varies by bank)
+- Monthly UPI transactions in India: 10+ billion (as of 2024)
+
+IMPS (Immediate Payment Service):
+- Real-time 24x7 transfers
+- Limit: INR 5 lakh per transaction
+- Charges: INR 5 to INR 25 per transaction (bank dependent)
+- Used for: instant bank-to-bank transfers
+- Identification: by mobile number + MMID, or account number + IFSC
+
+NEFT (National Electronic Funds Transfer):
+- Batch-based settlement (every 30 minutes, 24x7)
+- No upper limit (as of 2020 RBI removed the limit)
+- Charges: INR 0 to INR 25 depending on amount
+- Below INR 10,000: INR 2.50
+- INR 10,000 to 1 lakh: INR 5
+- INR 1 lakh to 2 lakh: INR 15
+- Above INR 2 lakh: INR 25
+- Free for online banking (banks cannot charge for NEFT via internet/mobile)
+
+RTGS (Real Time Gross Settlement):
+- Minimum transfer: INR 2 lakh
+- Settles transaction by transaction in real time (gross settlement)
+- Used for large value transfers
+- Available: 7 AM to 6 PM on working days
+- Charges: INR 25 to INR 50 per transaction
+
+SWIFT (Society for Worldwide Interbank Financial Telecommunication):
+- Used for international wire transfers
+- NOT a payment network — it's a messaging system between banks
+- Banks send SWIFT messages instructing fund transfers
+- Takes 2-5 business days for international transfers
+- Fees: INR 500 to INR 2,500 per transfer + correspondent bank charges
+- Used by: PayPal withdrawals, wire transfers from Outlier/foreign clients
+
+=======================================================================
+CARD NETWORKS — WHO DOES WHAT
+=======================================================================
+
+VISA:
+- Global card network
+- Processes transactions between issuing and acquiring banks
+- Takes a fee from each transaction (interchange fee)
+- India: ~55% of credit card market
+- Supports: credit, debit, prepaid cards
+
+MASTERCARD:
+- Second largest card network globally
+- Similar to Visa in function
+- India: ~35% of credit card market
+
+RUPAY:
+- India's domestic card network, built by NPCI
+- Cheaper for merchants (lower MDR)
+- Accepted mainly in India
+- Cannot be used internationally (mostly)
+- Promoted heavily by government for financial inclusion
+- Zero MDR for transactions at government merchants
+
+AMERICAN EXPRESS:
+- Premium card network
+- Higher fees than Visa/Mastercard
+- Smaller acceptance network in India
+- Higher rewards for cardholders offset by higher merchant fees
+
+MDR (Merchant Discount Rate) — How it splits:
+Total MDR = Issuing bank share + Card network share + Acquiring bank share + Payment gateway share
+Example for a 2% MDR transaction of INR 1000:
+- Issuing bank gets: ~1.1% (INR 11)
+- Card network gets: ~0.1% (INR 1)
+- Acquiring bank + gateway gets: ~0.8% (INR 8)
+- Total: INR 20 deducted from merchant
+
+=======================================================================
+PAYMENT GATEWAYS VS PAYMENT PROCESSORS VS ACQUIRING BANKS
+=======================================================================
+
+PAYMENT GATEWAY (e.g., Razorpay, Stripe, PayPal):
+- The technology layer that handles the transaction
+- Encrypts card data
+- Communicates with card networks
+- Provides the checkout experience
+- Charges MDR/transaction fee for this service
+
+PAYMENT PROCESSOR:
+- Executes the actual transfer of funds
+- Often the same entity as the gateway in modern setups
+- Handles clearing and settlement
+
+ACQUIRING BANK:
+- The bank of the merchant
+- Holds the merchant account
+- Receives funds on behalf of merchant
+- Often works behind the payment gateway
+
+ISSUING BANK:
+- The bank that issued the customer's card/UPI account
+- Approves or declines transactions
+- Bears fraud risk (to some extent)
+
+=======================================================================
+PCI-DSS — PAYMENT SECURITY STANDARD
+=======================================================================
+
+PCI-DSS (Payment Card Industry Data Security Standard):
+- Security standard for any entity that stores/processes/transmits card data
+- Set by major card networks (Visa, Mastercard, Amex, Discover)
+- 12 requirements covering network security, encryption, access control, monitoring
+- Compliance required for ALL merchants and payment service providers
+- Non-compliance can result in fines of $5,000-$100,000/month
+
+Why it matters for ChargeClarity / Pine Labs:
+- Pine Labs handles card transactions for thousands of merchants
+- All data must be encrypted and stored securely
+- This is why payment gateway APIs don't return full card numbers
+- Tokenization: card numbers replaced with tokens to avoid storing sensitive data
+
+=======================================================================
+CHARGEBACKS AND DISPUTES
+=======================================================================
+
+What is a chargeback?
+- When a customer disputes a charge directly with their bank (not the merchant)
+- The bank reverses the transaction and takes money back from the merchant
+- Merchant also pays a chargeback fee (USD 15-25 depending on gateway)
+
+Chargeback process:
+1. Customer contacts bank, claims unauthorized/wrong charge
+2. Bank reverses transaction immediately (provisional credit to customer)
+3. Bank notifies payment gateway with a dispute
+4. Merchant has 7-14 days to provide evidence (receipt, delivery proof, etc.)
+5. If merchant wins: money returned, chargeback fee sometimes refunded
+6. If merchant loses: transaction amount + fee permanently gone
+
+Chargeback fees by platform:
+- PayPal: USD 20 per dispute (non-refundable even if you win)
+- Stripe: USD 15 per dispute (refunded if you win)
+- Razorpay: INR 1,250 approximately
+
+High chargeback rate consequences:
+- If merchant chargeback rate exceeds 1% of transactions: warning
+- If exceeds 2%: account termination risk
+- Added to MATCH list (black list) — very hard to get another gateway
+
+=======================================================================
+FRAUD DETECTION IN PAYMENTS
+=======================================================================
+
+How payment gateways detect fraud:
+- Velocity checks: same card used multiple times in short window
+- Geolocation: IP address vs billing address mismatch
+- Device fingerprinting: suspicious device signals
+- Machine learning models: pattern matching against known fraud patterns
+- CVV/OTP verification: extra authentication layer
+- 3D Secure (3DS): OTP sent to customer's registered mobile
+
+India specific: RBI mandates 2FA (Two Factor Authentication) for all online transactions
+- Card number + CVV is not enough
+- OTP to registered mobile is mandatory for most transactions
+- This is why Indian users get OTP prompts for every online payment
+
+Stripe Radar (free with all Stripe accounts):
+- ML-based fraud detection
+- Blocks suspicious transactions automatically
+- Generates a risk score for each transaction
+- Advanced Radar: USD 0.02/transaction additional for more controls
+
+=======================================================================
+WALLETS AND PREPAID INSTRUMENTS
+=======================================================================
+
+Paytm Wallet / MobiKwik / PhonePe Wallet:
+- Prepaid Payment Instruments (PPI) regulated by RBI
+- Load money from bank, spend from wallet
+- P2P transfers: free up to INR 10,000/month, 1% above that
+- Merchant payments: similar to UPI
+- Full KYC wallet: up to INR 1 lakh balance
+- Minimum KYC wallet: up to INR 10,000 balance
+
+Loading wallet fees:
+- From bank account/UPI: free
+- From credit card: 1.5% to 2% fee typically
+
+=======================================================================
+BNPL (BUY NOW PAY LATER) IN INDIA
+=======================================================================
+
+Major players: ZestMoney, LazyPay, Simpl, Amazon Pay Later, Flipkart Pay Later
+How it works:
+- Customer pays nothing at checkout
+- BNPL provider pays merchant immediately (minus 2-3% fee)
+- Customer repays BNPL provider in installments
+- If customer defaults: BNPL provider bears the risk (not the merchant)
+Merchant cost: 2-3% of transaction (similar to credit card)
+Growing rapidly in India: USD 3.7 billion market as of 2024

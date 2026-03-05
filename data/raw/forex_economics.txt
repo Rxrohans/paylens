@@ -1,0 +1,224 @@
+PAYLENS KNOWLEDGE BASE — Forex, Currency & Economics
+Source: RBI guidelines, FEMA Act, Investopedia, RBI circulars (all public)
+Last updated: March 2026
+=======================================================================
+
+=======================================================================
+HOW EXCHANGE RATES WORK
+=======================================================================
+
+WHAT IS AN EXCHANGE RATE?
+The price of one currency expressed in terms of another.
+Example: 1 USD = 83.50 INR means you need 83.50 Indian Rupees to buy 1 US Dollar.
+
+THE MID-MARKET RATE (also called interbank rate):
+- The true "fair" exchange rate between two currencies
+- The midpoint between the buy price and sell price
+- This is the rate you see on Google or xe.com
+- Banks and payment companies NEVER give you this rate
+- They add a spread (their profit) on top
+
+BID / ASK SPREAD — How Banks and Gateways Make Money on Forex:
+- BID price: the rate at which the bank/gateway BUYS foreign currency from you
+- ASK price: the rate at which the bank/gateway SELLS foreign currency to you
+- The difference (spread) is the bank's profit
+- Example:
+  Mid-market rate: 1 USD = 83.50 INR
+  PayPal's bid (they buy USD from you): 1 USD = 80.90 INR (3% below mid-market)
+  PayPal keeps: 83.50 - 80.90 = INR 2.60 per dollar as profit
+  On USD 100 received: PayPal keeps INR 260 just from currency conversion
+
+WHY EXCHANGE RATES FLUCTUATE:
+- Interest rates: Higher interest rates → stronger currency (attracts investment)
+- Inflation: Higher inflation → weaker currency (reduces purchasing power)
+- Economic growth: Strong GDP growth → stronger currency
+- Trade balance: More exports than imports → stronger currency
+- Political stability: Instability → weaker currency (investors flee)
+- Foreign investment: FDI/FII flows affect demand for INR
+- RBI intervention: RBI buys/sells USD to stabilize INR
+
+THE INR/USD RATE:
+- India runs a current account deficit (imports more than exports)
+- This creates natural downward pressure on INR
+- RBI intervenes regularly to prevent excessive depreciation
+- INR has weakened from ~45/USD (2010) to ~84/USD (2024)
+- This means Indians receiving USD payments get MORE INR for the same USD amount
+
+=======================================================================
+FOREIGN EXCHANGE FEES IN PAYMENT PLATFORMS
+=======================================================================
+
+HOW PAYPAL CONVERTS CURRENCY:
+1. Transaction arrives in USD (from Outlier, US client, etc.)
+2. PayPal checks its internal exchange rate (typically 3% worse than mid-market)
+3. PayPal converts and credits INR to your PayPal wallet
+4. You withdraw INR to bank account (free if above minimum)
+
+Total PayPal cost on receiving USD 100 from Outlier:
+- Transaction fee: 4.4% = USD 4.40 deducted first
+- Remaining: USD 95.60
+- Currency conversion: PayPal rate ~3% below mid-market
+  If mid-market = 83.50 INR/USD, PayPal gives ~81.00 INR/USD
+  USD 95.60 × 81.00 = INR 7,743.60
+  If you had received at mid-market: USD 95.60 × 83.50 = INR 7,982.60
+  Lost to conversion: INR 239
+- Total cost on USD 100: INR 367 (transaction fee) + INR 239 (conversion) = INR 606
+- Effective rate: you received INR 7,744 instead of INR 8,350 = 7.3% total loss
+
+HOW BANKS CONVERT CURRENCY (for wire transfers):
+- Banks have their own treasury rates
+- Typically 1-2% spread above mid-market (better than PayPal's 3%)
+- Plus SWIFT fees of INR 500-2,500 per transfer
+- For large amounts, wire transfer may be cheaper overall than PayPal
+
+STRIPE CURRENCY CONVERSION:
+- Stripe charges 2% additional for currency conversion (on top of transaction fee)
+- This is more transparent than PayPal's bundled spread
+- Example: 3% (international card) + 2% (conversion) = 5% total
+- Stripe uses a fairer exchange rate (close to mid-market)
+
+=======================================================================
+FEMA AND RBI RULES FOR RECEIVING FOREIGN PAYMENTS
+=======================================================================
+
+FEMA (Foreign Exchange Management Act, 1999):
+- Governs all foreign exchange transactions in India
+- Administered by RBI
+- Violations can result in fines up to 3x the amount involved
+
+KEY RULES FOR FREELANCERS / OUTLIER CONTRIBUTORS:
+- You CAN legally receive foreign payments for services rendered
+- Must be received within 9 months of export of service
+- Must be repatriated (brought into India) — cannot keep abroad indefinitely
+- Foreign currency in your account must be converted to INR eventually
+
+HOW TO RECEIVE FOREIGN PAYMENTS LEGALLY:
+Option 1 — PayPal:
+  - Register as business/freelancer
+  - Link Indian bank account
+  - Receive payment → withdraw to bank
+  - PayPal handles compliance automatically
+
+Option 2 — Wire Transfer (SWIFT):
+  - Give client your bank account + IFSC + SWIFT code
+  - Direct bank-to-bank transfer
+  - Lower fees for large amounts
+  - Bank handles FEMA compliance
+
+Option 3 — Wise (formerly TransferWise):
+  - Mid-market exchange rate
+  - Flat fee (much cheaper than PayPal/bank)
+  - Fully compliant with FEMA
+  - Recommended for regular freelancers receiving foreign income
+
+Option 4 — Payment platforms like Payoneer:
+  - Gives you a virtual US bank account
+  - Clients pay in USD to your US account
+  - You withdraw to Indian bank in INR
+  - 2% withdrawal fee, good exchange rate
+
+LRS (Liberalised Remittance Scheme):
+- Allows Indians to SEND up to USD 250,000 per financial year abroad
+- For education, travel, gifts, investment, etc.
+- RECEIVING money from abroad is not subject to LRS limits
+- LRS is about outward remittances, not inward
+
+TCS (Tax Collected at Source) on Foreign Remittances:
+- TCS is applicable when you SEND money abroad under LRS
+- Rate: 5% TCS on amounts above INR 7 lakh per year (as of 2023 RBI notification)
+- For foreign education loan: 0.5% TCS
+- This TCS is a pre-payment of tax, credited against your tax liability
+- If you're RECEIVING money: TCS does NOT apply to inward remittances
+
+PURPOSE CODE FOR RECEIVING PAYMENTS:
+- When receiving foreign payments, Indian banks ask for "Purpose Code"
+- For freelance services / exports: Purpose Code P0802 (Software services)
+- For other professional services: Purpose Code P0699
+- Bank processes FIRC (Foreign Inward Remittance Certificate) automatically
+- FIRC is proof of foreign payment received — keep it safe for taxes
+
+TAXES ON FOREIGN INCOME IN INDIA:
+- Foreign freelance income is taxable in India
+- Add to your total income under "Profits and Gains from Business/Profession"
+- Eligible deductions: internet, equipment, software, home office
+- File ITR-3 or ITR-4 (presumptive taxation)
+- GST registration required if annual income > INR 20 lakh
+  (For export of services: GST = 0% but registration still needed above threshold)
+
+=======================================================================
+PURCHASING POWER PARITY (PPP)
+=======================================================================
+
+WHAT IS PPP?
+A theory that exchange rates should adjust so that identical goods cost the same in different countries.
+
+EXAMPLE:
+If a coffee costs USD 5 in the US and INR 100 in India:
+PPP exchange rate = 100/5 = 20 INR/USD
+But actual market rate = 83.50 INR/USD
+This means India's price level is much lower than the US
+
+WHY PPP MATTERS FOR INDIAN FREELANCERS:
+- USD 100/hour in the US = INR 8,350 in India at market rates
+- But INR 8,350 buys MORE in India than USD 100 buys in the US
+- This is why Indian freelancers can charge less than US counterparts
+- But also why platforms like Outlier may pay Indian contributors less
+- "Purchasing power" of INR 8,350 ≈ USD 200+ in US purchasing power terms
+
+BIG MAC INDEX:
+- The Economist's informal PPP measure
+- A Big Mac costs ~USD 5.58 in USA, ~INR 230 (USD 2.76) in India
+- Implies INR is undervalued by ~50% vs USD by this measure
+
+=======================================================================
+INFLATION AND ITS EFFECT ON PAYMENTS
+=======================================================================
+
+INFLATION IN INDIA:
+- Target: RBI maintains CPI inflation target of 4% (+/- 2%)
+- Actual: India's inflation has ranged 4-8% in recent years
+- Effect: As inflation rises, INR buys less → exchange rate weakens
+
+REPO RATE (RBI's main policy tool):
+- The rate at which RBI lends to commercial banks
+- Higher repo rate → borrowing costlier → less money in system → lower inflation
+- Lower repo rate → cheaper borrowing → more money → higher growth
+- Current repo rate: check RBI website (changes periodically)
+
+EFFECT ON PAYMENT FEES:
+- Inflation increases operating costs for payment companies
+- Fee increases in payment processing often lag inflation
+- Currency depreciation means foreign USD payments are worth more INR over time
+  (USD 100 in 2010 = INR 4,500; same USD 100 in 2024 = INR 8,350)
+
+=======================================================================
+DIGITAL PAYMENTS ECOSYSTEM IN INDIA — BIG PICTURE
+=======================================================================
+
+KEY NUMBERS (2024):
+- UPI transactions: 13+ billion per month
+- Digital payment value: USD 3+ trillion annually
+- India accounts for 46% of global real-time payment transactions
+- Smartphone penetration: 700+ million users
+- Internet users: 900+ million
+
+REGULATORY BODIES:
+- RBI (Reserve Bank of India): Regulates all payment systems, banks, NBFCs
+- NPCI: Operates UPI, RuPay, IMPS, NACH, AePS
+- SEBI: Regulates investment platforms, mutual funds
+- IRDAI: Regulates insurance payments
+- Ministry of Finance: Policy oversight
+
+KEY REGULATIONS AFFECTING PAYMENT FEES:
+- Zero MDR on UPI (RBI mandate, 2020): Merchants cannot be charged for UPI transactions
+- Mandatory 2FA for all online card transactions
+- PPI interoperability: Wallets must support UPI payments
+- Data localisation: All payment data must be stored in India
+- KYC requirements: Full KYC for accounts above certain thresholds
+
+FINTECH INNOVATION IN INDIA:
+- Account Aggregator framework: Consented financial data sharing
+- ONDC (Open Network for Digital Commerce): Open e-commerce protocol
+- UPI 123Pay: UPI for feature phones (no internet required)
+- UPI Lite: Offline UPI transactions up to INR 200
+- Central Bank Digital Currency (CBDC / Digital Rupee): RBI piloting since 2022

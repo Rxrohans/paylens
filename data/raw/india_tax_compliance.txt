@@ -1,0 +1,172 @@
+PAYLENS KNOWLEDGE BASE — India Tax & Compliance for Freelancers
+Source: Income Tax India, GST Council, CA community resources (all public)
+Last updated: March 2026
+=======================================================================
+
+=======================================================================
+GST ON PAYMENT PROCESSING FEES
+=======================================================================
+
+GST RATE ON FINANCIAL SERVICES: 18%
+This applies to ALL payment processing fees in India.
+
+HOW IT AFFECTS YOU:
+- Razorpay charges 2% base fee → 18% GST on that fee → Total = 2.36%
+- Stripe charges 2% base fee → 18% GST on that fee → Total = 2.36%
+- Example on INR 10,000 transaction:
+  Base fee = INR 200
+  GST on fee = INR 36
+  Total deducted = INR 236 (not INR 200)
+
+GST ON PAYPAL:
+- PayPal is an international service
+- PayPal does NOT charge GST separately — it's embedded in the conversion spread
+- If you're a GST-registered business, you cannot claim input credit on PayPal fees
+- Stripe and Razorpay DO provide GST invoices → you CAN claim input credit
+
+=======================================================================
+INCOME TAX ON FREELANCE / ONLINE INCOME
+=======================================================================
+
+IS FREELANCE INCOME TAXABLE?
+Yes. 100%. Under "Profits and Gains from Business or Profession" (PGBP).
+
+TAX SLABS (New Regime FY 2024-25):
+- Up to INR 3 lakh: 0%
+- INR 3-7 lakh: 5%
+- INR 7-10 lakh: 10%
+- INR 10-12 lakh: 15%
+- INR 12-15 lakh: 20%
+- Above INR 15 lakh: 30%
+- Rebate: No tax if total income below INR 7 lakh (Section 87A)
+
+DEDUCTIONS AVAILABLE FOR FREELANCERS:
+- Internet connection charges: 100% deductible
+- Computer/laptop/equipment: Depreciation deductible
+- Software subscriptions: 100% deductible
+- Home office (proportion of rent/electricity): Partially deductible
+- Professional development (courses, books): Deductible
+- Payment processing fees (Stripe/Razorpay fees): Deductible as business expense
+
+PRESUMPTIVE TAXATION (Section 44ADA) — GREAT FOR FREELANCERS:
+- If professional income < INR 75 lakh per year
+- You declare 50% of gross receipts as profit automatically
+- No need to maintain detailed books of accounts
+- Pay tax on 50% of income, rest assumed to be expenses
+- Example: Earned INR 10 lakh → Taxable income = INR 5 lakh
+- File ITR-4 for this scheme
+
+=======================================================================
+TDS (TAX DEDUCTED AT SOURCE) FOR ONLINE INCOME
+=======================================================================
+
+TDS FROM INDIAN PLATFORMS:
+- If a company (e.g., Indian client) pays you > INR 30,000 in a year for professional services
+- They must deduct TDS @ 10% (Section 194J)
+- They give you Form 16A
+- You claim this TDS credit while filing ITR
+
+TDS FROM FOREIGN CLIENTS (Outlier, US companies):
+- Foreign companies are NOT required to deduct Indian TDS
+- You receive full payment, NO TDS deducted
+- You must calculate and pay advance tax yourself quarterly
+- Advance tax due dates: 15 Jun (15%), 15 Sep (45%), 15 Dec (75%), 15 Mar (100%)
+- If you miss advance tax and pay later: Interest @ 1% per month (Section 234B/C)
+
+INWARD REMITTANCE TAX TREATMENT:
+- Money received from abroad for services = Export of Services
+- If GST registered: 0% GST on export of services (zero-rated)
+- Income tax: Still applicable (income is taxable regardless of source)
+- FIRC (Foreign Inward Remittance Certificate): Your proof of foreign income
+  → Keep all FIRCs — needed for tax assessment
+
+=======================================================================
+GST REGISTRATION FOR FREELANCERS
+=======================================================================
+
+WHEN IS GST REGISTRATION MANDATORY?
+- If total annual income exceeds INR 20 lakh (services)
+- If providing services to overseas clients: Registration required if income > INR 20 lakh
+- Special category states (NE states, Uttarakhand, etc.): INR 10 lakh threshold
+
+EXPORT OF SERVICES — GST TREATMENT:
+- Services provided to overseas clients = Export of Services
+- Export of Services = Zero-Rated Supply under GST
+- Zero-rated means GST rate = 0%, but you can claim refund of GST paid on inputs
+- Example: You pay 18% GST on software subscriptions → you can claim refund
+
+GSTIN BENEFITS FOR FREELANCERS:
+- Can claim input tax credit on business expenses (Razorpay fees, software, etc.)
+- Required for invoicing to Indian companies above threshold
+- Appears professional to clients
+- Easier compliance vs informal cash dealings
+
+HOW TO FILE:
+- GSTR-1: Monthly/quarterly sales return (export invoices)
+- GSTR-3B: Monthly summary return (even if zero sales)
+- LUT (Letter of Undertaking): File annually to export services without paying GST
+  (Without LUT, you pay 18% GST and later claim refund — more hassle)
+
+=======================================================================
+PRACTICAL TAX TIPS FOR OUTLIER/ONLINE PLATFORM WORKERS
+=======================================================================
+
+1. OPEN A SEPARATE BANK ACCOUNT for all freelance income
+   - Makes tracking easy for tax purposes
+   - Separates personal and business money
+
+2. TRACK ALL PAYMENT FEES as deductible expenses
+   - PayPal: Take screenshots of fee deductions monthly
+   - Stripe/Razorpay: Download monthly statements
+   - These are legitimate business expenses
+
+3. DOCUMENT YOUR FIRC/PAYMENT PROOF
+   - Every international payment should generate an FIRC from your bank
+   - Ask your bank for FIRC or download from net banking
+   - Required for LRS compliance and potential tax scrutiny
+
+4. QUARTERLY ADVANCE TAX (if income > INR 1 lakh/year from freelancing)
+   - Estimate annual income
+   - Pay 15%/45%/75%/100% by the due dates
+   - Avoids interest penalties
+
+5. MAINTAIN SIMPLE BOOKS:
+   - Date of payment
+   - Amount in foreign currency
+   - Amount converted to INR (exchange rate)
+   - Platform fees deducted
+   - Net amount received
+   - Excel sheet is sufficient for presumptive taxation scheme
+
+6. CONSIDER HIRING A CA ONCE YOU CROSS INR 5 LAKH ANNUAL INCOME
+   - Cost: INR 3,000 to 10,000 per year for basic filing
+   - Worth it for compliance peace of mind
+   - Can find one at ClearTax, IndiaFilings, or local CA
+
+=======================================================================
+COMMON MISTAKES FREELANCERS MAKE
+=======================================================================
+
+MISTAKE 1: Not reporting foreign income
+- All foreign income is taxable in India
+- Income Tax dept can track inward remittances through banking data
+- Penalty for under-reporting: 50% to 200% of tax due
+
+MISTAKE 2: Confusing TCS and TDS
+- TCS (Tax Collected at Source): On outward remittances (sending money abroad)
+- TDS (Tax Deducted at Source): Indian clients deduct from payments to you
+- Foreign clients do NOT deduct Indian TDS
+
+MISTAKE 3: Not saving FIRCs
+- FIRC is your proof of export of services
+- Required if GST department asks for proof
+- Keep digital copies of all FIRCs for 7 years
+
+MISTAKE 4: Thinking PayPal fees are not taxable expenses
+- PayPal fees are legitimate business expenses
+- Document: Amount received before fees, fees deducted, net received
+- Deductible under PGBP (Profits and Gains from Business/Profession)
+
+MISTAKE 5: Not filing advance tax on time
+- Even if you're in 0% slab, file advance tax return as nil if applicable
+- Non-filing can attract notices even for zero tax
