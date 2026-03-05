@@ -159,202 +159,212 @@ if "result" not in st.session_state:
 if "last_q" not in st.session_state:
     st.session_state.last_q = ""
 
+# ── Tabs ──────────────────────────────────────────────────
+tab_main, tab_eval = st.tabs(["💳 PayLens", "📊 Eval Dashboard"])
 
-# ── Hero ──────────────────────────────────────────────────
-st.markdown("""
-<div class="hero">
-    <div class="hero-eyebrow">AI · RAG · Fintech · India</div>
-    <div class="hero-title">ChargeClarity</div>
-    <div class="hero-sub">Ask anything about payment fees, currency charges,
-    UPI, taxes, or fintech — get a plain-English answer with sources.</div>
-</div>
-""", unsafe_allow_html=True)
+with tab_main:
+    # ── Hero ──────────────────────────────────────────────────
+    st.markdown("""
+    <div class="hero">
+        <div class="hero-eyebrow">AI · RAG · Fintech · India</div>
+        <div class="hero-title">ChargeClarity</div>
+        <div class="hero-sub">Ask anything about payment fees, currency charges,
+        UPI, taxes, or fintech — get a plain-English answer with sources.</div>
+    </div>
+    """, unsafe_allow_html=True)
 
-# ── Example chips ─────────────────────────────────────────
-EXAMPLES = [
-    "Why did PayPal charge me so much?",
-    "How does currency conversion work?",
-    "Is UPI free for merchants?",
-    "What is a chargeback?",
-    "Do I pay GST on foreign income?",
-]
+    # ── Example chips ─────────────────────────────────────────
+    EXAMPLES = [
+        "Why did PayPal charge me so much?",
+        "How does currency conversion work?",
+        "Is UPI free for merchants?",
+        "What is a chargeback?",
+        "Do I pay GST on foreign income?",
+    ]
 
-chip_cols = st.columns(len(EXAMPLES))
-for i, ex in enumerate(EXAMPLES):
-    if chip_cols[i].button(ex, key=f"chip_{i}"):
-        st.session_state["chip_query"] = ex
+    chip_cols = st.columns(len(EXAMPLES))
+    for i, ex in enumerate(EXAMPLES):
+        if chip_cols[i].button(ex, key=f"chip_{i}"):
+            st.session_state["chip_query"] = ex
 
-st.markdown("<div style='height:0.8rem'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:0.8rem'></div>", unsafe_allow_html=True)
 
-# ── Input ─────────────────────────────────────────────────
-with st.form(key="query_form", clear_on_submit=False):
-    col_in, col_btn = st.columns([5, 1])
-    with col_in:
-        # Use chip query if clicked, otherwise empty
-        default_val = st.session_state.pop("chip_query", "")
-        user_query = st.text_input(
-            "q", label_visibility="collapsed",
-            placeholder="e.g. Why did PayPal deduct 7% from my payment?",
-            value=default_val, key="main_input"
-        )
-    with col_btn:
-        ask_clicked = st.form_submit_button("Ask →", use_container_width=True)
+    # ── Input ─────────────────────────────────────────────────
+    with st.form(key="query_form", clear_on_submit=False):
+        col_in, col_btn = st.columns([5, 1])
+        with col_in:
+            # Use chip query if clicked, otherwise empty
+            default_val = st.session_state.pop("chip_query", "")
+            user_query = st.text_input(
+                "q", label_visibility="collapsed",
+                placeholder="e.g. Why did PayPal deduct 7% from my payment?",
+                value=default_val, key="main_input"
+            )
+        with col_btn:
+            ask_clicked = st.form_submit_button("Ask →", use_container_width=True)
 
 
-# ── Helper: render answer text as clean HTML ──────────────
-def render_answer(text: str) -> str:
-    """
-    Converts LLM markdown-ish output → clean HTML for the answer card.
-    Handles: **bold**, bullet lists, numbered lists, paragraphs.
-    """
-    # Strip confidence tag
-    text = re.sub(r'\s*\[(High|Medium|Low|None)\]\s*$', '', text, flags=re.IGNORECASE).strip()
+    # ── Helper: render answer text as clean HTML ──────────────
+    def render_answer(text: str) -> str:
+        """
+        Converts LLM markdown-ish output → clean HTML for the answer card.
+        Handles: **bold**, bullet lists, numbered lists, paragraphs.
+        """
+        # Strip confidence tag
+        text = re.sub(r'\s*\[(High|Medium|Low|None)\]\s*$', '', text, flags=re.IGNORECASE).strip()
 
-    lines   = text.split("\n")
-    html    = ""
-    in_ul   = False
-    in_ol   = False
+        lines   = text.split("\n")
+        html    = ""
+        in_ul   = False
+        in_ol   = False
 
-    for line in lines:
-        line = line.strip()
-        if not line:
+        for line in lines:
+            line = line.strip()
+            if not line:
+                if in_ul:  html += "</ul>"; in_ul = False
+                if in_ol:  html += "</ol>"; in_ol = False
+                continue
+
+            # Bold
+            line = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
+
+            # Bullet list
+            if re.match(r'^[-•*] ', line):
+                if in_ol:  html += "</ol>"; in_ol = False
+                if not in_ul: html += "<ul>"; in_ul = True
+                html += f"<li>{line[2:].strip()}</li>"
+                continue
+
+            # Numbered list
+            if re.match(r'^\d+\. ', line):
+                if in_ul:  html += "</ul>"; in_ul = False
+                if not in_ol: html += "<ol>"; in_ol = True
+                html += f"<li>{re.sub(r'^\d+\. ', '', line)}</li>"
+                continue
+
+            # Close open lists
             if in_ul:  html += "</ul>"; in_ul = False
             if in_ol:  html += "</ol>"; in_ol = False
-            continue
 
-        # Bold
-        line = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
+            html += f"<p>{line}</p>"
 
-        # Bullet list
-        if re.match(r'^[-•*] ', line):
-            if in_ol:  html += "</ol>"; in_ol = False
-            if not in_ul: html += "<ul>"; in_ul = True
-            html += f"<li>{line[2:].strip()}</li>"
-            continue
-
-        # Numbered list
-        if re.match(r'^\d+\. ', line):
-            if in_ul:  html += "</ul>"; in_ul = False
-            if not in_ol: html += "<ol>"; in_ol = True
-            html += f"<li>{re.sub(r'^\d+\. ', '', line)}</li>"
-            continue
-
-        # Close open lists
-        if in_ul:  html += "</ul>"; in_ul = False
-        if in_ol:  html += "</ol>"; in_ol = False
-
-        html += f"<p>{line}</p>"
-
-    if in_ul: html += "</ul>"
-    if in_ol: html += "</ol>"
-    return html
+        if in_ul: html += "</ul>"
+        if in_ol: html += "</ol>"
+        return html
 
 
-# ── Process query ─────────────────────────────────────────
-if ask_clicked and user_query.strip():
-    with st.spinner("Thinking..."):
-        chain        = load_chain()
-        guardrail_fn = get_guardrail_fn()
-        result       = guardrail_fn(user_query.strip(), chain.ask)
-        st.session_state.result = result
-        st.session_state.last_q = user_query.strip()
+    # ── Process query ─────────────────────────────────────────
+    if ask_clicked and user_query.strip():
+        with st.spinner("Thinking..."):
+            chain        = load_chain()
+            guardrail_fn = get_guardrail_fn()
+            result       = guardrail_fn(user_query.strip(), chain.ask)
+            st.session_state.result = result
+            st.session_state.last_q = user_query.strip()
 
-        if not result["blocked"]:
-            clean_a = re.sub(
-                r'\s*\[(High|Medium|Low|None)\]\s*$', '',
-                result["answer"], flags=re.IGNORECASE
-            ).strip()
-            st.session_state.history.insert(0, {
-                "q": user_query.strip(),
-                "a": clean_a[:160] + "..." if len(clean_a) > 160 else clean_a,
-                "confidence": result["confidence"]
-            })
+            if not result["blocked"]:
+                clean_a = re.sub(
+                    r'\s*\[(High|Medium|Low|None)\]\s*$', '',
+                    result["answer"], flags=re.IGNORECASE
+                ).strip()
+                st.session_state.history.insert(0, {
+                    "q": user_query.strip(),
+                    "a": clean_a[:160] + "..." if len(clean_a) > 160 else clean_a,
+                    "confidence": result["confidence"]
+                })
 
 
-# ── Render result ─────────────────────────────────────────
-result = st.session_state.result
+    # ── Render result ─────────────────────────────────────────
+    result = st.session_state.result
 
-if result:
-    if result["blocked"]:
-        reason = result["guardrail_warnings"][0] if result["guardrail_warnings"] else "Request not supported."
-        st.markdown(f'<div class="blocked">🚫 &nbsp;{reason}</div>', unsafe_allow_html=True)
+    if result:
+        if result["blocked"]:
+            reason = result["guardrail_warnings"][0] if result["guardrail_warnings"] else "Request not supported."
+            st.markdown(f'<div class="blocked">🚫 &nbsp;{reason}</div>', unsafe_allow_html=True)
 
-    else:
-        answer     = result["answer"]
-        confidence = result.get("confidence", "medium")
-        sources    = result.get("sources", [])
-        latency    = result.get("latency_ms", 0)
-        warnings   = result.get("guardrail_warnings", [])
-        web_used   = result.get("web_search_used", False)
-        links      = result.get("official_links", [])
+        else:
+            answer     = result["answer"]
+            confidence = result.get("confidence", "medium")
+            sources    = result.get("sources", [])
+            latency    = result.get("latency_ms", 0)
+            warnings   = result.get("guardrail_warnings", [])
+            web_used   = result.get("web_search_used", False)
+            links      = result.get("official_links", [])
 
-        # ── Answer card ───────────────────────────────────
-        rendered = render_answer(answer)
-        st.markdown(f'<div class="ans-card">{rendered}</div>', unsafe_allow_html=True)
+            # ── Answer card ───────────────────────────────────
+            rendered = render_answer(answer)
+            st.markdown(f'<div class="ans-card">{rendered}</div>', unsafe_allow_html=True)
 
-        # ── Badges ────────────────────────────────────────
-        conf_map = {
-            "high":   ("b-high",   "High Confidence"),
-            "medium": ("b-medium", "Medium Confidence"),
-            "low":    ("b-low",    "Low Confidence"),
-            "none":   ("b-none",   "No Data"),
-        }
-        cls, label = conf_map.get(confidence.lower(), ("b-none", confidence))
+            # ── Badges ────────────────────────────────────────
+            conf_map = {
+                "high":   ("b-high",   "High Confidence"),
+                "medium": ("b-medium", "Medium Confidence"),
+                "low":    ("b-low",    "Low Confidence"),
+                "none":   ("b-none",   "No Data"),
+            }
+            cls, label = conf_map.get(confidence.lower(), ("b-none", confidence))
 
-        badges = f'<span class="badge {cls}">{label}</span>'
+            badges = f'<span class="badge {cls}">{label}</span>'
 
-        if web_used:
-            badges += ' <span class="badge b-web">🌐 Live Search</span>'
+            if web_used:
+                badges += ' <span class="badge b-web">🌐 Live Search</span>'
 
-        clean_sources = [
-            s for s in sources
-            if s not in ("live_web_search",)
-        ]
-        for s in clean_sources:
-            readable = s.replace("_", " ").replace("manual", "").strip().title()
-            badges += f' <span class="badge b-src">📄 {readable}</span>'
+            clean_sources = [
+                s for s in sources
+                if s not in ("live_web_search",)
+            ]
+            for s in clean_sources:
+                readable = s.replace("_", " ").replace("manual", "").strip().title()
+                badges += f' <span class="badge b-src">📄 {readable}</span>'
 
-        badges += f' <span class="badge b-time">⚡ {latency:.0f}ms</span>'
+            badges += f' <span class="badge b-time">⚡ {latency:.0f}ms</span>'
 
-        st.markdown(f'<div class="badge-row">{badges}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="badge-row">{badges}</div>', unsafe_allow_html=True)
 
-        # ── Warnings ──────────────────────────────────────
-        for w in warnings:
-            st.markdown(f'<div class="warn">⚠️ {w}</div>', unsafe_allow_html=True)
+            # ── Warnings ──────────────────────────────────────
+            for w in warnings:
+                st.markdown(f'<div class="warn">⚠️ {w}</div>', unsafe_allow_html=True)
 
-        # ── Official links ────────────────────────────────
-        if links:
-            link_items = ""
-            for url in links[:5]:
-                domain = url.replace("https://","").replace("http://","").split("/")[0]
-                link_items += f'<a class="ext-link" href="{url}" target="_blank">↗ {domain}</a>'
+            # ── Official links ────────────────────────────────
+            if links:
+                link_items = ""
+                for url in links[:5]:
+                    domain = url.replace("https://","").replace("http://","").split("/")[0]
+                    link_items += f'<a class="ext-link" href="{url}" target="_blank">↗ {domain}</a>'
+                st.markdown(f"""
+                <div class="links-section">
+                    <div class="links-label">Verify at official sources</div>
+                    <div class="links-row">{link_items}</div>
+                </div>
+                """, unsafe_allow_html=True)
+
+
+    # ── History ───────────────────────────────────────────────
+    if st.session_state.history:
+        st.markdown("<hr>", unsafe_allow_html=True)
+        st.markdown('<div class="hist-label">Recent Questions</div>', unsafe_allow_html=True)
+        for item in st.session_state.history[:5]:
+            dot_color = {"high":"#6ee7b7","medium":"#fcd34d","low":"#fca5a5"}.get(item["confidence"],"#52526e")
             st.markdown(f"""
-            <div class="links-section">
-                <div class="links-label">Verify at official sources</div>
-                <div class="links-row">{link_items}</div>
-            </div>
-            """, unsafe_allow_html=True)
+            <div class="hist-item">
+                <div class="hist-q"><span style="color:{dot_color};margin-right:6px">●</span>{item['q']}</div>
+                <div class="hist-a">{item['a']}</div>
+            </div>""", unsafe_allow_html=True)
 
 
-# ── History ───────────────────────────────────────────────
-if st.session_state.history:
-    st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown('<div class="hist-label">Recent Questions</div>', unsafe_allow_html=True)
-    for item in st.session_state.history[:5]:
-        dot_color = {"high":"#6ee7b7","medium":"#fcd34d","low":"#fca5a5"}.get(item["confidence"],"#52526e")
-        st.markdown(f"""
-        <div class="hist-item">
-            <div class="hist-q"><span style="color:{dot_color};margin-right:6px">●</span>{item['q']}</div>
-            <div class="hist-a">{item['a']}</div>
-        </div>""", unsafe_allow_html=True)
+    # ── Footer ────────────────────────────────────────────────
+    st.markdown("""
+    <div style="text-align:center;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.04);padding-top:1.5rem;">
+        <p style="color:#2a2a3a;font-size:0.72rem;letter-spacing:0.06em;">
+            CHARGECLARITY &nbsp;·&nbsp; RAG + LIVE SEARCH &nbsp;·&nbsp;
+            LLAMA 3.1 via GROQ &nbsp;·&nbsp; FAISS &nbsp;·&nbsp; LANGCHAIN
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
+# end of tab_main content ↑
 
-# ── Footer ────────────────────────────────────────────────
-st.markdown("""
-<div style="text-align:center;margin-top:3rem;border-top:1px solid rgba(255,255,255,0.04);padding-top:1.5rem;">
-    <p style="color:#2a2a3a;font-size:0.72rem;letter-spacing:0.06em;">
-        CHARGECLARITY &nbsp;·&nbsp; RAG + LIVE SEARCH &nbsp;·&nbsp;
-        LLAMA 3.1 via GROQ &nbsp;·&nbsp; FAISS &nbsp;·&nbsp; LANGCHAIN
-    </p>
-</div>
-""", unsafe_allow_html=True)
+with tab_eval:
+    sys.path.insert(0, str(Path(__file__).parent.parent / "eval"))
+    from metrics_dashboard import render_dashboard
+    render_dashboard()

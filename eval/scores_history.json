@@ -1,0 +1,178 @@
+[
+  {
+    "timestamp": "2026-03-05T14:27:41.650645",
+    "num_questions": 20,
+    "faithfulness": 0.1463,
+    "answer_relevancy": 0.127,
+    "context_coverage": 0.6281,
+    "overall_score": 0.3005,
+    "avg_latency_ms": 4956.76,
+    "web_search_rate": 0.0,
+    "confidence_dist": {
+      "high": 18,
+      "medium": 2
+    },
+    "per_sample": [
+      {
+        "question": "What is PayPal's transaction fee for receiving international...",
+        "confidence": "high",
+        "latency_ms": 576.47,
+        "faithfulness": 0.216,
+        "relevancy": 0.241,
+        "coverage": 0.769
+      },
+      {
+        "question": "How does PayPal's currency conversion affect the amount I re...",
+        "confidence": "high",
+        "latency_ms": 608.44,
+        "faithfulness": 0.202,
+        "relevancy": 0.108,
+        "coverage": 0.667
+      },
+      {
+        "question": "What is the total effective cost of receiving USD 100 via Pa...",
+        "confidence": "high",
+        "latency_ms": 705.53,
+        "faithfulness": 0.164,
+        "relevancy": 0.209,
+        "coverage": 0.708
+      },
+      {
+        "question": "What is Stripe's transaction fee for domestic cards in India...",
+        "confidence": "high",
+        "latency_ms": 496.34,
+        "faithfulness": 0.104,
+        "relevancy": 0.429,
+        "coverage": 0.833
+      },
+      {
+        "question": "Does Stripe charge for failed payment attempts?...",
+        "confidence": "high",
+        "latency_ms": 1784.0,
+        "faithfulness": 0.1,
+        "relevancy": 0.135,
+        "coverage": 1.0
+      },
+      {
+        "question": "What is the Stripe dispute fee in India?...",
+        "confidence": "high",
+        "latency_ms": 370.98,
+        "faithfulness": 0.163,
+        "relevancy": 0.138,
+        "coverage": 0.875
+      },
+      {
+        "question": "What is MDR and who pays it?...",
+        "confidence": "high",
+        "latency_ms": 462.52,
+        "faithfulness": 0.177,
+        "relevancy": 0.043,
+        "coverage": 0.955
+      },
+      {
+        "question": "Is UPI free for merchants in India?...",
+        "confidence": "high",
+        "latency_ms": 424.1,
+        "faithfulness": 0.203,
+        "relevancy": 0.143,
+        "coverage": 0.857
+      },
+      {
+        "question": "What is the difference between NEFT and IMPS?...",
+        "confidence": "high",
+        "latency_ms": 8067.67,
+        "faithfulness": 0.027,
+        "relevancy": 0.061,
+        "coverage": 0.182
+      },
+      {
+        "question": "What is a chargeback and how much does it cost on PayPal?...",
+        "confidence": "high",
+        "latency_ms": 6615.82,
+        "faithfulness": 0.212,
+        "relevancy": 0.069,
+        "coverage": 0.667
+      },
+      {
+        "question": "What is the currency conversion spread and why does it exist...",
+        "confidence": "high",
+        "latency_ms": 4857.18,
+        "faithfulness": 0.13,
+        "relevancy": 0.046,
+        "coverage": 0.56
+      },
+      {
+        "question": "Do I need to pay GST on payment processing fees in India?...",
+        "confidence": "high",
+        "latency_ms": 7597.89,
+        "faithfulness": 0.137,
+        "relevancy": 0.269,
+        "coverage": 0.81
+      },
+      {
+        "question": "What is the LRS scheme and does it affect receiving money fr...",
+        "confidence": "high",
+        "latency_ms": 7667.13,
+        "faithfulness": 0.163,
+        "relevancy": 0.085,
+        "coverage": 0.167
+      },
+      {
+        "question": "What is TCS and does it apply when I receive money from Outl...",
+        "confidence": "medium",
+        "latency_ms": 9381.33,
+        "faithfulness": 0.114,
+        "relevancy": 0.071,
+        "coverage": 0.185
+      },
+      {
+        "question": "What is Razorpay's fee for UPI payments?...",
+        "confidence": "high",
+        "latency_ms": 7591.78,
+        "faithfulness": 0.207,
+        "relevancy": 0.154,
+        "coverage": 0.952
+      },
+      {
+        "question": "How does a payment work end to end when I pay online?...",
+        "confidence": "medium",
+        "latency_ms": 8728.15,
+        "faithfulness": 0.15,
+        "relevancy": 0.051,
+        "coverage": 0.44
+      },
+      {
+        "question": "What is PCI-DSS?...",
+        "confidence": "high",
+        "latency_ms": 9485.06,
+        "faithfulness": 0.042,
+        "relevancy": 0.022,
+        "coverage": 0.276
+      },
+      {
+        "question": "What is the settlement time for Razorpay payments?...",
+        "confidence": "high",
+        "latency_ms": 6629.41,
+        "faithfulness": 0.181,
+        "relevancy": 0.054,
+        "coverage": 0.8
+      },
+      {
+        "question": "What is the RTGS minimum transfer amount?...",
+        "confidence": "high",
+        "latency_ms": 9129.03,
+        "faithfulness": 0.057,
+        "relevancy": 0.143,
+        "coverage": 0.526
+      },
+      {
+        "question": "How does Wise compare to PayPal for receiving foreign paymen...",
+        "confidence": "high",
+        "latency_ms": 7956.28,
+        "faithfulness": 0.176,
+        "relevancy": 0.068,
+        "coverage": 0.333
+      }
+    ]
+  }
+]

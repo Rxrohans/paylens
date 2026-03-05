@@ -1,0 +1,82 @@
+[
+    {
+      "question": "What is PayPal's transaction fee for receiving international payments in India?",
+      "ground_truth": "PayPal charges a 4.4% transaction fee on the amount received for international transactions in India, plus a fixed fee depending on the currency."
+    },
+    {
+      "question": "How does PayPal's currency conversion affect the amount I receive?",
+      "ground_truth": "PayPal adds a spread of approximately 3% above the base exchange rate for currency conversion. This means if the mid-market rate is 83.50 INR per USD, PayPal gives you around 81 INR per USD, keeping the difference as profit."
+    },
+    {
+      "question": "What is the total effective cost of receiving USD 100 via PayPal in India?",
+      "ground_truth": "The total effective cost is approximately 7-8% of the received amount. PayPal deducts 4.4% as transaction fee, then applies a 3% currency conversion spread, resulting in receiving around INR 7,744 instead of INR 8,350 at mid-market rate."
+    },
+    {
+      "question": "What is Stripe's transaction fee for domestic cards in India?",
+      "ground_truth": "Stripe charges 2% per transaction for cards issued in India. There are no setup fees, monthly fees, or hidden fees."
+    },
+    {
+      "question": "Does Stripe charge for failed payment attempts?",
+      "ground_truth": "No, Stripe does not charge for failed payment attempts. You only pay fees on successful transactions."
+    },
+    {
+      "question": "What is the Stripe dispute fee in India?",
+      "ground_truth": "Stripe charges USD 15 per dispute. This fee is refunded if you win the dispute."
+    },
+    {
+      "question": "What is MDR and who pays it?",
+      "ground_truth": "MDR stands for Merchant Discount Rate. It is the fee a merchant pays to accept digital payments, charged as a percentage of each transaction. It is split between the payment gateway, acquiring bank, and card network."
+    },
+    {
+      "question": "Is UPI free for merchants in India?",
+      "ground_truth": "For transactions below INR 2,000, UPI is free for merchants with 0% MDR as per RBI mandate from 2020. For transactions above INR 2,000, MDR of up to 0.3% may apply."
+    },
+    {
+      "question": "What is the difference between NEFT and IMPS?",
+      "ground_truth": "NEFT uses batch-based settlement every 30 minutes and is available 24x7 with no upper limit. IMPS provides real-time 24x7 transfers with a limit of INR 5 lakh per transaction and charges between INR 5 to INR 25 per transaction."
+    },
+    {
+      "question": "What is a chargeback and how much does it cost on PayPal?",
+      "ground_truth": "A chargeback is when a customer disputes a charge directly with their bank, causing the bank to reverse the transaction. PayPal charges USD 20 per dispute, and this fee is non-refundable even if the merchant wins the dispute."
+    },
+    {
+      "question": "What is the currency conversion spread and why does it exist?",
+      "ground_truth": "The currency conversion spread is the difference between the mid-market exchange rate and the rate offered by the payment platform. Platforms add this spread above the base exchange rate as profit on currency exchange. For example, if mid-market rate is 83.50 INR/USD, PayPal may offer 80.90 INR/USD, keeping 2.60 INR per dollar."
+    },
+    {
+      "question": "Do I need to pay GST on payment processing fees in India?",
+      "ground_truth": "Yes, all payment processing fees in India attract 18% GST. For example, Razorpay's 2% base fee on INR 10,000 transaction becomes INR 200 base fee plus INR 36 GST, totalling INR 236 deducted."
+    },
+    {
+      "question": "What is the LRS scheme and does it affect receiving money from abroad?",
+      "ground_truth": "LRS stands for Liberalised Remittance Scheme. It allows Indians to send up to USD 250,000 per financial year abroad. LRS applies to outward remittances only and does NOT affect receiving money from abroad. Inward remittances for freelance services are fully legal under FEMA."
+    },
+    {
+      "question": "What is TCS and does it apply when I receive money from Outlier or foreign clients?",
+      "ground_truth": "TCS stands for Tax Collected at Source. It applies when you SEND money abroad under LRS at 5% on amounts above INR 7 lakh per year. TCS does NOT apply to inward remittances — when you receive money from foreign clients like Outlier, no TCS is deducted."
+    },
+    {
+      "question": "What is Razorpay's fee for UPI payments?",
+      "ground_truth": "Razorpay charges 0% MDR for UPI peer-to-peer transfers and transactions below INR 2,000 as per RBI mandate. For merchant payments above INR 2,000, up to 0.3% MDR may apply. All fees are subject to 18% GST."
+    },
+    {
+      "question": "How does a payment work end to end when I pay online?",
+      "ground_truth": "An online payment goes through four steps: Authorization (bank approves or declines in 2-3 seconds), Capture (amount is reserved), Clearing (transactions batched at end of day), and Settlement (funds move to merchant account in T+2 business days)."
+    },
+    {
+      "question": "What is PCI-DSS?",
+      "ground_truth": "PCI-DSS stands for Payment Card Industry Data Security Standard. It is a security standard for any entity that stores, processes, or transmits card data. It has 12 requirements covering network security, encryption, and access control. Non-compliance can result in fines of USD 5,000 to USD 100,000 per month."
+    },
+    {
+      "question": "What is the settlement time for Razorpay payments?",
+      "ground_truth": "Razorpay's standard settlement time is T+2, meaning funds are transferred to your bank account 2 business days after the transaction. Instant settlement is available for eligible accounts at an additional fee of 0.25% to 1.5%."
+    },
+    {
+      "question": "What is the RTGS minimum transfer amount?",
+      "ground_truth": "RTGS has a minimum transfer amount of INR 2 lakh. It settles transactions in real time on a gross basis and is available from 7 AM to 6 PM on working days. Charges range from INR 25 to INR 50 per transaction."
+    },
+    {
+      "question": "How does Wise compare to PayPal for receiving foreign payments?",
+      "ground_truth": "Wise uses the mid-market exchange rate with a flat fee, making it significantly cheaper than PayPal for receiving foreign payments. PayPal adds a 3% spread above the base rate plus a 4.4% transaction fee, while Wise charges a small flat fee with no spread markup. Wise is fully compliant with FEMA regulations."
+    }
+  ]
