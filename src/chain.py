@@ -64,6 +64,7 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.tools import DuckDuckGoSearchRun
+from datetime_parser import parse_datetime_query, DateTimeParser
 
 load_dotenv()
 
@@ -82,6 +83,9 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger("PayLens.chain")
+
+# DATETIME PARSER — for temporal query awareness
+datetime_parser = DateTimeParser()
 
 # ─────────────────────────────────────────────────────────
 # OFFICIAL LINKS REGISTRY
@@ -132,6 +136,7 @@ RAG_CONFIDENCE_THRESHOLD = 0.99 if DISABLE_WEB_SEARCH else 0.60
 # Used when RAG confidence is high (KB only)
 SYSTEM_PROMPT_RAG_ONLY = """You are PayLens, a friendly expert AI that helps people \
 understand payment fees, currency charges, taxes, and fintech concepts in plain English.
+{date_context}
 
 ## Your Role
 Explain things simply and practically — like a knowledgeable friend, not a legal document. \
@@ -157,6 +162,8 @@ understand payment fees, currency charges, taxes, and fintech in plain English.
 
 You have access to a curated knowledge base AND fresh live web search results.
 
+{date_context}
+
 ## Strict Output Rules
 1. Synthesize BOTH sources into one clear, practical answer.
 2. Do NOT mention document names, scores, or labels like [DOC 1] in your answer.
@@ -164,9 +171,10 @@ You have access to a curated knowledge base AND fresh live web search results.
 4. Use bullet points (- item) for lists of 3 or more items.
 5. Use **bold** for important numbers, percentages, and key terms.
 6. If the web results have more recent info than the KB, use the web result and say "as of [date]".
-7. Keep answers under 200 words unless the question genuinely needs more.
-8. Add a brief disclaimer for tax/legal questions: "This is general information, not professional advice."
-9. End your answer on a new line with exactly one of: [High] [Medium] [Low]
+7. For time-sensitive queries, use the current date context provided above.
+8. Keep answers under 200 words unless the question genuinely needs more.
+9. Add a brief disclaimer for tax/legal questions: "This is general information, not professional advice."
+10. End your answer on a new line with exactly one of: [High] [Medium] [Low]
 
 ## Knowledge Base
 {kb_context}
@@ -200,23 +208,34 @@ def get_llm() -> ChatGroq:
 def run_web_search(query: str) -> str:
     """
     Runs a DuckDuckGo search and returns results as a string.
+    Now with DateTime awareness for temporal queries.
 
     INDUSTRY PRACTICE — Query reformulation:
         We don't just pass the raw user question to the search engine.
-        We reformulate it to be more specific for better results.
-        e.g. "why am I charged?" → "PayPal India international payment fees 2024"
+        We reformulate it to be more specific and search-friendly.
     """
     try:
+        # Parse datetime info from query
+        dt_info = parse_datetime_query(query)
+        
+        # Use augmented query if temporal references detected
+        search_query = dt_info['augmented_query'] if dt_info['has_temporal'] else query
+        
+        # Log datetime detection
+        if dt_info['has_temporal']:
+            logger.info(f"🕐 Temporal refs detected: {dt_info['temporal_refs']}")
+            logger.info(f"📝 Augmented search query: {search_query}")
+        
+        # Run DuckDuckGo search with augmented query
         search = DuckDuckGoSearchRun()
-        # Reformulate query to be search-engine friendly
-        search_query = f"{query} India 2026"
-        result = search.invoke(search_query)
-        logger.info(f"Web search completed for: {search_query[:60]}")
-        return result if result else "No live results found."
+        results = search.run(search_query)
+        
+        logger.info(f"Web search completed | query_len={len(search_query)} | result_len={len(results)}")
+        return results
+    
     except Exception as e:
-        logger.warning(f"Web search failed: {e}")
-        return f"Live search unavailable: {e}"
-
+        logger.error(f"Web search failed: {e}")
+        return ""
 
 # ─────────────────────────────────────────────────────────
 # OFFICIAL LINKS DETECTOR
@@ -235,7 +254,6 @@ def detect_relevant_links(question: str, answer: str) -> List[str]:
             links.append(OFFICIAL_LINKS["rbi"])
     return list(dict.fromkeys(links))  # deduplicate while preserving order
 
-
 # ─────────────────────────────────────────────────────────
 # MAIN CHAIN CLASS
 # ─────────────────────────────────────────────────────────
@@ -253,14 +271,19 @@ class ChargeChain:
         from retriever import ChargeRetriever
         self.retriever    = ChargeRetriever()
         self.llm          = get_llm()
+        
+        # RAG-only prompt (includes date_context placeholder)
         self.rag_prompt   = ChatPromptTemplate.from_messages([
             ("system", SYSTEM_PROMPT_RAG_ONLY),
             ("human",  HUMAN_PROMPT),
         ])
+        
+        # Hybrid prompt (includes date_context placeholder)
         self.hybrid_prompt = ChatPromptTemplate.from_messages([
             ("system", SYSTEM_PROMPT_HYBRID),
             ("human",  HUMAN_PROMPT),
         ])
+        
         self.parser = StrOutputParser()
         logger.info("ChargeChain v2 ready [OK]")
 
@@ -296,19 +319,23 @@ class ChargeChain:
         # ── Step 3: Build KB context ────────────────────────
         kb_context = self._format_context(retrieved)
 
-        # ── Step 4: Invoke correct prompt ──────────────────
+        # ── Step 4: Inject date context and invoke correct prompt ──
+        date_context = datetime_parser.get_current_date_context()
+        
         if web_search_used:
             chain = self.hybrid_prompt | self.llm | self.parser
             raw   = chain.invoke({
-                "kb_context":  kb_context,
-                "web_context": web_context,
-                "question":    question
+                "date_context": date_context,  # ADD THIS
+                "kb_context":   kb_context,
+                "web_context":  web_context,
+                "question":     question
             })
         else:
             chain = self.rag_prompt | self.llm | self.parser
             raw   = chain.invoke({
-                "context":  kb_context,
-                "question": question
+                "date_context": date_context,  # ADD THIS
+                "context":      kb_context,
+                "question":     question
             })
 
         # ── Step 5: Parse + enrich answer ──────────────────
