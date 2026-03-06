@@ -7,7 +7,7 @@ Run: streamlit run src/app.py
 import sys
 import re
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -136,11 +136,12 @@ def load_chain():
     import subprocess, sys
 
     # Build index if it doesn't exist (first run on HuggingFace)
-    index_path = Path(__file__).parent.parent / "data" / "processed" / "faiss_index.bin"
+    index_path = Path(__file__).parent / "data" / "processed" / "faiss_index.bin"
+
     if not index_path.exists():
         with st.spinner("First run — building knowledge base index (2-3 mins)..."):
-            subprocess.run([sys.executable, str(Path(__file__).parent / "chunker.py")], check=True)
-            subprocess.run([sys.executable, str(Path(__file__).parent / "embedder.py")], check=True)
+            subprocess.run([sys.executable, str(Path(__file__).parent / "src" / "chunker.py")], check=True)
+            subprocess.run([sys.executable, str(Path(__file__).parent / "src" / "embedder.py")], check=True)
 
     from chain import ChargeChain
     return ChargeChain()
