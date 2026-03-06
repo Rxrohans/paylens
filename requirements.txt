@@ -30,6 +30,3 @@ tqdm
 duckduckgo-search==6.3.7       # DuckDuckGo live search for hybrid RAG
 ddgs
 
-# RAGAS for evaluation
-ragas
-datasets
