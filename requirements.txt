@@ -26,7 +26,6 @@ python-dotenv          # load API keys from .env
 pandas
 tqdm
 
-# ── Web Search (free, no API key needed) ────────────────────
-duckduckgo-search==6.3.7       # DuckDuckGo live search for hybrid RAG
+# ── Web Search (free, no API key needed) ────────────────────      # DuckDuckGo live search for hybrid RAG
 ddgs
 
