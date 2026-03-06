@@ -10,6 +10,10 @@ RUN apt-get update && apt-get install -y \
 
 COPY requirements.txt ./
 COPY src/ ./src/
+COPY . .
+
+# Safety net: ensure Python knows where to look for eval modules
+ENV PYTHONPATH="/app:/app/eval"
 
 RUN pip3 install -r requirements.txt
 
@@ -17,4 +21,4 @@ EXPOSE 7860
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "src/app.py", "--server.port=7860", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
