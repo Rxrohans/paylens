@@ -3,21 +3,18 @@ FROM python:3.13.5-slim
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    git \
-    libgomp1 \
+    build-essential curl git libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./
-COPY src/ ./src/
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-# Safety net: ensure Python knows where to look for eval modules
 ENV PYTHONPATH="/app:/app/eval"
-RUN pip3 install -r requirements.txt
 ENV OMP_NUM_THREADS=1
 ENV MKL_NUM_THREADS=1
+
 
 EXPOSE 7860
 
