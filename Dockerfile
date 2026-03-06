@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-ENV PYTHONPATH="/app:/app/eval"
+ENV PYTHONPATH="/app/src:/app/eval"
 ENV OMP_NUM_THREADS=1
 ENV MKL_NUM_THREADS=1
 
@@ -21,7 +21,7 @@ ENV SENTENCE_TRANSFORMERS_HOME=/tmp/sentence_transformers
 
 EXPOSE 7860
 HEALTHCHECK CMD curl --fail http://localhost:7860/_stcore/health
-ENTRYPOINT ["streamlit", "run", "app.py", \
+ENTRYPOINT ["streamlit", "run", "src/app.py", \
     "--server.port=7860", \
     "--server.address=0.0.0.0", \
     "--server.headless=true"]
