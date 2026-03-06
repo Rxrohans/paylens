@@ -264,6 +264,7 @@ with tab_main:
             except Exception as e:
                 st.error(f"Error: {str(e)}")
                 st.stop()
+                st.session_state.last_q = user_query.strip()
 
             if not result["blocked"]:
                 clean_a = re.sub(
