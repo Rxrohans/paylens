@@ -122,7 +122,8 @@ class ChargeAnswer:
 # CONFIDENCE THRESHOLD
 # Below this score → trigger live web search
 # ─────────────────────────────────────────────────────────
-RAG_CONFIDENCE_THRESHOLD = 0.60
+DISABLE_WEB_SEARCH = os.getenv("DISABLE_WEB_SEARCH", "0") == "1"
+RAG_CONFIDENCE_THRESHOLD = 0.99 if DISABLE_WEB_SEARCH else 0.60
 
 # ─────────────────────────────────────────────────────────
 # PROMPTS — two versions depending on context source

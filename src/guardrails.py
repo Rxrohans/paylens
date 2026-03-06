@@ -214,8 +214,16 @@ def run_with_guardrails(query: str, chain_fn) -> dict:
     clean_query = input_check.sanitized if input_check.action == "sanitize" else query
 
     # CHAIN CALL — returns ChargeAnswer dataclass
-    result = chain_fn(clean_query)
-
+    try:
+        result = chain_fn(clean_query)
+    except Exception as e:
+        logger.error(f"Chain failed: {e}")
+        return {
+            "answer": "Something went wrong. Please try again.",
+            "sources": [], "confidence": "none", "latency_ms": 0,
+            "guardrail_warnings": [str(e)], "blocked": True,
+            "web_search_used": False, "official_links": [],
+    }
     # OUTPUT GUARD
     output_check = check_output(result.answer)
     warnings = []
