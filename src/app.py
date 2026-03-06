@@ -256,11 +256,14 @@ with tab_main:
     # ── Process query ─────────────────────────────────────────
     if ask_clicked and user_query.strip():
         with st.spinner("Thinking..."):
-            chain        = load_chain()
-            guardrail_fn = get_guardrail_fn()
-            result       = guardrail_fn(user_query.strip(), chain.ask)
-            st.session_state.result = result
-            st.session_state.last_q = user_query.strip()
+            try:
+                chain        = load_chain()
+                guardrail_fn = get_guardrail_fn()
+                result       = guardrail_fn(user_query.strip(), chain.ask)
+                st.session_state.result = result
+            except Exception as e:
+                st.error(f"Error: {str(e)}")
+                st.stop()
 
             if not result["blocked"]:
                 clean_a = re.sub(
