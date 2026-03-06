@@ -17,10 +17,6 @@ requests
 # ── UI ──────────────────────────────────────────────────────
 streamlit
 
-# ── Evaluation ──────────────────────────────────────────────
-ragas                 # RAG evaluation framework
-datasets              # needed by ragas
-
 # ── Utilities ───────────────────────────────────────────────
 python-dotenv          # load API keys from .env
 pandas
