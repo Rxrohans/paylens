@@ -1,320 +1,1410 @@
 [
   {
+    "text": "PAYLENS KNOWLEDGE BASE — Fintech & Payments Fundamentals\nSource: RBI reports, NPCI docs, BIS reports, Investopedia (compiled manually)\nLast updated: March 2026\n=======================================================================\n\n=======================================================================\nHOW A PAYMENT ACTUALLY WORKS — END TO END\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0000",
+    "char_count": 418,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "When you pay someone online, this is what happens in milliseconds:\n\nSTEP 1 — AUTHORIZATION:\n- Customer enters card/UPI details\n- Payment gateway (Razorpay/Stripe) encrypts and sends to acquiring bank\n- Acquiring bank contacts card network (Visa/Mastercard/RuPay)\n- Card network contacts issuing bank (your bank)\n- Issuing bank checks: sufficient balance? fraud signals? account standing?\n- Issuing bank responds: Approved or Declined\n- This entire process takes 2-3 seconds",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0001",
+    "char_count": 473,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "STEP 2 — CAPTURE:\n- After authorization, the merchant \"captures\" the amount\n- Money is not yet moved — it is only \"held\" or \"reserved\"\n- Some gateways auto-capture, others require manual capture\n\nSTEP 3 — CLEARING:\n- At end of day, all transactions are batched and sent for clearing\n- Card networks (Visa, Mastercard) process and reconcile transactions\n- This is when the actual transfer instructions are created",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0002",
+    "char_count": 412,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "STEP 4 — SETTLEMENT (T+2):\n- Funds move from issuing bank → card network → acquiring bank → merchant account\n- Standard settlement time in India: T+2 (2 business days)\n- Razorpay, Stripe, PayPal all follow T+2 by default\n- Instant settlement available at extra fee (0.25% to 1.5%)\n- RBI is pushing for T+0 (same day) settlement for UPI",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0003",
+    "char_count": 335,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nINDIAN PAYMENT RAILS — THE INFRASTRUCTURE\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0004",
+    "char_count": 185,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "UPI (Unified Payments Interface):\n- Built by NPCI (National Payments Corporation of India)\n- Launched: April 2016\n- Works 24x7x365, including holidays\n- Transfers money in real time (within seconds)\n- Limit: INR 1 lakh per transaction (some banks allow up to 2 lakh)\n- No charge for P2P (person to person) transfers\n- Merchant payments (P2M): 0% MDR below INR 2,000 (RBI mandate 2020)\n- Above INR 2,000: MDR up to 0.3% for RuPay, 0.5-0.9% for Visa/Mastercard via UPI\n- Daily transaction limit: INR 1 lakh (varies by bank)\n- Monthly UPI transactions in India: 10+ billion (as of 2024)",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0005",
+    "char_count": 583,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "IMPS (Immediate Payment Service):\n- Real-time 24x7 transfers\n- Limit: INR 5 lakh per transaction\n- Charges: INR 5 to INR 25 per transaction (bank dependent)\n- Used for: instant bank-to-bank transfers\n- Identification: by mobile number + MMID, or account number + IFSC",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0006",
+    "char_count": 267,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "NEFT (National Electronic Funds Transfer):\n- Batch-based settlement (every 30 minutes, 24x7)\n- No upper limit (as of 2020 RBI removed the limit)\n- Charges: INR 0 to INR 25 depending on amount\n- Below INR 10,000: INR 2.50\n- INR 10,000 to 1 lakh: INR 5\n- INR 1 lakh to 2 lakh: INR 15\n- Above INR 2 lakh: INR 25\n- Free for online banking (banks cannot charge for NEFT via internet/mobile)",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0007",
+    "char_count": 385,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "RTGS (Real Time Gross Settlement):\n- Minimum transfer: INR 2 lakh\n- Settles transaction by transaction in real time (gross settlement)\n- Used for large value transfers\n- Available: 7 AM to 6 PM on working days\n- Charges: INR 25 to INR 50 per transaction",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0008",
+    "char_count": 253,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "SWIFT (Society for Worldwide Interbank Financial Telecommunication):\n- Used for international wire transfers\n- NOT a payment network — it's a messaging system between banks\n- Banks send SWIFT messages instructing fund transfers\n- Takes 2-5 business days for international transfers\n- Fees: INR 500 to INR 2,500 per transfer + correspondent bank charges\n- Used by: PayPal withdrawals, wire transfers from Outlier/foreign clients",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0009",
+    "char_count": 427,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nCARD NETWORKS — WHO DOES WHAT\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0010",
+    "char_count": 173,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "VISA:\n- Global card network\n- Processes transactions between issuing and acquiring banks\n- Takes a fee from each transaction (interchange fee)\n- India: ~55% of credit card market\n- Supports: credit, debit, prepaid cards\n\nMASTERCARD:\n- Second largest card network globally\n- Similar to Visa in function\n- India: ~35% of credit card market",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0011",
+    "char_count": 337,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "MASTERCARD:\n- Second largest card network globally\n- Similar to Visa in function\n- India: ~35% of credit card market\n\nRUPAY:\n- India's domestic card network, built by NPCI\n- Cheaper for merchants (lower MDR)\n- Accepted mainly in India\n- Cannot be used internationally (mostly)\n- Promoted heavily by government for financial inclusion\n- Zero MDR for transactions at government merchants\n\nAMERICAN EXPRESS:\n- Premium card network\n- Higher fees than Visa/Mastercard\n- Smaller acceptance network in India\n- Higher rewards for cardholders offset by higher merchant fees",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0012",
+    "char_count": 564,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "MDR (Merchant Discount Rate) — How it splits:\nTotal MDR = Issuing bank share + Card network share + Acquiring bank share + Payment gateway share\nExample for a 2% MDR transaction of INR 1000:\n- Issuing bank gets: ~1.1% (INR 11)\n- Card network gets: ~0.1% (INR 1)\n- Acquiring bank + gateway gets: ~0.8% (INR 8)\n- Total: INR 20 deducted from merchant",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0013",
+    "char_count": 347,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nPAYMENT GATEWAYS VS PAYMENT PROCESSORS VS ACQUIRING BANKS\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0014",
+    "char_count": 201,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "PAYMENT GATEWAY (e.g., Razorpay, Stripe, PayPal):\n- The technology layer that handles the transaction\n- Encrypts card data\n- Communicates with card networks\n- Provides the checkout experience\n- Charges MDR/transaction fee for this service\n\nPAYMENT PROCESSOR:\n- Executes the actual transfer of funds\n- Often the same entity as the gateway in modern setups\n- Handles clearing and settlement\n\nACQUIRING BANK:\n- The bank of the merchant\n- Holds the merchant account\n- Receives funds on behalf of merchant\n- Often works behind the payment gateway",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0015",
+    "char_count": 541,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "ISSUING BANK:\n- The bank that issued the customer's card/UPI account\n- Approves or declines transactions\n- Bears fraud risk (to some extent)",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0016",
+    "char_count": 140,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nPCI-DSS — PAYMENT SECURITY STANDARD\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0017",
+    "char_count": 179,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "PCI-DSS (Payment Card Industry Data Security Standard):\n- Security standard for any entity that stores/processes/transmits card data\n- Set by major card networks (Visa, Mastercard, Amex, Discover)\n- 12 requirements covering network security, encryption, access control, monitoring\n- Compliance required for ALL merchants and payment service providers\n- Non-compliance can result in fines of $5,000-$100,000/month",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0018",
+    "char_count": 412,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Why it matters for ChargeClarity / Pine Labs:\n- Pine Labs handles card transactions for thousands of merchants\n- All data must be encrypted and stored securely\n- This is why payment gateway APIs don't return full card numbers\n- Tokenization: card numbers replaced with tokens to avoid storing sensitive data",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0019",
+    "char_count": 307,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nCHARGEBACKS AND DISPUTES\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0020",
+    "char_count": 168,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "What is a chargeback?\n- When a customer disputes a charge directly with their bank (not the merchant)\n- The bank reverses the transaction and takes money back from the merchant\n- Merchant also pays a chargeback fee (USD 15-25 depending on gateway)",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0021",
+    "char_count": 247,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Chargeback process:\n1. Customer contacts bank, claims unauthorized/wrong charge\n2. Bank reverses transaction immediately (provisional credit to customer)\n3. Bank notifies payment gateway with a dispute\n4. Merchant has 7-14 days to provide evidence (receipt, delivery proof, etc.)\n5. If merchant wins: money returned, chargeback fee sometimes refunded\n6. If merchant loses: transaction amount + fee permanently gone\n\nChargeback fees by platform:\n- PayPal: USD 20 per dispute (non-refundable even if you win)\n- Stripe: USD 15 per dispute (refunded if you win)\n- Razorpay: INR 1,250 approximately",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0022",
+    "char_count": 593,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "High chargeback rate consequences:\n- If merchant chargeback rate exceeds 1% of transactions: warning\n- If exceeds 2%: account termination risk\n- Added to MATCH list (black list) — very hard to get another gateway",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0023",
+    "char_count": 212,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nFRAUD DETECTION IN PAYMENTS\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0024",
+    "char_count": 171,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "How payment gateways detect fraud:\n- Velocity checks: same card used multiple times in short window\n- Geolocation: IP address vs billing address mismatch\n- Device fingerprinting: suspicious device signals\n- Machine learning models: pattern matching against known fraud patterns\n- CVV/OTP verification: extra authentication layer\n- 3D Secure (3DS): OTP sent to customer's registered mobile",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0025",
+    "char_count": 388,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "India specific: RBI mandates 2FA (Two Factor Authentication) for all online transactions\n- Card number + CVV is not enough\n- OTP to registered mobile is mandatory for most transactions\n- This is why Indian users get OTP prompts for every online payment\n\nStripe Radar (free with all Stripe accounts):\n- ML-based fraud detection\n- Blocks suspicious transactions automatically\n- Generates a risk score for each transaction\n- Advanced Radar: USD 0.02/transaction additional for more controls",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0026",
+    "char_count": 487,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nWALLETS AND PREPAID INSTRUMENTS\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0027",
+    "char_count": 175,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "Paytm Wallet / MobiKwik / PhonePe Wallet:\n- Prepaid Payment Instruments (PPI) regulated by RBI\n- Load money from bank, spend from wallet\n- P2P transfers: free up to INR 10,000/month, 1% above that\n- Merchant payments: similar to UPI\n- Full KYC wallet: up to INR 1 lakh balance\n- Minimum KYC wallet: up to INR 10,000 balance\n\nLoading wallet fees:\n- From bank account/UPI: free\n- From credit card: 1.5% to 2% fee typically",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0028",
+    "char_count": 420,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nBNPL (BUY NOW PAY LATER) IN INDIA\n=======================================================================",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0029",
+    "char_count": 177,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "Major players: ZestMoney, LazyPay, Simpl, Amazon Pay Later, Flipkart Pay Later\nHow it works:\n- Customer pays nothing at checkout\n- BNPL provider pays merchant immediately (minus 2-3% fee)\n- Customer repays BNPL provider in installments\n- If customer defaults: BNPL provider bears the risk (not the merchant)\nMerchant cost: 2-3% of transaction (similar to credit card)\nGrowing rapidly in India: USD 3.7 billion market as of 2024",
+    "source": "fintech_fundamentals",
+    "chunk_id": "fintech_fundamentals_chunk_0030",
+    "char_count": 427,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PAYLENS KNOWLEDGE BASE — Forex, Currency & Economics\nSource: RBI guidelines, FEMA Act, Investopedia, RBI circulars (all public)\nLast updated: March 2026\n=======================================================================\n\n=======================================================================\nHOW EXCHANGE RATES WORK\n=======================================================================",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0000",
+    "char_count": 393,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "WHAT IS AN EXCHANGE RATE?\nThe price of one currency expressed in terms of another.\nExample: 1 USD = 83.50 INR means you need 83.50 Indian Rupees to buy 1 US Dollar.\n\nTHE MID-MARKET RATE (also called interbank rate):\n- The true \"fair\" exchange rate between two currencies\n- The midpoint between the buy price and sell price\n- This is the rate you see on Google or xe.com\n- Banks and payment companies NEVER give you this rate\n- They add a spread (their profit) on top",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0001",
+    "char_count": 466,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "BID / ASK SPREAD — How Banks and Gateways Make Money on Forex:\n- BID price: the rate at which the bank/gateway BUYS foreign currency from you\n- ASK price: the rate at which the bank/gateway SELLS foreign currency to you\n- The difference (spread) is the bank's profit\n- Example:\n  Mid-market rate: 1 USD = 83.50 INR\n  PayPal's bid (they buy USD from you): 1 USD = 80.90 INR (3% below mid-market)\n  PayPal keeps: 83.50 - 80.90 = INR 2.60 per dollar as profit\n  On USD 100 received: PayPal keeps INR 260 just from currency conversion",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0002",
+    "char_count": 530,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "WHY EXCHANGE RATES FLUCTUATE:\n- Interest rates: Higher interest rates → stronger currency (attracts investment)\n- Inflation: Higher inflation → weaker currency (reduces purchasing power)\n- Economic growth: Strong GDP growth → stronger currency\n- Trade balance: More exports than imports → stronger currency\n- Political stability: Instability → weaker currency (investors flee)\n- Foreign investment: FDI/FII flows affect demand for INR\n- RBI intervention: RBI buys/sells USD to stabilize INR",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0003",
+    "char_count": 490,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "THE INR/USD RATE:\n- India runs a current account deficit (imports more than exports)\n- This creates natural downward pressure on INR\n- RBI intervenes regularly to prevent excessive depreciation\n- INR has weakened from ~45/USD (2010) to ~84/USD (2024)\n- This means Indians receiving USD payments get MORE INR for the same USD amount",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0004",
+    "char_count": 331,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nFOREIGN EXCHANGE FEES IN PAYMENT PLATFORMS\n=======================================================================",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0005",
+    "char_count": 186,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "HOW PAYPAL CONVERTS CURRENCY:\n1. Transaction arrives in USD (from Outlier, US client, etc.)\n2. PayPal checks its internal exchange rate (typically 3% worse than mid-market)\n3. PayPal converts and credits INR to your PayPal wallet\n4. You withdraw INR to bank account (free if above minimum)",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0006",
+    "char_count": 289,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Total PayPal cost on receiving USD 100 from Outlier:\n- Transaction fee: 4.4% = USD 4.40 deducted first\n- Remaining: USD 95.60\n- Currency conversion: PayPal rate ~3% below mid-market\n  If mid-market = 83.50 INR/USD, PayPal gives ~81.00 INR/USD\n  USD 95.60 × 81.00 = INR 7,743.60\n  If you had received at mid-market: USD 95.60 × 83.50 = INR 7,982.60\n  Lost to conversion: INR 239\n- Total cost on USD 100: INR 367 (transaction fee) + INR 239 (conversion) = INR 606\n- Effective rate: you received INR 7,744 instead of INR 8,350 = 7.3% total loss",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0007",
+    "char_count": 541,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "HOW BANKS CONVERT CURRENCY (for wire transfers):\n- Banks have their own treasury rates\n- Typically 1-2% spread above mid-market (better than PayPal's 3%)\n- Plus SWIFT fees of INR 500-2,500 per transfer\n- For large amounts, wire transfer may be cheaper overall than PayPal\n\nSTRIPE CURRENCY CONVERSION:\n- Stripe charges 2% additional for currency conversion (on top of transaction fee)\n- This is more transparent than PayPal's bundled spread\n- Example: 3% (international card) + 2% (conversion) = 5% total\n- Stripe uses a fairer exchange rate (close to mid-market)",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0008",
+    "char_count": 562,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nFEMA AND RBI RULES FOR RECEIVING FOREIGN PAYMENTS\n=======================================================================",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0009",
+    "char_count": 193,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "FEMA (Foreign Exchange Management Act, 1999):\n- Governs all foreign exchange transactions in India\n- Administered by RBI\n- Violations can result in fines up to 3x the amount involved\n\nKEY RULES FOR FREELANCERS / OUTLIER CONTRIBUTORS:\n- You CAN legally receive foreign payments for services rendered\n- Must be received within 9 months of export of service\n- Must be repatriated (brought into India) — cannot keep abroad indefinitely\n- Foreign currency in your account must be converted to INR eventually",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0010",
+    "char_count": 502,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "HOW TO RECEIVE FOREIGN PAYMENTS LEGALLY:\nOption 1 — PayPal:\n  - Register as business/freelancer\n  - Link Indian bank account\n  - Receive payment → withdraw to bank\n  - PayPal handles compliance automatically\n\nOption 2 — Wire Transfer (SWIFT):\n  - Give client your bank account + IFSC + SWIFT code\n  - Direct bank-to-bank transfer\n  - Lower fees for large amounts\n  - Bank handles FEMA compliance",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0011",
+    "char_count": 395,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Option 3 — Wise (formerly TransferWise):\n  - Mid-market exchange rate\n  - Flat fee (much cheaper than PayPal/bank)\n  - Fully compliant with FEMA\n  - Recommended for regular freelancers receiving foreign income\n\nOption 4 — Payment platforms like Payoneer:\n  - Gives you a virtual US bank account\n  - Clients pay in USD to your US account\n  - You withdraw to Indian bank in INR\n  - 2% withdrawal fee, good exchange rate",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0012",
+    "char_count": 417,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "LRS (Liberalised Remittance Scheme):\n- Allows Indians to SEND up to USD 250,000 per financial year abroad\n- For education, travel, gifts, investment, etc.\n- RECEIVING money from abroad is not subject to LRS limits\n- LRS is about outward remittances, not inward",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0013",
+    "char_count": 260,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "TCS (Tax Collected at Source) on Foreign Remittances:\n- TCS is applicable when you SEND money abroad under LRS\n- Rate: 5% TCS on amounts above INR 7 lakh per year (as of 2023 RBI notification)\n- For foreign education loan: 0.5% TCS\n- This TCS is a pre-payment of tax, credited against your tax liability\n- If you're RECEIVING money: TCS does NOT apply to inward remittances",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0014",
+    "char_count": 373,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PURPOSE CODE FOR RECEIVING PAYMENTS:\n- When receiving foreign payments, Indian banks ask for \"Purpose Code\"\n- For freelance services / exports: Purpose Code P0802 (Software services)\n- For other professional services: Purpose Code P0699\n- Bank processes FIRC (Foreign Inward Remittance Certificate) automatically\n- FIRC is proof of foreign payment received — keep it safe for taxes",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0015",
+    "char_count": 381,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "TAXES ON FOREIGN INCOME IN INDIA:\n- Foreign freelance income is taxable in India\n- Add to your total income under \"Profits and Gains from Business/Profession\"\n- Eligible deductions: internet, equipment, software, home office\n- File ITR-3 or ITR-4 (presumptive taxation)\n- GST registration required if annual income > INR 20 lakh\n  (For export of services: GST = 0% but registration still needed above threshold)",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0016",
+    "char_count": 411,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nPURCHASING POWER PARITY (PPP)\n=======================================================================",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0017",
+    "char_count": 173,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "WHAT IS PPP?\nA theory that exchange rates should adjust so that identical goods cost the same in different countries.\n\nEXAMPLE:\nIf a coffee costs USD 5 in the US and INR 100 in India:\nPPP exchange rate = 100/5 = 20 INR/USD\nBut actual market rate = 83.50 INR/USD\nThis means India's price level is much lower than the US",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0018",
+    "char_count": 318,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "WHY PPP MATTERS FOR INDIAN FREELANCERS:\n- USD 100/hour in the US = INR 8,350 in India at market rates\n- But INR 8,350 buys MORE in India than USD 100 buys in the US\n- This is why Indian freelancers can charge less than US counterparts\n- But also why platforms like Outlier may pay Indian contributors less\n- \"Purchasing power\" of INR 8,350 ≈ USD 200+ in US purchasing power terms\n\nBIG MAC INDEX:\n- The Economist's informal PPP measure\n- A Big Mac costs ~USD 5.58 in USA, ~INR 230 (USD 2.76) in India\n- Implies INR is undervalued by ~50% vs USD by this measure",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0019",
+    "char_count": 559,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nINFLATION AND ITS EFFECT ON PAYMENTS\n=======================================================================",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0020",
+    "char_count": 180,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "INFLATION IN INDIA:\n- Target: RBI maintains CPI inflation target of 4% (+/- 2%)\n- Actual: India's inflation has ranged 4-8% in recent years\n- Effect: As inflation rises, INR buys less → exchange rate weakens\n\nREPO RATE (RBI's main policy tool):\n- The rate at which RBI lends to commercial banks\n- Higher repo rate → borrowing costlier → less money in system → lower inflation\n- Lower repo rate → cheaper borrowing → more money → higher growth\n- Current repo rate: check RBI website (changes periodically)",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0021",
+    "char_count": 504,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "EFFECT ON PAYMENT FEES:\n- Inflation increases operating costs for payment companies\n- Fee increases in payment processing often lag inflation\n- Currency depreciation means foreign USD payments are worth more INR over time\n  (USD 100 in 2010 = INR 4,500; same USD 100 in 2024 = INR 8,350)",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0022",
+    "char_count": 287,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nDIGITAL PAYMENTS ECOSYSTEM IN INDIA — BIG PICTURE\n=======================================================================",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0023",
+    "char_count": 193,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "KEY NUMBERS (2024):\n- UPI transactions: 13+ billion per month\n- Digital payment value: USD 3+ trillion annually\n- India accounts for 46% of global real-time payment transactions\n- Smartphone penetration: 700+ million users\n- Internet users: 900+ million\n\nREGULATORY BODIES:\n- RBI (Reserve Bank of India): Regulates all payment systems, banks, NBFCs\n- NPCI: Operates UPI, RuPay, IMPS, NACH, AePS\n- SEBI: Regulates investment platforms, mutual funds\n- IRDAI: Regulates insurance payments\n- Ministry of Finance: Policy oversight",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0024",
+    "char_count": 525,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "KEY REGULATIONS AFFECTING PAYMENT FEES:\n- Zero MDR on UPI (RBI mandate, 2020): Merchants cannot be charged for UPI transactions\n- Mandatory 2FA for all online card transactions\n- PPI interoperability: Wallets must support UPI payments\n- Data localisation: All payment data must be stored in India\n- KYC requirements: Full KYC for accounts above certain thresholds",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0025",
+    "char_count": 363,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "FINTECH INNOVATION IN INDIA:\n- Account Aggregator framework: Consented financial data sharing\n- ONDC (Open Network for Digital Commerce): Open e-commerce protocol\n- UPI 123Pay: UPI for feature phones (no internet required)\n- UPI Lite: Offline UPI transactions up to INR 200\n- Central Bank Digital Currency (CBDC / Digital Rupee): RBI piloting since 2022",
+    "source": "forex_economics",
+    "chunk_id": "forex_economics_chunk_0026",
+    "char_count": 353,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PAYLENS KNOWLEDGE BASE — India Tax & Compliance for Freelancers\nSource: Income Tax India, GST Council, CA community resources (all public)\nLast updated: March 2026\n=======================================================================\n\n=======================================================================\nGST ON PAYMENT PROCESSING FEES\n=======================================================================",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0000",
+    "char_count": 411,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "GST RATE ON FINANCIAL SERVICES: 18%\nThis applies to ALL payment processing fees in India.\n\nHOW IT AFFECTS YOU:\n- Razorpay charges 2% base fee → 18% GST on that fee → Total = 2.36%\n- Stripe charges 2% base fee → 18% GST on that fee → Total = 2.36%\n- Example on INR 10,000 transaction:\n  Base fee = INR 200\n  GST on fee = INR 36\n  Total deducted = INR 236 (not INR 200)",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0001",
+    "char_count": 367,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "GST ON PAYPAL:\n- PayPal is an international service\n- PayPal does NOT charge GST separately — it's embedded in the conversion spread\n- If you're a GST-registered business, you cannot claim input credit on PayPal fees\n- Stripe and Razorpay DO provide GST invoices → you CAN claim input credit",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0002",
+    "char_count": 291,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nINCOME TAX ON FREELANCE / ONLINE INCOME\n=======================================================================",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0003",
+    "char_count": 183,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "IS FREELANCE INCOME TAXABLE?\nYes. 100%. Under \"Profits and Gains from Business or Profession\" (PGBP).\n\nTAX SLABS (New Regime FY 2024-25):\n- Up to INR 3 lakh: 0%\n- INR 3-7 lakh: 5%\n- INR 7-10 lakh: 10%\n- INR 10-12 lakh: 15%\n- INR 12-15 lakh: 20%\n- Above INR 15 lakh: 30%\n- Rebate: No tax if total income below INR 7 lakh (Section 87A)",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0004",
+    "char_count": 333,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "DEDUCTIONS AVAILABLE FOR FREELANCERS:\n- Internet connection charges: 100% deductible\n- Computer/laptop/equipment: Depreciation deductible\n- Software subscriptions: 100% deductible\n- Home office (proportion of rent/electricity): Partially deductible\n- Professional development (courses, books): Deductible\n- Payment processing fees (Stripe/Razorpay fees): Deductible as business expense",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0005",
+    "char_count": 385,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PRESUMPTIVE TAXATION (Section 44ADA) — GREAT FOR FREELANCERS:\n- If professional income < INR 75 lakh per year\n- You declare 50% of gross receipts as profit automatically\n- No need to maintain detailed books of accounts\n- Pay tax on 50% of income, rest assumed to be expenses\n- Example: Earned INR 10 lakh → Taxable income = INR 5 lakh\n- File ITR-4 for this scheme",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0006",
+    "char_count": 363,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nTDS (TAX DEDUCTED AT SOURCE) FOR ONLINE INCOME\n=======================================================================",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0007",
+    "char_count": 190,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "TDS FROM INDIAN PLATFORMS:\n- If a company (e.g., Indian client) pays you > INR 30,000 in a year for professional services\n- They must deduct TDS @ 10% (Section 194J)\n- They give you Form 16A\n- You claim this TDS credit while filing ITR",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0008",
+    "char_count": 235,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "TDS FROM FOREIGN CLIENTS (Outlier, US companies):\n- Foreign companies are NOT required to deduct Indian TDS\n- You receive full payment, NO TDS deducted\n- You must calculate and pay advance tax yourself quarterly\n- Advance tax due dates: 15 Jun (15%), 15 Sep (45%), 15 Dec (75%), 15 Mar (100%)\n- If you miss advance tax and pay later: Interest @ 1% per month (Section 234B/C)",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0009",
+    "char_count": 374,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "INWARD REMITTANCE TAX TREATMENT:\n- Money received from abroad for services = Export of Services\n- If GST registered: 0% GST on export of services (zero-rated)\n- Income tax: Still applicable (income is taxable regardless of source)\n- FIRC (Foreign Inward Remittance Certificate): Your proof of foreign income\n  → Keep all FIRCs — needed for tax assessment",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0010",
+    "char_count": 354,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nGST REGISTRATION FOR FREELANCERS\n=======================================================================",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0011",
+    "char_count": 176,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "WHEN IS GST REGISTRATION MANDATORY?\n- If total annual income exceeds INR 20 lakh (services)\n- If providing services to overseas clients: Registration required if income > INR 20 lakh\n- Special category states (NE states, Uttarakhand, etc.): INR 10 lakh threshold\n\nEXPORT OF SERVICES — GST TREATMENT:\n- Services provided to overseas clients = Export of Services\n- Export of Services = Zero-Rated Supply under GST\n- Zero-rated means GST rate = 0%, but you can claim refund of GST paid on inputs\n- Example: You pay 18% GST on software subscriptions → you can claim refund",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0012",
+    "char_count": 568,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "GSTIN BENEFITS FOR FREELANCERS:\n- Can claim input tax credit on business expenses (Razorpay fees, software, etc.)\n- Required for invoicing to Indian companies above threshold\n- Appears professional to clients\n- Easier compliance vs informal cash dealings\n\nHOW TO FILE:\n- GSTR-1: Monthly/quarterly sales return (export invoices)\n- GSTR-3B: Monthly summary return (even if zero sales)\n- LUT (Letter of Undertaking): File annually to export services without paying GST\n  (Without LUT, you pay 18% GST and later claim refund — more hassle)",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0013",
+    "char_count": 535,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nPRACTICAL TAX TIPS FOR OUTLIER/ONLINE PLATFORM WORKERS\n=======================================================================",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0014",
+    "char_count": 198,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "1. OPEN A SEPARATE BANK ACCOUNT for all freelance income\n   - Makes tracking easy for tax purposes\n   - Separates personal and business money\n\n2. TRACK ALL PAYMENT FEES as deductible expenses\n   - PayPal: Take screenshots of fee deductions monthly\n   - Stripe/Razorpay: Download monthly statements\n   - These are legitimate business expenses\n\n3. DOCUMENT YOUR FIRC/PAYMENT PROOF\n   - Every international payment should generate an FIRC from your bank\n   - Ask your bank for FIRC or download from net banking\n   - Required for LRS compliance and potential tax scrutiny",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0015",
+    "char_count": 567,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "4. QUARTERLY ADVANCE TAX (if income > INR 1 lakh/year from freelancing)\n   - Estimate annual income\n   - Pay 15%/45%/75%/100% by the due dates\n   - Avoids interest penalties\n\n5. MAINTAIN SIMPLE BOOKS:\n   - Date of payment\n   - Amount in foreign currency\n   - Amount converted to INR (exchange rate)\n   - Platform fees deducted\n   - Net amount received\n   - Excel sheet is sufficient for presumptive taxation scheme",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0016",
+    "char_count": 414,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "6. CONSIDER HIRING A CA ONCE YOU CROSS INR 5 LAKH ANNUAL INCOME\n   - Cost: INR 3,000 to 10,000 per year for basic filing\n   - Worth it for compliance peace of mind\n   - Can find one at ClearTax, IndiaFilings, or local CA",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0017",
+    "char_count": 220,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nCOMMON MISTAKES FREELANCERS MAKE\n=======================================================================",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0018",
+    "char_count": 176,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "MISTAKE 1: Not reporting foreign income\n- All foreign income is taxable in India\n- Income Tax dept can track inward remittances through banking data\n- Penalty for under-reporting: 50% to 200% of tax due\n\nMISTAKE 2: Confusing TCS and TDS\n- TCS (Tax Collected at Source): On outward remittances (sending money abroad)\n- TDS (Tax Deducted at Source): Indian clients deduct from payments to you\n- Foreign clients do NOT deduct Indian TDS\n\nMISTAKE 3: Not saving FIRCs\n- FIRC is your proof of export of services\n- Required if GST department asks for proof\n- Keep digital copies of all FIRCs for 7 years",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0019",
+    "char_count": 596,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "MISTAKE 4: Thinking PayPal fees are not taxable expenses\n- PayPal fees are legitimate business expenses\n- Document: Amount received before fees, fees deducted, net received\n- Deductible under PGBP (Profits and Gains from Business/Profession)\n\nMISTAKE 5: Not filing advance tax on time\n- Even if you're in 0% slab, file advance tax return as nil if applicable\n- Non-filing can attract notices even for zero tax",
+    "source": "india_tax_compliance",
+    "chunk_id": "india_tax_compliance_chunk_0020",
+    "char_count": 409,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
     "text": "CHARGECLARITY KNOWLEDGE BASE — Payment Platform Fees\nSource: Official fee pages (PayPal, Stripe, Razorpay) — compiled manually\nLast updated: March 2026\n=======================================================================\n\n=======================================================================\nPAYPAL INDIA — FEE STRUCTURE\nSource: https://www.paypal.com/in/webapps/mpp/paypal-fees\n=======================================================================",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0000",
-    "char_count": 455
+    "char_count": 455,
+    "source_type": "commercial",
+    "has_fee_table": true
   },
   {
     "text": "DOMESTIC TRANSACTIONS (sender and receiver both in India):\n- Sending money to friends/family (personal): No fee if funded by PayPal balance or bank account\n- Receiving money for goods/services (commercial): 2.5% of transaction amount",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0001",
-    "char_count": 233
+    "char_count": 233,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
     "text": "INTERNATIONAL TRANSACTIONS (sender and receiver in different countries):\n- Definition: A transaction where sender and receiver are registered in different markets/countries\n- Base transaction fee: 4.4% of the amount received\n- Fixed fee: Varies by currency (e.g., 0.30 USD for USD transactions)\n- Additional currency conversion fee: 3% to 4% above the base exchange rate",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0002",
-    "char_count": 370
+    "char_count": 370,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
     "text": "CURRENCY CONVERSION:\n- PayPal adds a fee ABOVE the base exchange rate (mid-market rate)\n- For most currencies: 3% above base exchange rate\n- For some currencies: 4% above base exchange rate\n- Example: If base rate is 1 USD = 83 INR, PayPal rate may be 1 USD = 80.5 INR (approx 3% spread)\n- This conversion fee is how PayPal makes money on currency exchange",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0003",
-    "char_count": 356
+    "char_count": 356,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
     "text": "RECEIVING PAYMENTS FROM ABROAD (e.g., from Outlier AI, US clients):\n- You pay: 4.4% transaction fee + fixed fee + currency conversion spread\n- Example: Receive USD 100 → PayPal deducts ~4.4% = USD 4.40 → then converts remaining at 3% below market rate\n- Total effective cost: approximately 7-8% of the received amount\n\nPAYPAL WITHDRAWAL TO INDIAN BANK:\n- Withdrawing INR to Indian bank: Free (if above minimum threshold)\n- Minimum withdrawal: INR 100\n- Processing time: 3-5 business days",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0004",
-    "char_count": 487
+    "char_count": 487,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "PAYPAL DISPUTE/CHARGEBACK FEE:\n- If a buyer files a claim and wins: Seller pays USD 20 (or local equivalent) chargeback fee\n- This is in addition to refunding the transaction amount\n\n=======================================================================\nSTRIPE INDIA — FEE STRUCTURE\nSource: https://stripe.com/in/pricing\n=======================================================================",
+    "text": "PAYPAL DISPUTE/CHARGEBACK FEE:\n- If a buyer files a claim and wins: Seller pays USD 20 (or local equivalent) chargeback fee\n- This is in addition to refunding the transaction amount",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0005",
-    "char_count": 393
+    "char_count": 181,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nSTRIPE INDIA — FEE STRUCTURE\nSource: https://stripe.com/in/pricing\n=======================================================================",
+    "source": "payment_fees_manual",
+    "chunk_id": "payment_fees_manual_chunk_0006",
+    "char_count": 210,
+    "source_type": "commercial",
+    "has_fee_table": true
   },
   {
     "text": "STANDARD PRICING (Pay-as-you-go):\n- Cards issued in India: 2% per transaction\n- Cards issued outside India (international cards): 3% per transaction\n- No setup fees, no monthly fees, no hidden fees\n- No closure fees\n\nCURRENCY CONVERSION:\n- If currency conversion is required: Additional 2% fee on top of transaction fee\n- Example: Indian customer paying with USD card → 3% (international) + 2% (conversion) = 5% total",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0006",
-    "char_count": 417
-  },
-  {
-    "text": "SPECIFIC PAYMENT METHODS:\n- UPI payments in India: 2% per transaction (same as domestic cards)\n- Net Banking: 2% per transaction\n- Cards (Visa/Mastercard/RuPay issued in India): 2% per transaction\n- American Express: Higher rates apply (contact Stripe)\n\nFAILED PAYMENTS:\n- Stripe does NOT charge for failed payment attempts\n- You only pay fees on successful transactions",
-    "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0007",
-    "char_count": 370
+    "char_count": 417,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "DISPUTES AND CHARGEBACKS:\n- Dispute fee: USD 15 per dispute (approximately INR 1,250)\n- Fee is refunded if you win the dispute\n- Dispute fee applies regardless of transaction currency\n\nPAYOUTS (receiving your Stripe balance):\n- Standard payout to Indian bank: Free\n- Payout schedule: T+2 (2 business days after transaction)\n- Instant payouts: Available for eligible accounts, small fee applies",
+    "text": "SPECIFIC PAYMENT METHODS:\n- UPI payments in India: 2% per transaction (same as domestic cards)\n- Net Banking: 2% per transaction\n- Cards (Visa/Mastercard/RuPay issued in India): 2% per transaction\n- American Express: Higher rates apply (contact Stripe)\n\nFAILED PAYMENTS:\n- Stripe does NOT charge for failed payment attempts\n- You only pay fees on successful transactions\n\nDISPUTES AND CHARGEBACKS:\n- Dispute fee: USD 15 per dispute (approximately INR 1,250)\n- Fee is refunded if you win the dispute\n- Dispute fee applies regardless of transaction currency",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0008",
-    "char_count": 393
+    "char_count": 555,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "STRIPE RADAR (Fraud detection):\n- Included free with standard pricing\n- Advanced Radar: USD 0.02 per transaction additional fee\n\n=======================================================================\nRAZORPAY INDIA — FEE STRUCTURE\nSource: https://razorpay.com/pricing/\n=======================================================================\n\nSTANDARD PRICING:\n- All domestic transactions: 2% per transaction\n- International cards: 3% per transaction\n- No setup fee for standard account",
+    "text": "PAYOUTS (receiving your Stripe balance):\n- Standard payout to Indian bank: Free\n- Payout schedule: T+2 (2 business days after transaction)\n- Instant payouts: Available for eligible accounts, small fee applies\n\nSTRIPE RADAR (Fraud detection):\n- Included free with standard pricing\n- Advanced Radar: USD 0.02 per transaction additional fee",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0009",
-    "char_count": 486
+    "char_count": 337,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "PAYMENT METHOD BREAKDOWN:\n- UPI (BHIM, Google Pay, PhonePe via Razorpay): 0% fee (as per NPCI guidelines, UPI is free for peer-to-peer; merchant rates apply for business)\n- Net Banking: 2% per transaction\n- Credit/Debit Cards (Domestic): 2% per transaction\n- Credit/Debit Cards (International): 3% per transaction\n- Wallets (Paytm, MobiKwik, etc.): 2% per transaction\n- EMI transactions: 2% + EMI processing fee",
+    "text": "=======================================================================\nRAZORPAY INDIA — FEE STRUCTURE\nSource: https://razorpay.com/pricing/\n=======================================================================",
     "source": "payment_fees_manual",
     "chunk_id": "payment_fees_manual_chunk_0010",
-    "char_count": 411
+    "char_count": 212,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "STANDARD PRICING:\n- All domestic transactions: 2% per transaction\n- International cards: 3% per transaction\n- No setup fee for standard account\n\nPAYMENT METHOD BREAKDOWN:\n- UPI (BHIM, Google Pay, PhonePe via Razorpay): 0% fee (as per NPCI guidelines, UPI is free for peer-to-peer; merchant rates apply for business)\n- Net Banking: 2% per transaction\n- Credit/Debit Cards (Domestic): 2% per transaction\n- Credit/Debit Cards (International): 3% per transaction\n- Wallets (Paytm, MobiKwik, etc.): 2% per transaction\n- EMI transactions: 2% + EMI processing fee",
+    "source": "payment_fees_manual",
+    "chunk_id": "payment_fees_manual_chunk_0011",
+    "char_count": 556,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
     "text": "GST ON FEES:\n- All Razorpay fees are subject to 18% GST\n- Example: 2% fee on INR 1000 = INR 20 → GST on INR 20 = INR 3.60 → Total deducted = INR 23.60\n\nINSTANT SETTLEMENTS:\n- Standard settlement: T+2 (2 business days)\n- Instant settlement available: 0.25% to 1.5% additional fee depending on plan\n- Razorpay X (current account): Free instant settlement\n\nREFUNDS:\n- Full refunds: No fee charged (Razorpay refunds the transaction fee too)\n- Partial refunds: Transaction fee not refunded",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0011",
-    "char_count": 484
+    "chunk_id": "payment_fees_manual_chunk_0012",
+    "char_count": 484,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "INTERNATIONAL PAYMENTS ACCEPTANCE:\n- Accept international cards: 3% fee\n- Requires additional KYC and activation\n- Currency conversion handled by bank at prevailing rates\n\n=======================================================================\nNPCI / UPI — FEE STRUCTURE\nSource: NPCI guidelines\n=======================================================================",
+    "text": "INTERNATIONAL PAYMENTS ACCEPTANCE:\n- Accept international cards: 3% fee\n- Requires additional KYC and activation\n- Currency conversion handled by bank at prevailing rates",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0012",
-    "char_count": 366
+    "chunk_id": "payment_fees_manual_chunk_0013",
+    "char_count": 170,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nNPCI / UPI — FEE STRUCTURE\nSource: NPCI guidelines\n=======================================================================",
+    "source": "payment_fees_manual",
+    "chunk_id": "payment_fees_manual_chunk_0014",
+    "char_count": 194,
+    "source_type": "commercial",
+    "has_fee_table": true
   },
   {
     "text": "PEER-TO-PEER (P2P) UPI TRANSFERS:\n- Sending money to a person via UPI (Google Pay, PhonePe, BHIM): FREE\n- No transaction fee for amounts up to INR 1 lakh per transaction\n- No daily limit fee\n\nMERCHANT PAYMENTS (P2M) via UPI:\n- Transactions below INR 2,000: FREE (0% MDR as per RBI mandate)\n- Transactions above INR 2,000: Up to 0.3% MDR (Merchant Discount Rate) may apply\n- Prepaid Payment Instruments (PPI wallets) via UPI: 1.1% MDR above INR 2,000",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0013",
-    "char_count": 449
+    "chunk_id": "payment_fees_manual_chunk_0015",
+    "char_count": 449,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "FAILED TRANSACTION REVERSAL:\n- Failed UPI transactions: Amount reversed within 2-3 business days\n- No charge for failed transactions\n- Bank may charge for excess failed transaction attempts in some cases\n\n=======================================================================\nCOMMON FEE TERMS EXPLAINED\n=======================================================================",
+    "text": "FAILED TRANSACTION REVERSAL:\n- Failed UPI transactions: Amount reversed within 2-3 business days\n- No charge for failed transactions\n- Bank may charge for excess failed transaction attempts in some cases",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0014",
-    "char_count": 375
+    "chunk_id": "payment_fees_manual_chunk_0016",
+    "char_count": 203,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "=======================================================================\nCOMMON FEE TERMS EXPLAINED\n=======================================================================",
+    "source": "payment_fees_manual",
+    "chunk_id": "payment_fees_manual_chunk_0017",
+    "char_count": 170,
+    "source_type": "commercial",
+    "has_fee_table": true
   },
   {
     "text": "MDR (Merchant Discount Rate):\n- The fee a merchant pays to accept digital payments\n- Charged as a percentage of each transaction\n- Split between payment gateway, acquiring bank, and card network\n\nTransaction Exchange Rate:\n- The rate at which PayPal/Stripe converts your money\n- Always slightly worse than the mid-market (interbank) rate\n- The difference between mid-market rate and the offered rate IS the currency conversion fee",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0015",
-    "char_count": 430
+    "chunk_id": "payment_fees_manual_chunk_0018",
+    "char_count": 430,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Chargeback:\n- When a customer disputes a transaction with their bank\n- Bank reverses the charge and the merchant is debited\n- Merchant also pays a chargeback fee to the payment gateway\n\nSettlement:\n- When the payment gateway transfers collected money to your bank account\n- Standard settlement: T+2 (2 business days after transaction date)\n- Instant settlement: Same day or next day, usually for an extra fee",
+    "text": "Chargeback:\n- When a customer disputes a transaction with their bank\n- Bank reverses the charge and the merchant is debited\n- Merchant also pays a chargeback fee to the payment gateway\n\nSettlement:\n- When the payment gateway transfers collected money to your bank account\n- Standard settlement: T+2 (2 business days after transaction date)\n- Instant settlement: Same day or next day, usually for an extra fee\n\nPPI (Prepaid Payment Instrument):\n- Prepaid wallets like Paytm, MobiKwik\n- Loaded in advance and used for payments\n- Subject to different fee structures than bank-linked UPI",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0016",
-    "char_count": 408
+    "chunk_id": "payment_fees_manual_chunk_0019",
+    "char_count": 583,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "PPI (Prepaid Payment Instrument):\n- Prepaid wallets like Paytm, MobiKwik\n- Loaded in advance and used for payments\n- Subject to different fee structures than bank-linked UPI\n\nGST on Payment Fees:\n- All payment processing fees in India attract 18% GST\n- This is charged ON TOP of the base fee\n- Example: 2% base fee on INR 10,000 = INR 200 → GST = INR 36 → Total fee = INR 236",
+    "text": "GST on Payment Fees:\n- All payment processing fees in India attract 18% GST\n- This is charged ON TOP of the base fee\n- Example: 2% base fee on INR 10,000 = INR 200 → GST = INR 36 → Total fee = INR 236",
     "source": "payment_fees_manual",
-    "chunk_id": "payment_fees_manual_chunk_0017",
-    "char_count": 375
+    "chunk_id": "payment_fees_manual_chunk_0020",
+    "char_count": 200,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "PayPal Fees for Customers | PayPal IN\nPayPal Consumer Fees\nBuying and sending money can be easy, fast, and secure when using PayPal.\nIn an effort to provide customers access to critical funds, PayPal will be temporarily waiving some of its fees for customers sending funds to Ukrainian PayPal accounts or receiving funds into Ukrainian PayPal accounts until further notice. Exchange rates or fees charged by a customer's card issuer or bank may still apply. Please see the",
+    "text": "PayPal Fees for Customers | PayPal IN\nPayPal Consumer Fees\nBuying and sending money can be easy, fast, and secure when using PayPal.\nIn an effort to provide customers access to critical funds, PayPal will be temporarily waiving some of its fees for customers sending funds to Ukrainian PayPal accounts or receiving funds into Ukrainian PayPal accounts until further notice. Exchange rates or fees charged by a customer's card issuer or bank may still apply. Please see the\nfees for Ukrainian personal accounts page\nand\nthis Help Center article",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0000",
-    "char_count": 472
+    "char_count": 543,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "fees for Ukrainian personal accounts page\nand\nthis Help Center article\nfor updates and more information about our services for Ukrainian customers.\nDownload printable PDF\nConsumer Fees Menu\nRelevant Market/Region\nBuying with PayPal\nSelling with PayPal\nCurrency Conversions\nWithdrawal Out of PayPal\nOther Consumer Fees\nLast Updated: 31, May 2021\nYou can find details about changes to our rates and fees and when they will apply on our\nPolicy Updates Page",
+    "text": "fees for Ukrainian personal accounts page\nand\nthis Help Center article\nfor updates and more information about our services for Ukrainian customers.\nDownload printable PDF\nConsumer Fees Menu\nRelevant Market/Region\nBuying with PayPal\nSelling with PayPal\nCurrency Conversions\nWithdrawal Out of PayPal\nOther Consumer Fees\nLast Updated: 31, May 2021\nYou can find details about changes to our rates and fees and when they will apply on our\nPolicy Updates Page\n. You can also view these changes by clicking ‘Legal’ at the bottom of any web-page and then selecting ‘Policy Updates’.\nDomestic",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0001",
-    "char_count": 453
+    "char_count": 583,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Policy Updates Page\n. You can also view these changes by clicking ‘Legal’ at the bottom of any web-page and then selecting ‘Policy Updates’.\nDomestic\nA transaction occurring when both the sender and receiver are registered with or identified by PayPal as residents of the same market.\nInternational",
+    "text": "Domestic\nA transaction occurring when both the sender and receiver are registered with or identified by PayPal as residents of the same market.\nInternational\nA transaction occurring when the sender and receiver are registered with or identified by PayPal as residents of different markets. Certain markets are grouped together when calculating international transaction rates. For a listing of our groupings, please access our\nMarket/Region Grouping Table\n.\nFor India users, we only support international payments.\nMarket Code Table",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0002",
-    "char_count": 298
+    "char_count": 532,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "International\nA transaction occurring when the sender and receiver are registered with or identified by PayPal as residents of different markets. Certain markets are grouped together when calculating international transaction rates. For a listing of our groupings, please access our\nMarket/Region Grouping Table\n.\nFor India users, we only support international payments.\nMarket Code Table",
+    "text": "Market/Region Grouping Table\n.\nFor India users, we only support international payments.\nMarket Code Table\nWe may refer to two-letter market codes throughout our fee pages. For a complete listing of PayPal market codes, please access our\nMarket Code Table\n.\nRelevant Market/Region\nRates published below apply to PayPal accounts of residents of the following market/region:\nMarket/Region list\nIndia (IN)\nBuying with PayPal\nIt’s free to use PayPal to pay for a purchase or any other type of commercial transaction unless it involves a currency conversion.\nOnline or in-store",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0003",
-    "char_count": 388
+    "char_count": 571,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Market Code Table\nWe may refer to two-letter market codes throughout our fee pages. For a complete listing of PayPal market codes, please access our\nMarket Code Table\n.\nRelevant Market/Region\nRates published below apply to PayPal accounts of residents of the following market/region:\nMarket/Region list\nIndia (IN)\nBuying with PayPal\nIt’s free to use PayPal to pay for a purchase or any other type of commercial transaction unless it involves a currency conversion.\nOnline or in-store",
+    "text": "Online or in-store\nFee Table: Online or in-store\nRate\nNo Fee (when no\ncurrency conversion\nis involved)\nSelling with PayPal\nWhen you buy or sell goods or services, make any other commercial type of transaction, send or receive a charity donation or receive a payment when you “request money” using PayPal, we call that a “commercial transaction”.\nFor the listings of selling rates, please visit our\nPayPal Merchant Fees Page\n.\nCurrency Conversions\nFor information about how we convert currency, please see the\nuser agreement\n.\nThe\ntransaction exchange rate",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0004",
-    "char_count": 483
+    "char_count": 555,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Online or in-store\nFee Table: Online or in-store\nRate\nNo Fee (when no\ncurrency conversion\nis involved)\nSelling with PayPal\nWhen you buy or sell goods or services, make any other commercial type of transaction, send or receive a charity donation or receive a payment when you “request money” using PayPal, we call that a “commercial transaction”.\nFor the listings of selling rates, please visit our\nPayPal Merchant Fees Page\n.\nCurrency Conversions\nFor information about how we convert currency, please see the",
+    "text": "For information about how we convert currency, please see the\nuser agreement\n.\nThe\ntransaction exchange rate\nused for your currency conversion includes a fee which we charge above the\nbase exchange rate\n. The fee depends on the type of currency conversion, as follows:\nConverting balance and payments received into another currency\nFee Table: Converting balance and payments received into another currency\nRate\n3.0% above the base exchange rate (to form the transaction exchange rate)\nConversions in all other cases\nRates for all other currency conversions:\nFee Table: Conversions in all other cases",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0005",
-    "char_count": 508
+    "char_count": 599,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "For information about how we convert currency, please see the\nuser agreement\n.\nThe\ntransaction exchange rate\nused for your currency conversion includes a fee which we charge above the\nbase exchange rate\n. The fee depends on the type of currency conversion, as follows:\nConverting balance and payments received into another currency\nFee Table: Converting balance and payments received into another currency\nRate\n3.0% above the base exchange rate (to form the transaction exchange rate)",
+    "text": "Conversions in all other cases\nRates for all other currency conversions:\nFee Table: Conversions in all other cases\nCurrency\nRate above the base exchange rate (to form the transaction exchange rate)\nCurrency\nRate above the base exchange rate (to form the transaction exchange rate)\nAustralian dollar (AUD)\n4.00%\nNew Taiwan dollar (TWD)\n4.00%\nBrazilian real (BRL)\n4.00%\nNew Zealand dollar (NZD)\n4.00%\nCanadian dollar (CAD)\n4.00%\nNorwegian krone (NOK)\n4.00%\nCzech koruna (CZK)\n4.00%\nPhilippine peso (PHP)\n4.00%\nDanish krone (DKK)\n4.00%\nPolish zloty (PLN)\n4.00%\nEuro (EUR)\n4.00%\nRussian ruble (RUB)",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0006",
-    "char_count": 484
+    "char_count": 594,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Conversions in all other cases\nRates for all other currency conversions:\nFee Table: Conversions in all other cases\nCurrency\nRate above the base exchange rate (to form the transaction exchange rate)\nCurrency\nRate above the base exchange rate (to form the transaction exchange rate)\nAustralian dollar (AUD)\n4.00%\nNew Taiwan dollar (TWD)\n4.00%\nBrazilian real (BRL)\n4.00%\nNew Zealand dollar (NZD)\n4.00%\nCanadian dollar (CAD)\n4.00%\nNorwegian krone (NOK)\n4.00%\nCzech koruna (CZK)\n4.00%\nPhilippine peso (PHP)\n4.00%",
+    "text": "4.00%\nPhilippine peso (PHP)\n4.00%\nDanish krone (DKK)\n4.00%\nPolish zloty (PLN)\n4.00%\nEuro (EUR)\n4.00%\nRussian ruble (RUB)\n4.00%\nHong Kong dollar (HKD)\n4.00%\nSingapore dollar (SGD)\n4.00%\nHungarian forint (HUF)\n4.00%\nSwedish krona (SEK)\n4.00%\nIndian Rupee (INR)\n4.00%\nSwiss franc (CHF)\n4.00%\nIsraeli new shekel (ILS)\n4.00%\nThai baht (THB)\n4.00%\nJapanese yen (JPY)\n4.00%\nUK pounds sterling (GBP)\n4.00%\nMalaysian ringgit (MYR)\n4.00%\nUS dollar (USD)\n4.00%\nMexican peso (MXN)\n4.00%\nWithdrawals Out of PayPal",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0007",
-    "char_count": 507
+    "char_count": 500,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "4.00%\nCzech koruna (CZK)\n4.00%\nPhilippine peso (PHP)\n4.00%\nDanish krone (DKK)\n4.00%\nPolish zloty (PLN)\n4.00%\nEuro (EUR)\n4.00%\nRussian ruble (RUB)\n4.00%\nHong Kong dollar (HKD)\n4.00%\nSingapore dollar (SGD)\n4.00%\nHungarian forint (HUF)\n4.00%\nSwedish krona (SEK)\n4.00%\nIndian Rupee (INR)\n4.00%\nSwiss franc (CHF)\n4.00%\nIsraeli new shekel (ILS)\n4.00%\nThai baht (THB)\n4.00%\nJapanese yen (JPY)\n4.00%\nUK pounds sterling (GBP)\n4.00%\nMalaysian ringgit (MYR)\n4.00%\nUS dollar (USD)\n4.00%\nMexican peso (MXN)\n4.00%",
+    "text": "4.00%\nMalaysian ringgit (MYR)\n4.00%\nUS dollar (USD)\n4.00%\nMexican peso (MXN)\n4.00%\nWithdrawals Out of PayPal\nYou can typically withdraw money out of PayPal by standard withdrawal/transfers to your linked bank account or eligible debit cards. A currency conversion (and\ncurrency conversion fees\n) may also apply.\nNote: For additional listings of transfer rates out of business accounts, please visit our\nPayPal Merchant Fees Page\n.\nWithdrawing a balance from a personal PayPal account\nFee Table: Withdrawing a balance from a personal PayPal account\nWithdrawal/Transfer to\nWithdrawal/Transfer Type",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0008",
-    "char_count": 499
+    "char_count": 595,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "4.00%\nUS dollar (USD)\n4.00%\nMexican peso (MXN)\n4.00%\nWithdrawals Out of PayPal\nYou can typically withdraw money out of PayPal by standard withdrawal/transfers to your linked bank account or eligible debit cards. A currency conversion (and\ncurrency conversion fees\n) may also apply.\nNote: For additional listings of transfer rates out of business accounts, please visit our\nPayPal Merchant Fees Page\n.\nWithdrawing a balance from a personal PayPal account",
+    "text": "Fee Table: Withdrawing a balance from a personal PayPal account\nWithdrawal/Transfer to\nWithdrawal/Transfer Type\nRate\nBank account\nStandard\nNo Fee (when no\ncurrency conversion\nis involved)\nOther Consumer Fees\nIncluded below are fees associated with events, requests, or actions that may happen when you use your account.\nOther Fees\nFee Table: Other Fees\nActivity\nDescription\nRate\nBank Return on Withdrawal/Transfer out of PayPal",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0009",
-    "char_count": 453
+    "char_count": 427,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": ".\nWithdrawing a balance from a personal PayPal account\nFee Table: Withdrawing a balance from a personal PayPal account\nWithdrawal/Transfer to\nWithdrawal/Transfer Type\nRate\nBank account\nStandard\nNo Fee (when no\ncurrency conversion\nis involved)\nOther Consumer Fees\nIncluded below are fees associated with events, requests, or actions that may happen when you use your account.\nOther Fees\nFee Table: Other Fees\nActivity\nDescription\nRate\nBank Return on Withdrawal/Transfer out of PayPal",
+    "text": "Other Fees\nFee Table: Other Fees\nActivity\nDescription\nRate\nBank Return on Withdrawal/Transfer out of PayPal\nThis fee is charged when a withdrawal/transfer out of PayPal is attempted by a user and it fails because incorrect bank account information or delivery information is provided.\n250.00 INR",
     "source": "paypal_fees_india",
     "chunk_id": "paypal_fees_india_chunk_0010",
-    "char_count": 482
+    "char_count": 295,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Rate\nBank Return on Withdrawal/Transfer out of PayPal\nThis fee is charged when a withdrawal/transfer out of PayPal is attempted by a user and it fails because incorrect bank account information or delivery information is provided.\n250.00 INR",
-    "source": "paypal_fees_india",
-    "chunk_id": "paypal_fees_india_chunk_0011",
-    "char_count": 241
+    "text": "PayPal Fees for Customers | PayPal IN\nPayPal Consumer Fees\nBuying and sending money can be easy, fast, and secure when using PayPal.\nIn an effort to provide customers access to critical funds, PayPal will be temporarily waiving some of its fees for customers sending funds to Ukrainian PayPal accounts or receiving funds into Ukrainian PayPal accounts until further notice. Exchange rates or fees charged by a customer's card issuer or bank may still apply. Please see the\nfees for Ukrainian personal accounts page\nand\nthis Help Center article",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0000",
+    "char_count": 543,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "fees for Ukrainian personal accounts page\nand\nthis Help Center article\nfor updates and more information about our services for Ukrainian customers.\nDownload printable PDF\nRelevant Market/Region\nBuying with PayPal\nSelling with PayPal\nCurrency Conversions\nWithdrawal Out of PayPal\nOther Consumer Fees\nLast Updated: 31, May 2021\nYou can find details about changes to our rates and fees and when they will apply on our\nPolicy Updates Page\n. You can also view these changes by clicking ‘Legal’ at the bottom of any web-page and then selecting ‘Policy Updates’.\nDomestic",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0001",
+    "char_count": 564,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Domestic\nA transaction occurring when both the sender and receiver are registered with or identified by PayPal as residents of the same market.\nInternational\nA transaction occurring when the sender and receiver are registered with or identified by PayPal as residents of different markets. Certain markets are grouped together when calculating international transaction rates. For a listing of our groupings, please access our\nMarket/Region Grouping Table\n.\nFor India users, we only support international payments.\nMarket Code Table",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0002",
+    "char_count": 532,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Market/Region Grouping Table\n.\nFor India users, we only support international payments.\nMarket Code Table\nWe may refer to two-letter market codes throughout our fee pages. For a complete listing of PayPal market codes, please access our\nMarket Code Table\n.\nRelevant Market/Region\nRates published below apply to PayPal accounts of residents of the following market/region:\nMarket/Region list\nIndia (IN)\nBuying with PayPal\nIt’s free to use PayPal to pay for a purchase or any other type of commercial transaction unless it involves a currency conversion.\nOnline or in-store",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0003",
+    "char_count": 571,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Online or in-store\nFee Table: Online or in-store\nRate\nNo Fee (when no\ncurrency conversion\nis involved)\nSelling with PayPal\nWhen you buy or sell goods or services, make any other commercial type of transaction, send or receive a charity donation or receive a payment when you “request money” using PayPal, we call that a “commercial transaction”.\nFor the listings of selling rates, please visit our\nPayPal Merchant Fees Page\n.\nCurrency Conversions\nFor information about how we convert currency, please see the\nuser agreement\n.\nThe\ntransaction exchange rate",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0004",
+    "char_count": 555,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "For information about how we convert currency, please see the\nuser agreement\n.\nThe\ntransaction exchange rate\nused for your currency conversion includes a fee which we charge above the\nbase exchange rate\n. The fee depends on the type of currency conversion, as follows:\nConverting balance and payments received into another currency\nFee Table: Converting balance and payments received into another currency\nRate\n3.0% above the base exchange rate (to form the transaction exchange rate)\nConversions in all other cases\nRates for all other currency conversions:\nFee Table: Conversions in all other cases",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0005",
+    "char_count": 599,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Conversions in all other cases\nRates for all other currency conversions:\nFee Table: Conversions in all other cases\nCurrency\nRate above the base exchange rate (to form the transaction exchange rate)\nCurrency\nRate above the base exchange rate (to form the transaction exchange rate)\nAustralian dollar (AUD)\n4.00%\nNew Taiwan dollar (TWD)\n4.00%\nBrazilian real (BRL)\n4.00%\nNew Zealand dollar (NZD)\n4.00%\nCanadian dollar (CAD)\n4.00%\nNorwegian krone (NOK)\n4.00%\nCzech koruna (CZK)\n4.00%\nPhilippine peso (PHP)\n4.00%\nDanish krone (DKK)\n4.00%\nPolish zloty (PLN)\n4.00%\nEuro (EUR)\n4.00%\nRussian ruble (RUB)",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0006",
+    "char_count": 594,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "4.00%\nPhilippine peso (PHP)\n4.00%\nDanish krone (DKK)\n4.00%\nPolish zloty (PLN)\n4.00%\nEuro (EUR)\n4.00%\nRussian ruble (RUB)\n4.00%\nHong Kong dollar (HKD)\n4.00%\nSingapore dollar (SGD)\n4.00%\nHungarian forint (HUF)\n4.00%\nSwedish krona (SEK)\n4.00%\nIndian Rupee (INR)\n4.00%\nSwiss franc (CHF)\n4.00%\nIsraeli new shekel (ILS)\n4.00%\nThai baht (THB)\n4.00%\nJapanese yen (JPY)\n4.00%\nUK pounds sterling (GBP)\n4.00%\nMalaysian ringgit (MYR)\n4.00%\nUS dollar (USD)\n4.00%\nMexican peso (MXN)\n4.00%\nWithdrawals Out of PayPal",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0007",
+    "char_count": 500,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "4.00%\nMalaysian ringgit (MYR)\n4.00%\nUS dollar (USD)\n4.00%\nMexican peso (MXN)\n4.00%\nWithdrawals Out of PayPal\nYou can typically withdraw money out of PayPal by standard withdrawal/transfers to your linked bank account or eligible debit cards. A currency conversion (and\ncurrency conversion fees\n) may also apply.\nNote: For additional listings of transfer rates out of business accounts, please visit our\nPayPal Merchant Fees Page\n.\nWithdrawing a balance from a personal PayPal account\nFee Table: Withdrawing a balance from a personal PayPal account\nWithdrawal/Transfer to\nWithdrawal/Transfer Type",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0008",
+    "char_count": 595,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Fee Table: Withdrawing a balance from a personal PayPal account\nWithdrawal/Transfer to\nWithdrawal/Transfer Type\nRate\nBank account\nStandard\nNo Fee (when no\ncurrency conversion\nis involved)\nOther Consumer Fees\nIncluded below are fees associated with events, requests, or actions that may happen when you use your account.\nOther Fees\nFee Table: Other Fees\nActivity\nDescription\nRate\nBank Return on Withdrawal/Transfer out of PayPal",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0009",
+    "char_count": 427,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Other Fees\nFee Table: Other Fees\nActivity\nDescription\nRate\nBank Return on Withdrawal/Transfer out of PayPal\nThis fee is charged when a withdrawal/transfer out of PayPal is attempted by a user and it fails because incorrect bank account information or delivery information is provided.\n250.00 INR",
+    "source": "paypal_fees_live",
+    "chunk_id": "paypal_fees_live_chunk_0010",
+    "char_count": 295,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PAYPAL INDIA — FEE STRUCTURE\nSource: PayPal India official fee page",
+    "source": "paypal_india_fees",
+    "chunk_id": "paypal_india_fees_chunk_0000",
+    "char_count": 67,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nPAYPAL FEES FOR INDIA (RECEIVING PAYMENTS)\n========================================\nReceiving from within India:\n  Standard: 2.5% + ₹3 per transaction",
+    "source": "paypal_india_fees",
+    "chunk_id": "paypal_india_fees_chunk_0001",
+    "char_count": 191,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "Receiving international payments (export/freelance):\n  Standard commercial rate: 4.4% + fixed fee\n  Fixed fee by currency:\n    USD: $0.30\n    GBP: £0.20\n    EUR: €0.35\n    CAD: $0.30\n\nTOTAL EFFECTIVE DEDUCTION on international payment:\n  Currency conversion: ~3-4% spread over mid-market rate\n  Transaction fee: 4.4% + fixed fee\n  Total loss: ~7-8% on international payments is common\n\nPayPal Currency Conversion:\n  PayPal applies a currency conversion spread (markup) over the base exchange rate.\n  This is typically 3% to 4% above the mid-market rate.\n  This is separate from the transaction fee.",
+    "source": "paypal_india_fees",
+    "chunk_id": "paypal_india_fees_chunk_0002",
+    "char_count": 598,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "WhY PayPal Feels Expensive:\n  1. Transaction fee (4.4%)\n  2. Currency conversion markup (3-4%)\n  3. Fixed per-transaction fee ($0.30 for USD)\n  Combined, receiving USD 100 → you may get ₹7,800-8,100 instead of ~₹8,350\n\nPayPal Withdrawal to Indian Bank Account:\n  Withdrawal fee: FREE (no fee to withdraw to Indian bank)\n  Time: 3-5 business days\n\nPayPal GST in India:\n  18% GST applies on PayPal's service fees (not on the transaction amount)",
+    "source": "paypal_india_fees",
+    "chunk_id": "paypal_india_fees_chunk_0003",
+    "char_count": 442,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PayPal GST in India:\n  18% GST applies on PayPal's service fees (not on the transaction amount)\n\nAlternatives for freelancers receiving international payments:\n  Wise (TransferWise): ~0.5-1% fee, mid-market rate\n  Payoneer: Free for same-currency transfers, 2% for USD withdrawal\n  Razorpay: For domestic business payments",
+    "source": "paypal_india_fees",
+    "chunk_id": "paypal_india_fees_chunk_0004",
+    "char_count": 322,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "PCI-DSS — PAYMENT CARD INDUSTRY DATA SECURITY STANDARD\nSource: PCI Security Standards Council (PCI SSC)\nCurrent Version: PCI DSS v4.0 (released March 2022, mandatory since March 2024)",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0000",
+    "char_count": 183,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nWHAT IS PCI-DSS?\n========================================\nPCI-DSS (Payment Card Industry Data Security Standard) is a set of security\nstandards designed to ensure that ALL companies that accept, process, store,\nor transmit credit card information maintain a secure environment.",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0001",
+    "char_count": 318,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "Created by: Visa, Mastercard, American Express, Discover, JCB (the major card brands)\nGoverned by: PCI Security Standards Council (PCI SSC)\nApplies to: Any entity handling cardholder data — merchants, processors, gateways",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0002",
+    "char_count": 221,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nPCI-DSS COMPLIANCE LEVELS\n========================================\nLevel 1: Over 6 million card transactions per year\n  - Annual on-site audit by Qualified Security Assessor (QSA)\n  - Quarterly network scan by Approved Scanning Vendor (ASV)",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0003",
+    "char_count": 281,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "Level 2: 1 to 6 million transactions per year\n  - Annual Self-Assessment Questionnaire (SAQ)\n  - Quarterly network scan\n\nLevel 3: 20,000 to 1 million e-commerce transactions per year\n  - Annual SAQ\n  - Quarterly network scan\n\nLevel 4: Fewer than 20,000 e-commerce OR up to 1 million other transactions\n  - Annual SAQ\n  - Quarterly network scan (recommended)",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0004",
+    "char_count": 357,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\n12 PCI-DSS REQUIREMENTS\n========================================\n1. Install and maintain a firewall to protect cardholder data\n2. Do not use vendor-supplied defaults for passwords and security parameters\n3. Protect stored cardholder data (encryption, masking)\n4. Encrypt transmission of cardholder data across open, public networks\n5. Use and regularly update anti-virus software\n6. Develop and maintain secure systems and applications\n7. Restrict access to cardholder data on a need-to-know basis\n8. Assign a unique ID to each person with computer access\n9. Restrict physical access to cardholder data\n10. Track and monitor all access to network resources and cardholder data\n11. Regularly test security systems and processes\n12. Maintain an information security policy\n\n========================================\nPCI-DSS IN INDIA — CONTEXT\n========================================\nRBI mandates: All payment aggregators and gateways in India must be\nPCI-DSS certified as per RBI Payment Aggregator guidelines (2020).",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0005",
+    "char_count": 1056,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "Razorpay: PCI-DSS Level 1 certified\nPayU: PCI-DSS Level 1 certified\nPaytm Payment Gateway: PCI-DSS certified\nStripe India: PCI-DSS Level 1 certified\nPayPal India: PCI-DSS Level 1 certified\n\nCOST OF NON-COMPLIANCE:\n  Card brand fines: $5,000 to $100,000 per month\n  Increased transaction fees by acquiring banks\n  Risk of losing ability to process card payments\n  Data breach liability — average breach cost $4.45 million globally",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0006",
+    "char_count": 429,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nTOKENIZATION AND PCI-DSS\n========================================\nTokenization: Replacing card number with a non-sensitive equivalent (token)\nReduces PCI-DSS scope significantly — tokenized data is not cardholder data\nAll major Indian payment gateways use tokenization as per RBI mandate.\nRBI Card-on-File tokenization mandate: Effective October 1, 2022.",
+    "source": "pci_dss_compliance_guide",
+    "chunk_id": "pci_dss_compliance_guide_chunk_0007",
+    "char_count": 395,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "RAZORPAY — FEE STRUCTURE (INDIA)\nSource: Razorpay official pricing page\nCategory: Payment Gateway — India's leading payment gateway",
+    "source": "razorpay_fees_india",
+    "chunk_id": "razorpay_fees_india_chunk_0000",
+    "char_count": 131,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nRAZORPAY STANDARD FEES\n========================================\nDomestic Cards (Debit/Credit):\n  Standard: 2% per transaction\n  International cards: 3% per transaction",
+    "source": "razorpay_fees_india",
+    "chunk_id": "razorpay_fees_india_chunk_0001",
+    "char_count": 208,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "UPI Transactions:\n  UPI (P2M): 0% — FREE as per RBI mandate\n  UPI Autopay: 0.10% for recurring mandates\n\nNet Banking:\n  Most banks: ₹15 flat per transaction (not percentage-based)\n\nWallets:\n  Paytm, PhonePe, Amazon Pay: 2% per transaction\n\nEMI Transactions:\n  Bank EMI: 2% per transaction (EMI plans by bank)\n  Cardless EMI: 3% per transaction\n\nInternational Payments (via Razorpay):\n  3% + currency conversion fee\n\nSettlement Timeline:\n  Standard: T+2 (2 business days after transaction)\n  Early settlement: Available for fee (Razorpay RazorpayX)",
+    "source": "razorpay_fees_india",
+    "chunk_id": "razorpay_fees_india_chunk_0002",
+    "char_count": 547,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "GST: 18% applied on all Razorpay fees\nExample: ₹10,000 transaction at 2% = ₹200 fee + ₹36 GST = ₹236 total deduction\nYou receive: ₹9,764\n\nRazorpay minimum fee: No minimum\nRazorpay monthly fee: ₹0 (no monthly subscription for standard plan)",
+    "source": "razorpay_fees_india",
+    "chunk_id": "razorpay_fees_india_chunk_0003",
+    "char_count": 239,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nRAZORPAY PAYMENT LINKS / PAGES\n========================================\nStandard transaction fee applies\nNo additional fee for payment links\nNo setup cost\n\n========================================\nRAZORPAY INTERNATIONAL ACCEPTANCE\n========================================\nSupports 100+ currencies\nInternational cards: 3% + payment gateway fee\nCross-currency settlements: Available in USD, EUR, GBP, SGD, AED",
+    "source": "razorpay_fees_india",
+    "chunk_id": "razorpay_fees_india_chunk_0004",
+    "char_count": 448,
+    "source_type": "commercial",
+    "has_fee_table": true
+  },
+  {
+    "text": "RBI PAYMENT SYSTEMS — FEE STRUCTURE FOR INDIA\nSource: Reserve Bank of India (RBI) Official Circulars and NPCI Guidelines\nLast updated: 2024",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0000",
+    "char_count": 139,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nNEFT — NATIONAL ELECTRONIC FUNDS TRANSFER\n========================================\nFull form: National Electronic Funds Transfer\nOperated by: Reserve Bank of India (RBI)\nSettlement: Deferred Net Settlement — processes in half-hourly batches\nAvailability: 24x7x365 (since December 16, 2019)\nChannels: Internet banking, mobile banking, bank branches\n\nNEFT CHARGES — OUTWARD TRANSACTIONS (customer sending money):\n  Transaction up to ₹10,000       : ₹2.50 + applicable GST\n  Transaction ₹10,001 to ₹1,00,000 : ₹5.00 + applicable GST\n  Transaction ₹1,00,001 to ₹2,00,000: ₹15.00 + applicable GST\n  Transaction above ₹2,00,000     : ₹25.00 + applicable GST",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0001",
+    "char_count": 692,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "NEFT INWARD CHARGES: FREE — no charge to the beneficiary (receiver)\n\nRBI Waiver: In January 2020, RBI waived processing charges for member banks.\nBanks were directed to pass these savings to customers.\nMost major banks (SBI, HDFC, ICICI, Axis) now offer FREE online NEFT.\nBranch NEFT may still carry the above charges.\n\nNEFT TRANSACTION LIMITS:\n  Minimum: ₹1 (no minimum limit)\n  Maximum: No upper limit set by RBI\n  Note: Individual banks may impose their own limits.\n  Walk-in customers (non-account holders): ₹50,000 per transaction\n\nNEFT INFORMATION REQUIRED:\n  - Beneficiary name\n  - Beneficiary account number\n  - IFSC code of beneficiary bank\n  - Bank name and branch",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0002",
+    "char_count": 674,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nRTGS — REAL TIME GROSS SETTLEMENT\n========================================\nFull form: Real Time Gross Settlement\nOperated by: Reserve Bank of India (RBI)\nSettlement: Real-time (transaction by transaction, immediately)\nPurpose: High-value transactions only\nAvailability: 24x7x365 (since December 14, 2020)\n\nRTGS CHARGES — OUTWARD TRANSACTIONS:\n  Transactions from ₹2,00,000 to ₹5,00,000: ₹24.50 + GST\n  Transactions above ₹5,00,000             : ₹49.50 + GST",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0003",
+    "char_count": 498,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "RTGS INWARD CHARGES: FREE — no charge to the beneficiary\n\nRTGS TRANSACTION LIMITS:\n  Minimum: ₹2,00,000 (₹2 lakh) — RTGS is only for high-value payments\n  Maximum: No upper limit (as per RBI)\n  Individual bank limits may apply.\n\nKEY DIFFERENCE FROM NEFT:\n  NEFT = batch processing every 30 minutes (good for regular payments)\n  RTGS = instant settlement (good for large, urgent payments)\n  Use RTGS when you need money to arrive immediately.\n  Use NEFT when timing is not critical and amounts are smaller.",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0004",
+    "char_count": 505,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nIMPS — IMMEDIATE PAYMENT SERVICE\n========================================\nFull form: Immediate Payment Service\nOperated by: National Payments Corporation of India (NPCI)\nSettlement: Real-time, 24x7x365\nPurpose: Instant fund transfer at any amount\n\nIMPS CHARGES (set by individual banks, not mandated by RBI):\n  Up to ₹10,000       : ₹2.50 to ₹5.00 + GST (varies by bank)\n  ₹10,001 to ₹1 lakh  : ₹5.00 to ₹15.00 + GST\n  ₹1 lakh to ₹2 lakh  : ₹15.00 + GST (typically)\n  Above ₹2 lakh        : ₹25.00 + GST (typically)\n  Via mobile banking   : Often FREE (bank-specific)",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0005",
+    "char_count": 608,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "NOTE: IMPS charges are bank-determined. Many banks offer free IMPS via mobile apps.\nIMPS via USSD (*99#): ₹0.50 per transaction",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0006",
+    "char_count": 127,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "IMPS TRANSACTION LIMITS:\n  Minimum: ₹1\n  Maximum: ₹5,00,000 (₹5 lakh) per transaction as per NPCI\n  Some banks allow up to ₹2 lakh, others ₹5 lakh — check with your bank.",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0007",
+    "char_count": 170,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "IMPS IDENTIFIERS:\n  - MMID + Mobile number (mobile-to-mobile)\n  - Account number + IFSC (account-to-account)\n  - Aadhaar number (Aadhaar-linked)",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0008",
+    "char_count": 144,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "IMPS vs NEFT vs RTGS COMPARISON:\n  Feature         IMPS          NEFT          RTGS\n  Settlement      Instant       30-min batch  Instant\n  Min amount      ₹1            ₹1            ₹2,00,000\n  Max amount      ₹5 lakh       No limit      No limit\n  Availability    24x7          24x7          24x7\n  Typical fee     ₹5-₹15+GST   ₹2.50-₹25+GST ₹24.50-₹49.50+GST\n  Best for        Small-medium  Regular       High-value urgent\n\n========================================\nUPI — UNIFIED PAYMENTS INTERFACE\n========================================\nFull form: Unified Payments Interface\nOperated by: NPCI\nSettlement: Real-time\n\nUPI CHARGES:\n  Person-to-Person (P2P): FREE\n  Person-to-Merchant (P2M): FREE (as per RBI and NPCI directives)\n  Wallets to bank via UPI: FREE up to ₹2,000; ₹1 above ₹2,000 for PPIs",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0009",
+    "char_count": 802,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "MDR (Merchant Discount Rate) on UPI:\n  As of January 2020, RBI mandated ZERO MDR on UPI and RuPay transactions.\n  Merchants cannot be charged for accepting UPI payments.\n\nUPI TRANSACTION LIMITS:\n  Standard: ₹1,00,000 per transaction\n  UPI for capital markets: ₹2,00,000\n  IPO applications: ₹5,00,000\n  Medical/educational: ₹5,00,000",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0010",
+    "char_count": 332,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nGST ON PAYMENT SERVICES\n========================================\nGST Rate on payment processing services: 18%\nApplies to: NEFT fees, RTGS fees, IMPS fees, payment gateway fees\nDoes NOT apply to: The transaction amount itself (only on the service fee)",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0011",
+    "char_count": 291,
+    "source_type": "regulatory",
+    "has_fee_table": true
+  },
+  {
+    "text": "Example:\n  NEFT transfer of ₹50,000 → Fee = ₹5 + 18% GST = ₹5.90 total charge",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0012",
+    "char_count": 77,
+    "source_type": "regulatory",
+    "has_fee_table": false
+  },
+  {
+    "text": "========================================\nCROSS-BORDER / FOREX PAYMENTS\n========================================\nSWIFT charges (international wire transfers):\n  Sending bank fee: ₹500 to ₹1,500 typically\n  Correspondent bank charges: $15-$30 (deducted from amount)\n  Currency conversion markup: 1% to 3.5% over mid-market rate\n\nRBI guidelines on forex:\n  Liberalized Remittance Scheme (LRS): Up to USD 2,50,000 per year per individual\n  TCS (Tax Collected at Source): 20% on remittances above ₹7 lakh per year\n  Form 15CA/15CB required for certain payments",
+    "source": "rbi_neft_rtgs_imps_upi_fees",
+    "chunk_id": "rbi_neft_rtgs_imps_upi_fees_chunk_0013",
+    "char_count": 555,
+    "source_type": "regulatory",
+    "has_fee_table": true
   },
   {
     "text": "Pricing & Fees\nStandard\nAccess a complete payments platform with simple, pay-as-you-go pricing. No setup fees, monthly fees, or hidden fees.\nRequest an invite\n2%\nfor cards issued in India\n3%\nfor cards issued outside India\nCustom\nDesign a custom package – available for businesses with large payments volume or unique business models.\nContact sales\nVolume discounts\nMulti-product discounts\nCountry-specific rates\nOnline and in-person payments, recurring billing, embedded payments, and much more.\nCustom pricing",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0000",
-    "char_count": 510
+    "char_count": 510,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Custom pricing\nOptimise checkout conversion, accept local payment methods, and increase acceptance rates.\nAn online payments platform engineered for growth.\nStart now\nIncrease customer acquisition with 100+ payment methods.\nImprove conversion with Link - Stripe’s accelerated checkout.\nReduce fraud and increase revenue with ML optimisations.\nSave engineering time with pre-built UIs.\nAccept widely used credit and debit cards, prepaid cards, and digital wallets for cards issued domestically.\nLearn more",
+    "text": "Country-specific rates\nOnline and in-person payments, recurring billing, embedded payments, and much more.\nCustom pricing\nOptimise checkout conversion, accept local payment methods, and increase acceptance rates.\nAn online payments platform engineered for growth.\nStart now\nIncrease customer acquisition with 100+ payment methods.\nImprove conversion with Link - Stripe’s accelerated checkout.\nReduce fraud and increase revenue with ML optimisations.\nSave engineering time with pre-built UIs.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0001",
-    "char_count": 504
+    "char_count": 491,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Learn more\nabout our different card types.\n2%\nfor Mastercard and Visa cards issued in India*\nDomestic debit card transactions have the Merchant Discount Rate (MDR) of 0.4% capped to ₹200.\nAccept widely used credit and debit cards, prepaid cards, and digital wallets for cards issued internationally.\n3%\nfor Mastercard and Visa cards issued outside India\n+",
+    "text": "Reduce fraud and increase revenue with ML optimisations.\nSave engineering time with pre-built UIs.\nAccept widely used credit and debit cards, prepaid cards, and digital wallets for cards issued domestically.\nLearn more\nabout our different card types.\n2%\nfor Mastercard and Visa cards issued in India*\nDomestic debit card transactions have the Merchant Discount Rate (MDR) of 0.4% capped to ₹200.\nAccept widely used credit and debit cards, prepaid cards, and digital wallets for cards issued internationally.\n3%\nfor Mastercard and Visa cards issued outside India\n+",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0002",
-    "char_count": 355
+    "char_count": 563,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "2%\nif currency conversion is required\n3.5%\nfor American Express cards issued outside India\n+\n  \n  \n  \n\n  \n    2%\nif currency conversion is required\n4.3%\nfor international cards with USD or other currency presentment\n+",
+    "text": "2%\nif currency conversion is required\n3.5%\nfor American Express cards issued outside India\n+\n\n  \n    2%\nif currency conversion is required\n4.3%\nfor international cards with USD or other currency presentment\n+",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0003",
-    "char_count": 217
+    "char_count": 208,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "2%\nif currency conversion is required\nLearn more\nMore features\nPresent prices in local currencies to your customers, tailoring customer experience and increasing revenue.\nIncluded\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing\nCustomers will be presented a conversion fee starting at\n2%\nLearn more\nUnderstand and effectively respond to disputes on card transactions (also known as chargebacks) through a guided process.",
+    "text": "2%\nif currency conversion is required\nLearn more\nMore features\nPresent prices in local currencies to your customers, tailoring customer experience and increasing revenue.\nIncluded\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing\nCustomers will be presented a conversion fee starting at\n2%\nLearn more\nUnderstand and effectively respond to disputes on card transactions (also known as chargebacks) through a guided process.\nCountering rare dispute types may incur network fees.\nLearn more\n₹1,000.00\nper dispute received.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0004",
-    "char_count": 463
+    "char_count": 560,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Countering rare dispute types may incur network fees.\nLearn more\n₹1,000.00\nper dispute received.\nFighting rare dispute types may incur network fees\nFee for countering disputes manually\n₹1,000.00\nfee charged when you submit evidence\nIf you win, the fee is returned. If you lose, the fee is not returned\nLearn more\nAutomatically compiles and submits evidence to fight eligible disputes for you using Stripe’s AI (\npublic preview\n)\nSign up\nfor the waiting list.\nCountering with Smart Disputes\n30%",
+    "text": "Countering rare dispute types may incur network fees.\nLearn more\n₹1,000.00\nper dispute received.\nFighting rare dispute types may incur network fees\nFee for countering disputes manually\n₹1,000.00\nfee charged when you submit evidence\nIf you win, the fee is returned. If you lose, the fee is not returned\nLearn more\nAutomatically compiles and submits evidence to fight eligible disputes for you using Stripe’s AI (\npublic preview\n)\nSign up\nfor the waiting list.\nCountering with Smart Disputes\n30%\nof the disputed amount charged if you win\nIf you lose, no fees are charged for Smart Disputes\nLearn more",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0005",
-    "char_count": 493
+    "char_count": 598,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "for the waiting list.\nCountering with Smart Disputes\n30%\nof the disputed amount charged if you win\nIf you lose, no fees are charged for Smart Disputes\nLearn more\nPayment optimisations\nIncluded with Payments\nIncluded at no additional charge for businesses on standard payments pricing\nIncrease acceptance rates and reduce card processing costs with AI-powered payment optimisations, inclusive of Adaptive Acceptance, card account updater and network tokens.\nIndividual pricing",
+    "text": "30%\nof the disputed amount charged if you win\nIf you lose, no fees are charged for Smart Disputes\nLearn more\nPayment optimisations\nIncluded with Payments\nIncluded at no additional charge for businesses on standard payments pricing\nIncrease acceptance rates and reduce card processing costs with AI-powered payment optimisations, inclusive of Adaptive Acceptance, card account updater and network tokens.\nIndividual pricing\navailable for Adaptive Acceptance, card account updater and network tokens.\nIncluded\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0006",
-    "char_count": 475
+    "char_count": 598,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Individual pricing\navailable for Adaptive Acceptance, card account updater and network tokens.\nIncluded\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing\n0.2%\nper successful online card transaction for accounts with custom payments pricing\nLearn more\nAdvanced fraud detection and prevention tools.\nStart now\nReduce fraud with ML powered by the Stripe network.\nCustomise fraud prevention by creating custom rules.",
+    "text": "Included\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing\n0.2%\nper successful online card transaction for accounts with custom payments pricing\nLearn more\nAdvanced fraud detection and prevention tools.\nStart now\nReduce fraud with ML powered by the Stripe network.\nCustomise fraud prevention by creating custom rules.\nGet rich fraud insights for more efficient and accurate manual reviews.\nFraud protection powered by billions of data points across the Stripe network.\nIncluded\nFor accounts with all payment methods on standard pricing\n₹4.00",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0007",
-    "char_count": 453
+    "char_count": 582,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Customise fraud prevention by creating custom rules.\nGet rich fraud insights for more efficient and accurate manual reviews.\nFraud protection powered by billions of data points across the Stripe network.\nIncluded\nFor accounts with all payment methods on standard pricing\n₹4.00\nper screened transaction for accounts with custom pricing for any payment method\nAdvanced fraud protection tools allowing for greater control and customisable settings. Includes Radar’s machine learning.",
+    "text": "Included\nFor accounts with all payment methods on standard pricing\n₹4.00\nper screened transaction for accounts with custom pricing for any payment method\nAdvanced fraud protection tools allowing for greater control and customisable settings. Includes Radar’s machine learning.\nSupport for Radar risk scores for non-Stripe transactions is available.\nContact sales\nto learn more.\nTry for free for 30 days\n₹6.00\nper screened transaction for accounts with all payment methods on standard pricing\nContact us",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0008",
-    "char_count": 480
+    "char_count": 502,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Support for Radar risk scores for non-Stripe transactions is available.\nContact sales\nto learn more.\nTry for free for 30 days\n₹6.00\nper screened transaction for accounts with all payment methods on standard pricing\nContact us\nHelp reduce dispute rates with dispute prevention tools powered by Verifi from Visa and Ethoca from Mastercard.\nRequest access\n.\nIncluded\nDispute deflection lookups\n₹1,000.00\nper\nVisa resolution\n₹1,000.00\nper\nVisa Compelling Evidence 3.0 block\n₹2,000.00\nper\nMastercard resolution",
+    "text": "Try for free for 30 days\n₹6.00\nper screened transaction for accounts with all payment methods on standard pricing\nContact us\nHelp reduce dispute rates with dispute prevention tools powered by Verifi from Visa and Ethoca from Mastercard.\nRequest access\n.\nIncluded\nDispute deflection lookups\n₹1,000.00\nper\nVisa resolution\n₹1,000.00\nper\nVisa Compelling Evidence 3.0 block\n₹2,000.00\nper\nMastercard resolution\nSee pricing details\nEnhance your platform by embedding financial services – set up financial accounts, issue cards, and offer financing.\nEmbedded payments for platforms and marketplaces.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0009",
-    "char_count": 505
+    "char_count": 591,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "₹2,000.00\nper\nMastercard resolution\nSee pricing details\nEnhance your platform by embedding financial services – set up financial accounts, issue cards, and offer financing.\nEmbedded payments for platforms and marketplaces.\nStart now\nLaunch faster with Stripe-hosted or pre-built embedded components.\nSave time by using tooling from Stripe for onboarding, risk, tax forms and more.\nGrow revenue by monetising payments.",
+    "text": "Embedded payments for platforms and marketplaces.\nStart now\nLaunch faster with Stripe-hosted or pre-built embedded components.\nSave time by using tooling from Stripe for onboarding, risk, tax forms and more.\nGrow revenue by monetising payments.\nStripe sets and collects processing fees from your users, so you don’t have to. Learn more about how to qualify for a\nrevenue share\nfrom Stripe.\nIncluded\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing\n0.25%\nstarting fee for platforms that deploy their own payments pricing to earn revenue on each transaction.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0010",
-    "char_count": 417
+    "char_count": 598,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Grow revenue by monetising payments.\nStripe sets and collects processing fees from your users, so you don’t have to. Learn more about how to qualify for a\nrevenue share\nfrom Stripe.\nIncluded\nwith Payments\nIncluded at no additional charge for businesses on standard payments pricing\n0.25%\nstarting fee for platforms that deploy their own payments pricing to earn revenue on each transaction.\nSee pricing details",
+    "text": "0.25%\nstarting fee for platforms that deploy their own payments pricing to earn revenue on each transaction.\nSee pricing details\nStreamline critical business processes with modular billing, tax, revenue reporting, and data analysis tools that work seamlessly together.\nSubscription management software for recurring, usage-based, and one-time billing.\nStart now\nRespond to user demand faster with flexible pricing models.\nIncrease revenue and reduce churn with Smart Retries and recovery workflow automations.\nSave engineering time with no-code tools or our composable APIs.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0011",
-    "char_count": 410
+    "char_count": 574,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "See pricing details\nStreamline critical business processes with modular billing, tax, revenue reporting, and data analysis tools that work seamlessly together.\nSubscription management software for recurring, usage-based, and one-time billing.\nStart now\nRespond to user demand faster with flexible pricing models.\nIncrease revenue and reduce churn with Smart Retries and recovery workflow automations.\nSave engineering time with no-code tools or our composable APIs.",
+    "text": "Save engineering time with no-code tools or our composable APIs.\nStart billing for recurring subscriptions & usage based billing.\n0.7%\nof Billing volume\nIncludes Billing transactions processed on and off Stripe. Excludes one-off invoices.\nSee pricing details\nGlobal invoicing software.\nStart now\nCreate, customise, and send an invoice in minutes – no code required.\nSave time with automated accounts receivable and invoicing workflows.\nConfigure invoices for any use case.\nInvoicing features to get started quickly.\n0.4%\nper paid invoice\nSee pricing details",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0012",
-    "char_count": 465
+    "char_count": 557,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Start billing for recurring subscriptions & usage based billing.\n0.7%\nof Billing volume\nIncludes Billing transactions processed on and off Stripe. Excludes one-off invoices.\nSee pricing details\nGlobal invoicing software.\nStart now\nCreate, customise, and send an invoice in minutes – no code required.\nSave time with automated accounts receivable and invoicing workflows.\nConfigure invoices for any use case.\nInvoicing features to get started quickly.\n0.4%\nper paid invoice\nSee pricing details",
+    "text": "Configure invoices for any use case.\nInvoicing features to get started quickly.\n0.4%\nper paid invoice\nSee pricing details\nSoftware to quickly incorporate your startup.\nStart now\nFile your incorporation paperwork in minutes.\nUse documents trusted by law firms, tax attorneys, and venture capital investors.\nGet over $50K in discounts and perks.\nIncorporate your company, get your EIN, issue equity, and file your 83(b) tax election.\nUS$500.00\none-off setup fee (includes government fees and your first year of registered agent services)\nSee pricing details\nNavigate to:\nGlobal payments",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0013",
-    "char_count": 492
+    "char_count": 584,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "0.4%\nper paid invoice\nSee pricing details\nSoftware to quickly incorporate your startup.\nStart now\nFile your incorporation paperwork in minutes.\nUse documents trusted by law firms, tax attorneys, and venture capital investors.\nGet over $50K in discounts and perks.\nIncorporate your company, get your EIN, issue equity, and file your 83(b) tax election.\nUS$500.00\none-off setup fee (includes government fees and your first year of registered agent services)\nSee pricing details\nNavigate to:\nGlobal payments",
+    "text": "See pricing details\nNavigate to:\nGlobal payments\nMoney management\nRevenue and finance automation\nMore\nGlobal payments\nPayments\nRadar\nMoney management\nConnect\nRevenue and finance automation\nBilling\nInvoicing\nMore\nAtlas\nCreate tailored solutions to help you expand into new markets, optimise payments performance, automate revenue and finance workflows, monetise financial services, and\nmore\n.\nBuild your custom package\nWork with our sales team to design a solution that meets your needs:\nPayments\nPayments\nRadar\nRadar\nConnect\nConnect\nInvoicing\nInvoicing\nBilling\nBilling\nand more",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0014",
-    "char_count": 504
-  },
-  {
-    "text": "See pricing details\nNavigate to:\nGlobal payments\nMoney management\nRevenue and finance automation\nMore\nGlobal payments\nPayments\nRadar\nMoney management\nConnect\nRevenue and finance automation\nBilling\nInvoicing\nMore\nAtlas\nCreate tailored solutions to help you expand into new markets, optimise payments performance, automate revenue and finance workflows, monetise financial services, and\nmore\n.\nBuild your custom package\nWork with our sales team to design a solution that meets your needs:\nPayments\nPayments\nRadar",
-    "source": "stripe_pricing_india",
-    "chunk_id": "stripe_pricing_india_chunk_0015",
-    "char_count": 510
+    "char_count": 577,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
     "text": "Payments\nPayments\nRadar\nRadar\nConnect\nConnect\nInvoicing\nInvoicing\nBilling\nBilling\nand more\nGet the support you need\nTechnical account management\nProfessional Services\nCertified implementation partners\nDiscounted flat rates, subscriptions, and buy-rates for platforms.\nDiscounts based on volume tiers, commitments, and product usage.\nOptional aggregated pricing for all markets, allowing you to go global with ease.\nDashboards, tools, and APIs that give you transparency into your costs.",
     "source": "stripe_pricing_india",
-    "chunk_id": "stripe_pricing_india_chunk_0016",
-    "char_count": 486
+    "chunk_id": "stripe_pricing_india_chunk_0015",
+    "char_count": 486,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Forrester’s Total Economic Impact study suggests a more than 3x return on investment among businesses that deployed Stripe.\nGuidesCard_32\nReport\nThe Total Economic Impact™ Of Stripe\nBMW owners using ConnectedDrive Store\nUS dealerships\nAmazon businesses on Stripe including Prime, Audible, and Amazon Pay.\nPayment methods available on Stripe\nCountries in logistics network\nWorth of goods moved around the world each year\nUplift from Stripe's Global Payments Infrastructure\nUplift from Adaptive Acceptance",
+    "text": "Dashboards, tools, and APIs that give you transparency into your costs.\nForrester’s Total Economic Impact study suggests a more than 3x return on investment among businesses that deployed Stripe.\nGuidesCard_32\nReport\nThe Total Economic Impact™ Of Stripe\nBMW logo\nRead story\nLearn why BMW chose Stripe to power e-commerce and payments\nAmazon logo\nRead story\nSee how Amazon simplified cross-border payments with Stripe\nMaersk logo\nRead story\nSee how Maersk tapped into new technology to make it easier to ship around the world\nTwilio logo\nRead story",
+    "source": "stripe_pricing_india",
+    "chunk_id": "stripe_pricing_india_chunk_0016",
+    "char_count": 547,
+    "source_type": "commercial",
+    "has_fee_table": false
+  },
+  {
+    "text": "Read story\nSee how Maersk tapped into new technology to make it easier to ship around the world\nTwilio logo\nRead story\nSee how Twilio increased authorisation rates by 10% with Stripe\nBMW logo\nAmazon logo\nMaersk logo\nTwilio logo\nHow are payment fees calculated?\nStripe charges a per-transaction fee depending on the payment method used by the end customer.\nMore details on fees by payment method\n.\nWill I be charged tax?",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0017",
-    "char_count": 503
+    "char_count": 419,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Uplift from Adaptive Acceptance\nBMW logo\nRead story\nLearn why BMW chose Stripe to power e-commerce and payments\nAmazon logo\nRead story\nSee how Amazon simplified cross-border payments with Stripe\nMaersk logo\nRead story\nSee how Maersk tapped into new technology to make it easier to ship around the world\nTwilio logo\nRead story\nSee how Twilio increased authorisation rates by 10% with Stripe\nBMW logo\nAmazon logo\nMaersk logo\nTwilio logo\nHow are payment fees calculated?",
+    "text": "More details on fees by payment method\n.\nWill I be charged tax?\nStripe is required to charge tax on certain products and services. Tax is charged based on your location and/ or your business/tax status, which determines whether a product or service is subject to taxes, and the applicable tax rates.\nRead more\nAre there additional fees for refunds?\nFor businesses on standard pricing: There may be\nfees for refunds when bank transfers are used",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0018",
-    "char_count": 467
+    "char_count": 443,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Maersk logo\nTwilio logo\nHow are payment fees calculated?\nStripe charges a per-transaction fee depending on the payment method used by the end customer.\nMore details on fees by payment method\n.\nWill I be charged tax?\nStripe is required to charge tax on certain products and services. Tax is charged based on your location and/ or your business/tax status, which determines whether a product or service is subject to taxes, and the applicable tax rates.\nRead more\nAre there additional fees for refunds?",
+    "text": "For businesses on standard pricing: There may be\nfees for refunds when bank transfers are used\n.For all other payment methods, there are no fees for issuing refunds. The payment processing, connect and currency conversion fees from the original transaction are not returned.\nFor businesses on custom pricing: There may be fees for issuing refunds depending on your fee schedule with Stripe.\nDo you have setup fees or monthly fees?\nStripe does not charge setup fees, monthly fees, or any other hidden fees like closure fees. All fees for businesses on standard pricing are listed on our website.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0019",
-    "char_count": 500
+    "char_count": 594,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Read more\nAre there additional fees for refunds?\nFor businesses on standard pricing: There may be\nfees for refunds when bank transfers are used\n.For all other payment methods, there are no fees for issuing refunds. The payment processing, connect and currency conversion fees from the original transaction are not returned.\nFor businesses on custom pricing: There may be fees for issuing refunds depending on your fee schedule with Stripe.\nDo you have setup fees or monthly fees?",
+    "text": "Do you offer any discounts?\nStripe offers custom pricing for businesses with large processing volumes. Eligibility varies by market.\nAccess a complete payments platform with simple, pay-as-you-go pricing, or contact us to design a custom package specifically for your business.\nFrom startups to Fortune 500s, explore how millions of businesses use Stripe to start and scale their companies.\nStart building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby to Go.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0020",
-    "char_count": 479
+    "char_count": 530,
+    "source_type": "commercial",
+    "has_fee_table": false
   },
   {
-    "text": "Do you have setup fees or monthly fees?\nStripe does not charge setup fees, monthly fees, or any other hidden fees like closure fees. All fees for businesses on standard pricing are listed on our website.\nDo you offer any discounts?\nStripe offers custom pricing for businesses with large processing volumes. Eligibility varies by market.\nAccess a complete payments platform with simple, pay-as-you-go pricing, or contact us to design a custom package specifically for your business.",
+    "text": "¹ Stripe Radar for Fraud teams and Stripe Connect with platform-controlled pricing are priced separately.",
     "source": "stripe_pricing_india",
     "chunk_id": "stripe_pricing_india_chunk_0021",
-    "char_count": 481
-  },
-  {
-    "text": "From startups to Fortune 500s, explore how millions of businesses use Stripe to start and scale their companies.\nStart building your integration and accept your first payment in minutes. Stripe libraries are available in every language from Ruby to Go.\n¹ Stripe Radar for Fraud teams and Stripe Connect with platform-controlled pricing are priced separately.",
-    "source": "stripe_pricing_india",
-    "chunk_id": "stripe_pricing_india_chunk_0022",
-    "char_count": 358
+    "char_count": 105,
+    "source_type": "commercial",
+    "has_fee_table": false
   }
 ]

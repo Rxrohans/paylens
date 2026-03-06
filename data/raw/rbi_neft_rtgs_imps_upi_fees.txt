@@ -1,0 +1,146 @@
+
+RBI PAYMENT SYSTEMS — FEE STRUCTURE FOR INDIA
+Source: Reserve Bank of India (RBI) Official Circulars and NPCI Guidelines
+Last updated: 2024
+
+========================================
+NEFT — NATIONAL ELECTRONIC FUNDS TRANSFER
+========================================
+Full form: National Electronic Funds Transfer
+Operated by: Reserve Bank of India (RBI)
+Settlement: Deferred Net Settlement — processes in half-hourly batches
+Availability: 24x7x365 (since December 16, 2019)
+Channels: Internet banking, mobile banking, bank branches
+
+NEFT CHARGES — OUTWARD TRANSACTIONS (customer sending money):
+  Transaction up to ₹10,000       : ₹2.50 + applicable GST
+  Transaction ₹10,001 to ₹1,00,000 : ₹5.00 + applicable GST
+  Transaction ₹1,00,001 to ₹2,00,000: ₹15.00 + applicable GST
+  Transaction above ₹2,00,000     : ₹25.00 + applicable GST
+
+NEFT INWARD CHARGES: FREE — no charge to the beneficiary (receiver)
+
+RBI Waiver: In January 2020, RBI waived processing charges for member banks.
+Banks were directed to pass these savings to customers.
+Most major banks (SBI, HDFC, ICICI, Axis) now offer FREE online NEFT.
+Branch NEFT may still carry the above charges.
+
+NEFT TRANSACTION LIMITS:
+  Minimum: ₹1 (no minimum limit)
+  Maximum: No upper limit set by RBI
+  Note: Individual banks may impose their own limits.
+  Walk-in customers (non-account holders): ₹50,000 per transaction
+
+NEFT INFORMATION REQUIRED:
+  - Beneficiary name
+  - Beneficiary account number
+  - IFSC code of beneficiary bank
+  - Bank name and branch
+
+========================================
+RTGS — REAL TIME GROSS SETTLEMENT
+========================================
+Full form: Real Time Gross Settlement
+Operated by: Reserve Bank of India (RBI)
+Settlement: Real-time (transaction by transaction, immediately)
+Purpose: High-value transactions only
+Availability: 24x7x365 (since December 14, 2020)
+
+RTGS CHARGES — OUTWARD TRANSACTIONS:
+  Transactions from ₹2,00,000 to ₹5,00,000: ₹24.50 + GST
+  Transactions above ₹5,00,000             : ₹49.50 + GST
+
+RTGS INWARD CHARGES: FREE — no charge to the beneficiary
+
+RTGS TRANSACTION LIMITS:
+  Minimum: ₹2,00,000 (₹2 lakh) — RTGS is only for high-value payments
+  Maximum: No upper limit (as per RBI)
+  Individual bank limits may apply.
+
+KEY DIFFERENCE FROM NEFT:
+  NEFT = batch processing every 30 minutes (good for regular payments)
+  RTGS = instant settlement (good for large, urgent payments)
+  Use RTGS when you need money to arrive immediately.
+  Use NEFT when timing is not critical and amounts are smaller.
+
+========================================
+IMPS — IMMEDIATE PAYMENT SERVICE
+========================================
+Full form: Immediate Payment Service
+Operated by: National Payments Corporation of India (NPCI)
+Settlement: Real-time, 24x7x365
+Purpose: Instant fund transfer at any amount
+
+IMPS CHARGES (set by individual banks, not mandated by RBI):
+  Up to ₹10,000       : ₹2.50 to ₹5.00 + GST (varies by bank)
+  ₹10,001 to ₹1 lakh  : ₹5.00 to ₹15.00 + GST
+  ₹1 lakh to ₹2 lakh  : ₹15.00 + GST (typically)
+  Above ₹2 lakh        : ₹25.00 + GST (typically)
+  Via mobile banking   : Often FREE (bank-specific)
+
+NOTE: IMPS charges are bank-determined. Many banks offer free IMPS via mobile apps.
+IMPS via USSD (*99#): ₹0.50 per transaction
+
+IMPS TRANSACTION LIMITS:
+  Minimum: ₹1
+  Maximum: ₹5,00,000 (₹5 lakh) per transaction as per NPCI
+  Some banks allow up to ₹2 lakh, others ₹5 lakh — check with your bank.
+
+IMPS IDENTIFIERS:
+  - MMID + Mobile number (mobile-to-mobile)
+  - Account number + IFSC (account-to-account)
+  - Aadhaar number (Aadhaar-linked)
+
+IMPS vs NEFT vs RTGS COMPARISON:
+  Feature         IMPS          NEFT          RTGS
+  Settlement      Instant       30-min batch  Instant
+  Min amount      ₹1            ₹1            ₹2,00,000
+  Max amount      ₹5 lakh       No limit      No limit
+  Availability    24x7          24x7          24x7
+  Typical fee     ₹5-₹15+GST   ₹2.50-₹25+GST ₹24.50-₹49.50+GST
+  Best for        Small-medium  Regular       High-value urgent
+
+========================================
+UPI — UNIFIED PAYMENTS INTERFACE
+========================================
+Full form: Unified Payments Interface
+Operated by: NPCI
+Settlement: Real-time
+
+UPI CHARGES:
+  Person-to-Person (P2P): FREE
+  Person-to-Merchant (P2M): FREE (as per RBI and NPCI directives)
+  Wallets to bank via UPI: FREE up to ₹2,000; ₹1 above ₹2,000 for PPIs
+
+MDR (Merchant Discount Rate) on UPI:
+  As of January 2020, RBI mandated ZERO MDR on UPI and RuPay transactions.
+  Merchants cannot be charged for accepting UPI payments.
+
+UPI TRANSACTION LIMITS:
+  Standard: ₹1,00,000 per transaction
+  UPI for capital markets: ₹2,00,000
+  IPO applications: ₹5,00,000
+  Medical/educational: ₹5,00,000
+
+========================================
+GST ON PAYMENT SERVICES
+========================================
+GST Rate on payment processing services: 18%
+Applies to: NEFT fees, RTGS fees, IMPS fees, payment gateway fees
+Does NOT apply to: The transaction amount itself (only on the service fee)
+
+Example:
+  NEFT transfer of ₹50,000 → Fee = ₹5 + 18% GST = ₹5.90 total charge
+
+========================================
+CROSS-BORDER / FOREX PAYMENTS
+========================================
+SWIFT charges (international wire transfers):
+  Sending bank fee: ₹500 to ₹1,500 typically
+  Correspondent bank charges: $15-$30 (deducted from amount)
+  Currency conversion markup: 1% to 3.5% over mid-market rate
+
+RBI guidelines on forex:
+  Liberalized Remittance Scheme (LRS): Up to USD 2,50,000 per year per individual
+  TCS (Tax Collected at Source): 20% on remittances above ₹7 lakh per year
+  Form 15CA/15CB required for certain payments

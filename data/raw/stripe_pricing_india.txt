@@ -220,14 +220,6 @@ Forrester’s Total Economic Impact study suggests a more than 3x return on inve
 GuidesCard_32
 Report
 The Total Economic Impact™ Of Stripe
-BMW owners using ConnectedDrive Store
-US dealerships
-Amazon businesses on Stripe including Prime, Audible, and Amazon Pay.
-Payment methods available on Stripe
-Countries in logistics network
-Worth of goods moved around the world each year
-Uplift from Stripe's Global Payments Infrastructure
-Uplift from Adaptive Acceptance
 BMW logo
 Read story
 Learn why BMW chose Stripe to power e-commerce and payments

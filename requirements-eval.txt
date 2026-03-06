@@ -1,0 +1,2 @@
+echo "ragas" > requirements-eval.txt
+echo "datasets" >> requirements-eval.txt

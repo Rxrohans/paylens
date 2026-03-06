@@ -1,0 +1,45 @@
+
+PAYPAL INDIA — FEE STRUCTURE
+Source: PayPal India official fee page
+
+========================================
+PAYPAL FEES FOR INDIA (RECEIVING PAYMENTS)
+========================================
+Receiving from within India:
+  Standard: 2.5% + ₹3 per transaction
+
+Receiving international payments (export/freelance):
+  Standard commercial rate: 4.4% + fixed fee
+  Fixed fee by currency:
+    USD: $0.30
+    GBP: £0.20
+    EUR: €0.35
+    CAD: $0.30
+
+TOTAL EFFECTIVE DEDUCTION on international payment:
+  Currency conversion: ~3-4% spread over mid-market rate
+  Transaction fee: 4.4% + fixed fee
+  Total loss: ~7-8% on international payments is common
+
+PayPal Currency Conversion:
+  PayPal applies a currency conversion spread (markup) over the base exchange rate.
+  This is typically 3% to 4% above the mid-market rate.
+  This is separate from the transaction fee.
+
+WhY PayPal Feels Expensive:
+  1. Transaction fee (4.4%)
+  2. Currency conversion markup (3-4%)
+  3. Fixed per-transaction fee ($0.30 for USD)
+  Combined, receiving USD 100 → you may get ₹7,800-8,100 instead of ~₹8,350
+
+PayPal Withdrawal to Indian Bank Account:
+  Withdrawal fee: FREE (no fee to withdraw to Indian bank)
+  Time: 3-5 business days
+
+PayPal GST in India:
+  18% GST applies on PayPal's service fees (not on the transaction amount)
+
+Alternatives for freelancers receiving international payments:
+  Wise (TransferWise): ~0.5-1% fee, mid-market rate
+  Payoneer: Free for same-currency transfers, 2% for USD withdrawal
+  Razorpay: For domestic business payments

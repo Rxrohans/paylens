@@ -124,7 +124,7 @@ class ChargeRetriever:
 
         WHY THIS MATTERS FOR PINE LABS JD:
             "Maintain logs, traces and explainability artefacts"
-            Every query is traceable — what was asked, what was retrieved,
+            Every query is traceable, what was asked, what was retrieved,
             how confident the system was, how fast it responded.
         """
         print(f"🔍 Query     : {query[:80]}...")

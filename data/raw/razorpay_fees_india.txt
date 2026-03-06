@@ -1,0 +1,53 @@
+
+RAZORPAY — FEE STRUCTURE (INDIA)
+Source: Razorpay official pricing page
+Category: Payment Gateway — India's leading payment gateway
+
+========================================
+RAZORPAY STANDARD FEES
+========================================
+Domestic Cards (Debit/Credit):
+  Standard: 2% per transaction
+  International cards: 3% per transaction
+
+UPI Transactions:
+  UPI (P2M): 0% — FREE as per RBI mandate
+  UPI Autopay: 0.10% for recurring mandates
+
+Net Banking:
+  Most banks: ₹15 flat per transaction (not percentage-based)
+
+Wallets:
+  Paytm, PhonePe, Amazon Pay: 2% per transaction
+
+EMI Transactions:
+  Bank EMI: 2% per transaction (EMI plans by bank)
+  Cardless EMI: 3% per transaction
+
+International Payments (via Razorpay):
+  3% + currency conversion fee
+
+Settlement Timeline:
+  Standard: T+2 (2 business days after transaction)
+  Early settlement: Available for fee (Razorpay RazorpayX)
+
+GST: 18% applied on all Razorpay fees
+Example: ₹10,000 transaction at 2% = ₹200 fee + ₹36 GST = ₹236 total deduction
+You receive: ₹9,764
+
+Razorpay minimum fee: No minimum
+Razorpay monthly fee: ₹0 (no monthly subscription for standard plan)
+
+========================================
+RAZORPAY PAYMENT LINKS / PAGES
+========================================
+Standard transaction fee applies
+No additional fee for payment links
+No setup cost
+
+========================================
+RAZORPAY INTERNATIONAL ACCEPTANCE
+========================================
+Supports 100+ currencies
+International cards: 3% + payment gateway fee
+Cross-currency settlements: Available in USD, EUR, GBP, SGD, AED
