@@ -1,127 +1,237 @@
 """
-chunker.py — Phase 1 of ChargeClarity
-----------------------------------------
-WHAT THIS FILE DOES:
-  Takes the raw text from ingestor.py and splits it into small chunks.
-  These chunks are what we'll embed into vectors and store in FAISS.
+chunker.py — Phase 1 of PayLens  (FIXED v2)
+---------------------------------------------
+FIXES IN THIS VERSION:
+  1. chunk_overlap raised from 64 → 128 chars
+     → fee brackets no longer split across chunk boundaries
+  2. Table/fee-schedule detection — tables kept as atomic chunks
+     → "NEFT fee for ₹10k–₹1L: ₹5" stays in one chunk, not split mid-row
+  3. Source-type aware chunking — RBI circulars get larger chunks (more context)
+  4. India-specific separators added (₹, lakh, crore) as soft split hints
+  5. Chunk metadata now includes source_type for retriever filtering
 
-CONCEPT — Why do we chunk?
-  LLMs can only read so much text at once (context window limit).
-  Also, searching through one giant document is slow and imprecise.
-  By splitting into small overlapping chunks, we can find EXACTLY
-  the relevant paragraph about "PayPal cross-border fees" vs the whole PDF.
-
-  Think of it like an index in a book — instead of reading cover to cover,
-  you jump straight to the right page.
-
-CONCEPT — What is chunk_overlap?
-  If chunk A ends with "The fee is 2.9%" and chunk B starts fresh,
-  the model might miss context. Overlap means chunk B starts a bit
-  before where chunk A ended — so no sentence is ever cut in half.
+ROOT CAUSE OF NEFT/RTGS FAILURES (chunking side):
+  With chunk_size=512 and overlap=64, a fee table like:
+    "Up to ₹10,000: ₹2.50 | ₹10,001–₹1L: ₹5 | ₹1L–₹2L: ₹15 | Above ₹2L: ₹25"
+  gets split after "₹5 |" and the bracket context is lost.
+  The retriever finds half the table → LLM gives incomplete/wrong answer.
 """
 
-import os
+import re
 import json
 from pathlib import Path
 from typing import List, Dict
 
-# LangChain's text splitter — does the chunking for us
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-RAW_DIR    = Path(__file__).parent.parent / "data" / "raw"
-PROC_DIR   = Path(__file__).parent.parent / "data" / "processed"
+RAW_DIR  = Path(__file__).parent.parent / "data" / "raw"
+PROC_DIR = Path(__file__).parent.parent / "data" / "processed"
 PROC_DIR.mkdir(parents=True, exist_ok=True)
 
+# ──────────────────────────────────────────────
+# CHUNKING SETTINGS
+# ──────────────────────────────────────────────
+CHUNK_SIZE         = 600   # ↑ from 512 — more context per chunk
+CHUNK_OVERLAP      = 128   # ↑ from 64  — critical for fee bracket continuity
+MAX_TABLE_CHUNK    = 1200  # tables can be larger — never split mid-row
+
+# Source types that need larger chunks (regulatory docs are dense)
+RBI_SOURCES = {"rbi_", "neft", "rtgs", "imps", "npci", "pci"}
+
+
+def is_rbi_source(source_name: str) -> bool:
+    return any(tag in source_name.lower() for tag in RBI_SOURCES)
+
 
 # ──────────────────────────────────────────────
-# CHUNKING SETTINGS — tune these for better results
+# TABLE DETECTION
+# Detects markdown tables, pipe-delimited rows, and
+# structured fee schedules like "Up to ₹X : ₹Y"
 # ──────────────────────────────────────────────
-CHUNK_SIZE    = 512   # characters per chunk (not tokens)
-CHUNK_OVERLAP = 64    # characters shared between consecutive chunks
+TABLE_PATTERNS = [
+    r"\|.*\|",                           # markdown table row
+    r"₹[\d,]+\s*(to|-|–)\s*₹[\d,]+",   # fee range like ₹10,000 to ₹1,00,000
+    r"(up to|above|below|between)\s+₹", # bracket language
+    r"^\s*\d+\.\s+.{10,}:\s+₹",        # numbered fee list
+    r"={3,}|─{3,}|-{3,}",              # section dividers in RBI docs
+]
+
+def contains_table_or_fee_schedule(text: str) -> bool:
+    """Returns True if this text block looks like a fee table or schedule."""
+    for pattern in TABLE_PATTERNS:
+        if re.search(pattern, text, re.MULTILINE | re.IGNORECASE):
+            return True
+    return False
 
 
+def extract_table_blocks(text: str) -> List[tuple]:
+    """
+    Splits text into (block, is_table) pairs.
+    Table blocks are returned as-is (never split further).
+    Non-table blocks go through normal chunking.
+    """
+    # Split on double newlines (paragraph breaks)
+    paragraphs = re.split(r'\n{2,}', text)
+    blocks = []
+    buffer_text = ""
+    buffer_is_table = False
+
+    for para in paragraphs:
+        para_is_table = contains_table_or_fee_schedule(para)
+
+        if para_is_table:
+            # Flush any pending normal text first
+            if buffer_text and not buffer_is_table:
+                blocks.append((buffer_text.strip(), False))
+                buffer_text = ""
+
+            # Accumulate table rows together
+            if buffer_is_table:
+                buffer_text += "\n\n" + para
+            else:
+                buffer_text = para
+                buffer_is_table = True
+        else:
+            # Flush any pending table block
+            if buffer_text and buffer_is_table:
+                blocks.append((buffer_text.strip(), True))
+                buffer_text = ""
+                buffer_is_table = False
+
+            buffer_text = (buffer_text + "\n\n" + para).strip() if buffer_text else para
+
+    # Flush final buffer
+    if buffer_text:
+        blocks.append((buffer_text.strip(), buffer_is_table))
+
+    return blocks
+
+
+# ──────────────────────────────────────────────
+# MAIN CHUNKING FUNCTION
+# ──────────────────────────────────────────────
 def chunk_text(text: str, source_name: str) -> List[Dict]:
     """
     Splits text into overlapping chunks with metadata.
-    
+    Tables and fee schedules are kept as atomic chunks (never split).
+
     Args:
-        text: Raw document text
-        source_name: Name of the source file (for traceability)
-    
+        text:        Raw document text
+        source_name: Name of the source file
+
     Returns:
-        List of dicts: [{text, source, chunk_id}, ...]
-    
-    WHY metadata matters for Pine Labs JD:
-        Every chunk knows where it came from.
-        This enables "explainability artefacts" — you can always
-        tell the user "this answer came from PayPal's fee page, section 3"
+        List of {text, source, chunk_id, char_count, source_type, has_fee_table}
     """
+    # Larger chunks for RBI regulatory documents
+    chunk_size = CHUNK_SIZE * 2 if is_rbi_source(source_name) else CHUNK_SIZE
+    source_type = "regulatory" if is_rbi_source(source_name) else "commercial"
+
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=CHUNK_SIZE,
+        chunk_size=chunk_size,
         chunk_overlap=CHUNK_OVERLAP,
-        # It tries to split on paragraphs first, then sentences, then words
-        # This keeps meaning intact rather than cutting mid-sentence
-        separators=["\n\n", "\n", ". ", " ", ""]
+        separators=[
+            "\n\n\n", "\n\n", "\n",
+            "₹",          # India-specific: rupee amounts are natural split points
+            ". ", " ", ""
+        ]
     )
-    
-    raw_chunks = splitter.split_text(text)
-    
-    # Add metadata to each chunk
+
+    # Phase 1: Separate table blocks from normal text
+    blocks = extract_table_blocks(text)
+
     chunks = []
-    for i, chunk_text in enumerate(raw_chunks):
-        chunks.append({
-            "text": chunk_text.strip(),
-            "source": source_name,
-            "chunk_id": f"{source_name}_chunk_{i:04d}",
-            "char_count": len(chunk_text)
-        })
-    
+    chunk_idx = 0
+
+    for block_text, is_table in blocks:
+        if not block_text.strip():
+            continue
+
+        if is_table:
+            # Keep fee tables as a SINGLE chunk — never split
+            # If it's huge, split only at row boundaries (double newline)
+            if len(block_text) > MAX_TABLE_CHUNK:
+                sub_blocks = block_text.split("\n\n")
+                sub_buffer = ""
+                for sb in sub_blocks:
+                    if len(sub_buffer) + len(sb) < MAX_TABLE_CHUNK:
+                        sub_buffer += ("\n\n" + sb) if sub_buffer else sb
+                    else:
+                        if sub_buffer:
+                            chunks.append(_make_chunk(sub_buffer, source_name, chunk_idx, source_type, True))
+                            chunk_idx += 1
+                        sub_buffer = sb
+                if sub_buffer:
+                    chunks.append(_make_chunk(sub_buffer, source_name, chunk_idx, source_type, True))
+                    chunk_idx += 1
+            else:
+                chunks.append(_make_chunk(block_text, source_name, chunk_idx, source_type, True))
+                chunk_idx += 1
+        else:
+            # Normal text → recursive character splitting
+            raw_chunks = splitter.split_text(block_text)
+            for rc in raw_chunks:
+                if rc.strip():
+                    chunks.append(_make_chunk(rc, source_name, chunk_idx, source_type, False))
+                    chunk_idx += 1
+
     return chunks
 
 
+def _make_chunk(text: str, source: str, idx: int, source_type: str, has_fee_table: bool) -> Dict:
+    return {
+        "text":          text.strip(),
+        "source":        source,
+        "chunk_id":      f"{source}_chunk_{idx:04d}",
+        "char_count":    len(text),
+        "source_type":   source_type,      # "regulatory" | "commercial"
+        "has_fee_table": has_fee_table,    # True = contains fee schedule
+    }
+
+
+# ──────────────────────────────────────────────
+# PROCESS ALL FILES
+# ──────────────────────────────────────────────
 def process_all_raw_files() -> List[Dict]:
-    """
-    Reads all .txt files in data/raw/, chunks them,
-    and saves the result to data/processed/chunks.json
-    """
-    print("\n✂️  Starting chunking pipeline...\n")
+    print("\n✂️  Starting chunking pipeline (v2 — table-aware)...\n")
     all_chunks = []
-    
+
     txt_files = list(RAW_DIR.glob("*.txt"))
     if not txt_files:
         print("⚠️  No .txt files found in data/raw/. Run ingestor.py first!")
         return []
-    
+
+    fee_table_count = 0
+
     for txt_file in txt_files:
         print(f"Processing: {txt_file.name}")
-        
         with open(txt_file, "r", encoding="utf-8") as f:
             text = f.read()
-        
+
         if len(text.strip()) < 100:
             print(f"  ⚠️  Skipping — too short ({len(text)} chars)")
             continue
-        
+
         chunks = chunk_text(text, source_name=txt_file.stem)
+        tables = sum(1 for c in chunks if c["has_fee_table"])
+        fee_table_count += tables
         all_chunks.extend(chunks)
-        print(f"  ✅ {len(chunks)} chunks created")
-    
-    # Save all chunks to JSON (our processed dataset)
+        print(f"  ✅ {len(chunks)} chunks ({tables} fee table blocks protected)")
+
     output_path = PROC_DIR / "chunks.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(all_chunks, f, indent=2, ensure_ascii=False)
-    
-    # Summary
-    print(f"\n📊 Chunking Summary:")
-    print(f"   Total chunks   : {len(all_chunks)}")
-    print(f"   Avg chunk size : {sum(c['char_count'] for c in all_chunks) // max(len(all_chunks),1)} chars")
-    print(f"   Saved to       : {output_path}\n")
-    
+
+    print(f"\n📊 Chunking Summary (v2):")
+    print(f"   Total chunks        : {len(all_chunks)}")
+    print(f"   Fee table chunks    : {fee_table_count} (kept atomic)")
+    print(f"   Avg chunk size      : {sum(c['char_count'] for c in all_chunks) // max(len(all_chunks),1)} chars")
+    print(f"   Regulatory chunks   : {sum(1 for c in all_chunks if c['source_type'] == 'regulatory')}")
+    print(f"   Saved to            : {output_path}\n")
+
     return all_chunks
 
 
 def load_chunks() -> List[Dict]:
-    """Load already-processed chunks from disk."""
     path = PROC_DIR / "chunks.json"
     if not path.exists():
         raise FileNotFoundError("No chunks found. Run process_all_raw_files() first.")

@@ -354,12 +354,7 @@ class ChargeChain:
                 break
 
         # Extract cited sources
-        cited = list({
-            c["source"] for c in chunks
-            if c["source"].replace("_", " ") in raw.lower() or c["source"] in raw
-        })
-        if not cited:
-            cited = [chunks[0]["source"]] if chunks else []
+        cited = list(dict.fromkeys(c["source"] for c in chunks[:3]))
         if web_search_used:
             cited.append("live_web_search")
 
