@@ -1,7 +1,9 @@
 """
 DateTime Parser for PayLens
 Converts temporal references in queries to concrete dates for accurate web searches.
-V3 feature 1
+
+Author: Rohan Singh
+Created: March 2026
 """
 
 import re
@@ -67,6 +69,27 @@ class DateTimeParser:
         query_lower = query.lower()
         detected = []
         
+        # Handle common variations before pattern matching
+        # Map variations to canonical forms
+        variations = {
+            r"\btodays?\b": "today",          # todays, today's → today
+            r"\btoday'?s\b": "today",         # today's → today
+            r"\bcurrent\s+(?:rate|price|exchange|fee)": "today",  # current rate → today
+            r"\bpresent\s+(?:rate|price)": "today",  # present rate → today
+            r"\bnow\b": "today",              # now → today (in financial context)
+            r"\byesterdays?\b": "yesterday",  # yesterdays → yesterday
+            r"\byesterday'?s\b": "yesterday",
+            r"\blast\s+weeks?\b": "last week",
+            r"\bprevious\s+week": "last week",
+        }
+        
+        # Normalize query by replacing variations
+        normalized_query = query_lower
+        for pattern, canonical in variations.items():
+            if re.search(pattern, normalized_query):
+                normalized_query = re.sub(pattern, canonical, normalized_query)
+                logger.debug(f"Normalized '{pattern}' to '{canonical}'")
+        
         # Sort patterns by length (longest first) to match multi-word phrases first
         sorted_patterns = sorted(
             self.TEMPORAL_PATTERNS.keys(),
@@ -76,9 +99,8 @@ class DateTimeParser:
         
         for pattern in sorted_patterns:
             # Use word boundaries to avoid partial matches
-            # E.g., "today" should not match "yesterday"
             pattern_regex = r'\b' + re.escape(pattern) + r'\b'
-            if re.search(pattern_regex, query_lower):
+            if re.search(pattern_regex, normalized_query):
                 if pattern not in detected:  # Avoid duplicates
                     detected.append(pattern)
         

@@ -8,6 +8,7 @@ import sys
 import re
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
+from datetime_parser import parse_datetime_query
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -202,7 +203,7 @@ with tab_main:
                 value=default_val, key="main_input"
             )
         with col_btn:
-            ask_clicked = st.form_submit_button("Ask →", use_container_width=True)
+            ask_clicked = st.form_submit_button("Ask →", width='stretch')
 
 
     # ── Helper: render answer text as clean HTML ──────────────
@@ -255,7 +256,17 @@ with tab_main:
 
 
     # ── Process query ─────────────────────────────────────────
+   # ── Process query ─────────────────────────────────────────
     if ask_clicked and user_query.strip():
+        # Parse datetime info BEFORE spinner (so it shows immediately)
+        dt_info = parse_datetime_query(user_query.strip())
+        
+        # Show datetime detection if present
+        if dt_info['has_temporal']:
+            st.info(f"📅 **Temporal context detected:** {', '.join(dt_info['temporal_refs'])}")
+            with st.expander("ℹ️ Date Context", expanded=False):
+                st.caption(dt_info['date_context'])
+        
         with st.spinner("Thinking..."):
             try:
                 chain        = load_chain()

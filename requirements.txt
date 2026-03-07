@@ -25,3 +25,6 @@ tqdm
 # ── Web Search (free, no API key needed) ────────────────────      # DuckDuckGo live search for hybrid RAG
 ddgs
 
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+lxml>=4.9.0

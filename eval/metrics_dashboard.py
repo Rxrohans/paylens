@@ -130,7 +130,7 @@ def render_dashboard():
         chart_df = df[["faithfulness","answer_relevancy","context_coverage"]]
         chart_df.columns = ["Faithfulness","Answer Relevancy","Context Coverage"]
 
-        st.line_chart(chart_df, use_container_width=True, height=220)
+        st.line_chart(chart_df, width='stretch', height=220)
 
     # ── Run history table ─────────────────────────────────
     st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
@@ -154,7 +154,7 @@ def render_dashboard():
     for col in ["Overall","Faithfulness","Relevancy","Coverage"]:
         table_df[col] = table_df[col].apply(lambda x: f"{x:.0%}")
 
-    st.dataframe(table_df, use_container_width=True, hide_index=True)
+    st.dataframe(table_df, width='stretch', hide_index=True)
 
     # ── What scores mean ──────────────────────────────────
     st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
